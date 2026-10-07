@@ -4,76 +4,93 @@
 // Place it inside an element with the `group` class for the hover effects.
 // Size it with a text-size class: everything inside scales with em.
 
-// Wheel used as the "O" in BOSS. Spins when the parent `group` is hovered
+// Tire icon next to the lettering. Spins when the parent `group` is hovered
 // (disabled for reduced motion).
 export function WheelO() {
   return (
     <span
       aria-hidden="true"
-      className="ml-[0.11em] mr-[-0.03em] flex h-[0.9em] w-[0.9em] shrink-0 -translate-y-[0.035em] items-center justify-center"
+      className="mr-[0.14em] flex h-[1.05em] w-[1.05em] shrink-0 items-center justify-center"
     >
       <svg
         viewBox="0 0 100 100"
-        className="h-full w-full drop-shadow-[0_0_8px_rgba(255,45,45,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
+        className="h-full w-full group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
       >
         {/* Tire */}
         <circle
           cx="50"
           cy="50"
           r="47"
-          fill="#060606"
+          fill="#0B0B0B"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
+        {/* Tread marks */}
+        <g stroke="#E31B23" strokeWidth="5" strokeLinecap="round">
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+            <line
+              key={angle}
+              x1="50"
+              y1="6"
+              x2="50"
+              y2="16"
+              transform={`rotate(${angle} 50 50)`}
+            />
+          ))}
+        </g>
         {/* Rim */}
         <circle
           cx="50"
           cy="50"
-          r="30"
-          fill="#1F1F1F"
+          r="28"
+          fill="none"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
         {/* Spokes */}
-        <g stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round">
+        <g stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round">
           {[0, 72, 144, 216, 288].map((angle) => (
             <line
               key={angle}
               x1="50"
               y1="50"
               x2="50"
-              y2="25"
+              y2="26"
               transform={`rotate(${angle} 50 50)`}
             />
           ))}
         </g>
         {/* Hub */}
-        <circle cx="50" cy="50" r="9" fill="#FFFFFF" />
-        <circle cx="50" cy="50" r="3.5" fill="#FF2D2D" />
+        <circle cx="50" cy="50" r="9" fill="#E31B23" />
       </svg>
     </span>
   );
 }
 
-// Big white italic "BOSS" (the O is a wheel) with a red "AUTO EXCHANGE" bar
-// that spans the full width of the word, like the logo artwork.
+// Tire icon + red "CAPITAL" and white "JEY" in squared type, with a thin red
+// rule and "CAR TRADING" underneath. Upright, no italics, no glow.
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-flex flex-col items-stretch whitespace-nowrap leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] ${className}`}
+      role="img"
+      aria-label="Capital Jey Car Trading"
+      className={`inline-flex items-center whitespace-nowrap leading-none ${className}`}
     >
-      <span
-        role="img"
-        aria-label="Boss"
-        className="flex items-center justify-center font-black uppercase italic tracking-[0.04em] text-white [text-shadow:0_0_22px_rgba(255,45,45,0.95),0_0_6px_rgba(255,255,255,0.35),3px_3px_0_#FF2D2D] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),3px_3px_0_#FF5A5A]"
-      >
-        <span aria-hidden="true">B</span>
-        <WheelO />
-        <span aria-hidden="true">SS</span>
-      </span>
-      <span className="mt-[0.35em] block rounded-[0.2em] bg-[#FF2D2D] px-[0.6em] py-[0.25em] text-center text-[0.34em] font-extrabold uppercase italic tracking-[0.16em] text-white shadow-[0_0_16px_rgba(255,45,45,0.85)] transition-colors duration-300 group-hover:bg-[#FF5A5A]">
-        Auto Exchange
+      <WheelO />
+      <span aria-hidden="true" className="flex flex-col items-start">
+        <span className="flex items-baseline gap-[0.18em] font-[family-name:var(--font-rajdhani)] font-bold uppercase tracking-[0.04em]">
+          <span className="text-[#E31B23] transition-colors duration-300 group-hover:text-[#FF3B43]">
+            Capital
+          </span>
+          <span className="text-white">Jey</span>
+        </span>
+        <span className="mt-[0.3em] flex w-full items-center gap-[0.5em] text-[0.3em] font-semibold uppercase tracking-[0.35em] text-white/80">
+          <span className="h-[2px] w-[1.6em] bg-[#E31B23]" />
+          Car Trading
+        </span>
       </span>
     </span>
   );
 }
+
+export default Wordmark;

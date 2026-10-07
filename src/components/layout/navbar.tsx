@@ -7,6 +7,7 @@ import { ArrowRight, Download, Menu, ShoppingCart, X } from "lucide-react";
 import { useCart } from "@/context/cart-context";
 import UserMenu from "@/components/layout/user-menu";
 import NotificationBell from "@/components/layout/notification-bell";
+import { Wordmark } from "@/components/layout/wordmark";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -18,104 +19,23 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-// Matches header height (72/76/80px) + 1px border
-const HEADER_OFFSET = "-mb-[73px] sm:-mb-[77px] lg:-mb-[81px]";
-
 // Capital Jey Car Trading palette
-// red #FF2D2D | red hover #FF5A5A | red text #FFFFFF | blue glow #A80000
-// background #060606 | text #FFFFFF
+// black #0B0B0B | red #E31B23 | red hover #FF3B43 | white #FFFFFF
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
-// Glow styles shared by the header buttons
-const glowRed =
-  "border-[#FFFFFF]/70 shadow-[0_0_22px_rgba(255,45,45,0.75),inset_0_0_12px_rgba(255,45,45,0.25)] hover:border-[#FFFFFF] hover:shadow-[0_0_32px_rgba(255,45,45,0.95),inset_0_0_14px_rgba(255,45,45,0.35)]";
-const glowBlue =
-  "border-[#FF2D2D]/80 shadow-[0_0_22px_rgba(255,45,45,0.7),inset_0_0_10px_rgba(255,45,45,0.2)] hover:border-[#FFFFFF] hover:shadow-[0_0_28px_rgba(255,45,45,0.85)]";
+// Square icon buttons with a red edge on hover (no glow)
+const iconButton =
+  "border border-white/20 bg-white/5 text-white transition-colors duration-200 hover:border-[#E31B23] hover:bg-[#E31B23]";
 
-// Applies the same glow to the Login button rendered inside <UserMenu />
-const loginGlow =
-  "[&>a]:border-[#FF2D2D]/80 [&>a]:shadow-[0_0_22px_rgba(255,45,45,0.7)] [&>a:hover]:border-[#FFFFFF] [&>a:hover]:shadow-[0_0_28px_rgba(255,45,45,0.85)] [&>button]:border-[#FF2D2D]/80 [&>button]:shadow-[0_0_22px_rgba(255,45,45,0.7)] [&>button:hover]:border-[#FFFFFF] [&>button:hover]:shadow-[0_0_28px_rgba(255,45,45,0.85)]";
+// Same look for the Login / account button rendered inside <UserMenu />
+const loginStyle =
+  "[&>a]:rounded-none [&>a]:border [&>a]:border-white/20 [&>a:hover]:border-[#E31B23] [&>a:hover]:bg-[#E31B23] [&>button]:rounded-none [&>button]:border [&>button]:border-white/20 [&>button:hover]:border-[#E31B23]";
 
-// Minimal shape of the event we care about — not in the standard lib.dom types yet.
+// Minimal shape of the event we care about, not in the standard lib.dom types yet.
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
-}
-
-// Wheel used as the "O" in BOSS. Sized in em so it scales with the wordmark.
-// Spins when the parent `group` is hovered (disabled for reduced motion).
-function WheelO() {
-  return (
-    <span
-      aria-hidden="true"
-      className="ml-[0.11em] mr-[-0.03em] flex h-[0.9em] w-[0.9em] shrink-0 -translate-y-[0.035em] items-center justify-center"
-    >
-      <svg
-        viewBox="0 0 100 100"
-        className="h-full w-full drop-shadow-[0_0_8px_rgba(255,45,45,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
-      >
-        {/* Tire */}
-        <circle
-          cx="50"
-          cy="50"
-          r="47"
-          fill="#060606"
-          stroke="#FFFFFF"
-          strokeWidth="5"
-        />
-        {/* Rim */}
-        <circle
-          cx="50"
-          cy="50"
-          r="30"
-          fill="#1F1F1F"
-          stroke="#FFFFFF"
-          strokeWidth="5"
-        />
-        {/* Spokes */}
-        <g stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round">
-          {[0, 72, 144, 216, 288].map((angle) => (
-            <line
-              key={angle}
-              x1="50"
-              y1="50"
-              x2="50"
-              y2="25"
-              transform={`rotate(${angle} 50 50)`}
-            />
-          ))}
-        </g>
-        {/* Hub */}
-        <circle cx="50" cy="50" r="9" fill="#FFFFFF" />
-        <circle cx="50" cy="50" r="3.5" fill="#FF2D2D" />
-      </svg>
-    </span>
-  );
-}
-
-// Text logo: big white "BOSS" (the O is a wheel) with a red "AUTO EXCHANGE" tag.
-// Place inside an element with the `group` class for hover effects.
-// Size is controlled with a text-size class (everything scales with em).
-function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`flex flex-col items-center whitespace-nowrap leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] ${className}`}
-    >
-      <span
-        role="img"
-        aria-label="Boss"
-        className="flex items-center font-black uppercase italic tracking-[0.08em] text-white [text-shadow:0_0_22px_rgba(255,45,45,0.95),0_0_6px_rgba(255,255,255,0.35),2px_2px_0_#FF2D2D] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),2px_2px_0_#FF5A5A]"
-      >
-        <span aria-hidden="true">B</span>
-        <WheelO />
-        <span aria-hidden="true">SS</span>
-      </span>
-      <span className="mt-1.5 rounded-[3px] bg-[#FF2D2D] px-2 py-[3px] text-[0.34em] font-extrabold uppercase italic tracking-[0.24em] text-white shadow-[0_0_16px_rgba(255,45,45,0.85)] transition-colors duration-300 group-hover:bg-[#FF5A5A]">
-        Auto Exchange
-      </span>
-    </span>
-  );
 }
 
 export default function Navbar() {
@@ -123,30 +43,17 @@ export default function Navbar() {
   const { totalItems } = useCart();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const [installPrompt, setInstallPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [isAppInstalled, setIsAppInstalled] = useState(false);
-
-  const isHome = pathname === "/";
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  const isSolid = !isHome || isScrolled || isMenuOpen;
   const canInstall = !isAppInstalled && installPrompt !== null;
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 24);
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -228,25 +135,24 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 border-b transition-all duration-300 motion-reduce:transition-none ${isHome ? HEADER_OFFSET : ""} ${isSolid ? "border-[#FF2D2D]/20 bg-[#060606]/90 backdrop-blur-xl" : "border-transparent bg-transparent"}`}
-      >
+      {/* Always solid black, with a red line underneath */}
+      <header className="sticky top-0 z-50 border-b-2 border-[#E31B23] bg-[#0B0B0B]">
         <nav
           aria-label="Main"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8"
         >
-          <div className="flex h-[72px] items-center justify-between gap-4 sm:h-[76px] lg:h-20 lg:grid lg:grid-cols-[1fr_auto_1fr]">
-            {/* LOGO (text wordmark) */}
+          <div className="flex h-[72px] items-center justify-between gap-4 sm:h-[76px] lg:h-20">
+            {/* LOGO */}
             <Link
               href="/"
               aria-label="Capital Jey Car Trading home"
               className={`group flex w-fit items-center justify-self-start ${focusRing}`}
             >
-              <Wordmark className="text-3xl sm:text-4xl lg:text-5xl" />
+              <Wordmark className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl" />
             </Link>
 
             {/* DESKTOP NAVIGATION */}
-            <div className="hidden items-center gap-1 rounded-full border border-white/15 bg-[#060606]/75 p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:flex">
+            <div className="hidden flex-1 items-center justify-center lg:flex">
               {navigation.map((item) => {
                 const active = isActive(item.href);
 
@@ -255,7 +161,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${focusRing} ${active ? "bg-[#FF2D2D] text-white shadow-[0_0_18px_rgba(255,45,45,0.7)]" : "text-white/85 hover:bg-white/10 hover:text-white"}`}
+                    className={`relative whitespace-nowrap px-2.5 py-2 text-[13px] font-semibold uppercase tracking-wide xl:px-3.5 xl:text-sm transition-colors duration-200 ${focusRing} ${active ? "text-white after:absolute after:inset-x-3 after:-bottom-[26px] after:h-[3px] after:bg-[#E31B23]" : "text-white/70 hover:text-white"}`}
                   >
                     {item.name}
                   </Link>
@@ -264,13 +170,13 @@ export default function Navbar() {
             </div>
 
             {/* RIGHT SIDE: INSTALL + CART + ACCOUNT + MOBILE MENU */}
-            <div className="ml-auto flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2 lg:ml-0">
               {/* Install App */}
               {canInstall && (
                 <button
                   type="button"
                   onClick={handleInstallClick}
-                  className={`hidden items-center gap-2 rounded-full border bg-[#FF2D2D]/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-[#FF2D2D]/20 sm:flex ${glowRed} ${focusRing}`}
+                  className={`hidden items-center gap-2 whitespace-nowrap px-4 py-2.5 text-sm font-semibold sm:flex lg:hidden 2xl:flex ${iconButton} ${focusRing}`}
                 >
                   <Download size={16} strokeWidth={2.25} />
                   Install App
@@ -278,24 +184,26 @@ export default function Navbar() {
               )}
 
               {/* Announcement notifications */}
-              <NotificationBell className={`${glowBlue} ${focusRing}`} />
+              <NotificationBell
+                className={`rounded-none ${iconButton} ${focusRing}`}
+              />
 
               {/* Cart */}
               <Link
                 href="/cart"
                 aria-label={`View cart${totalItems > 0 ? `, ${totalItems} item${totalItems === 1 ? "" : "s"}` : ""}`}
-                className={`relative flex h-11 w-11 items-center justify-center rounded-full border bg-[#060606]/30 text-white backdrop-blur-md transition-all duration-300 hover:text-[#FFFFFF] sm:h-12 sm:w-12 ${glowBlue} ${focusRing}`}
+                className={`relative flex h-11 w-11 items-center justify-center sm:h-12 sm:w-12 ${iconButton} ${focusRing}`}
               >
                 <ShoppingCart size={20} strokeWidth={2} />
                 {totalItems > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#FF2D2D] px-1 text-[10px] font-bold text-white">
+                  <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-[20px] items-center justify-center bg-[#E31B23] px-1 text-[10px] font-bold text-white">
                     {totalItems > 99 ? "99+" : totalItems}
                   </span>
                 )}
               </Link>
 
               {/* Account: avatar + "My orders" (or Login when logged out) */}
-              <div className={`flex items-center ${loginGlow}`}>
+              <div className={`flex items-center ${loginStyle}`}>
                 <UserMenu />
               </div>
 
@@ -306,7 +214,7 @@ export default function Navbar() {
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
                 onClick={() => setIsMenuOpen((open) => !open)}
-                className={`flex h-11 w-11 items-center justify-center rounded-full border text-white backdrop-blur-md transition-all duration-300 sm:h-12 sm:w-12 lg:hidden ${isMenuOpen ? `bg-[#FF2D2D]/10 ${glowRed}` : `bg-[#060606]/30 ${glowBlue}`} ${focusRing}`}
+                className={`flex h-11 w-11 items-center justify-center sm:h-12 sm:w-12 lg:hidden ${iconButton} ${isMenuOpen ? "!border-[#E31B23] !bg-[#E31B23]" : ""} ${focusRing}`}
               >
                 {isMenuOpen ? (
                   <X size={21} strokeWidth={2} />
@@ -323,19 +231,19 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         aria-hidden={!isMenuOpen}
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"}`}
+        className={`fixed inset-0 z-40 transition-all duration-500 lg:hidden ${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"}`}
       >
         {/* Backdrop */}
         <button
           type="button"
           aria-label="Close navigation"
           onClick={() => setIsMenuOpen(false)}
-          className="absolute inset-0 cursor-default bg-[#060606]/70 backdrop-blur-md"
+          className="absolute inset-0 cursor-default bg-black/70"
         />
 
         {/* Navigation Drawer */}
         <div
-          className={`absolute right-0 top-0 h-full w-full max-w-md border-l border-[#FF2D2D]/20 bg-[#060606] shadow-[-20px_0_80px_rgba(0,0,0,0.55)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`absolute right-0 top-0 h-full w-full max-w-md border-l-2 border-[#E31B23] bg-[#0B0B0B] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           {/* Drawer Header */}
           <div className="flex h-[72px] items-center justify-between border-b border-white/10 px-5 sm:h-[76px] sm:px-6">
@@ -352,7 +260,7 @@ export default function Navbar() {
               type="button"
               aria-label="Close menu"
               onClick={() => setIsMenuOpen(false)}
-              className={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-blue-100 transition-all hover:border-[#FF2D2D] hover:text-white hover:shadow-[0_0_18px_rgba(255,45,45,0.55)] ${focusRing}`}
+              className={`flex h-10 w-10 items-center justify-center ${iconButton} ${focusRing}`}
             >
               <X size={19} />
             </button>
@@ -365,23 +273,16 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={handleInstallClick}
-                className={`mb-6 flex items-center justify-center gap-2 rounded-full border bg-[#FF2D2D]/10 px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#FF2D2D]/20 ${glowRed} ${focusRing}`}
+                className={`mb-6 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold ${iconButton} ${focusRing}`}
               >
                 <Download size={16} strokeWidth={2.25} />
                 Install App
               </button>
             )}
 
-            {/* Label */}
-            <div
-              className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF] transition-all duration-500 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
-            >
-              Explore Capital Jey Car Trading
-            </div>
-
             {/* Navigation */}
             <nav>
-              <ul className="space-y-1">
+              <ul>
                 {navigation.map((item, index) => {
                   const active = isActive(item.href);
 
@@ -399,19 +300,12 @@ export default function Navbar() {
                         href={item.href}
                         aria-current={active ? "page" : undefined}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`group relative flex min-h-[62px] items-center justify-between border-b border-white/[0.07] rounded-lg px-3 text-xl font-semibold tracking-tight transition-all duration-300 sm:min-h-[68px] sm:text-2xl ${focusRing} ${active ? "border-l-2 border-l-[#FF2D2D] bg-gradient-to-r from-[#FF2D2D]/25 to-transparent text-white" : "text-white/85 hover:bg-white/5 hover:text-white"}`}
+                        className={`group flex min-h-[62px] items-center justify-between border-b border-white/10 px-3 text-xl font-semibold uppercase tracking-wide transition-colors duration-200 sm:min-h-[68px] sm:text-2xl ${focusRing} ${active ? "border-l-4 border-l-[#E31B23] bg-white/5 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}
                       >
-                        <span className="flex items-center gap-4">
-                          {/* Active indicator */}
-                          <span
-                            className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${active ? "bg-[#FF2D2D] shadow-[0_0_14px_rgba(255,45,45,0.8)]" : "bg-transparent group-hover:bg-[#FF2D2D]/50"}`}
-                          />
-                          {item.name}
-                        </span>
-
+                        {item.name}
                         <ArrowRight
                           size={19}
-                          className={`transition-all duration-300 ${active ? "translate-x-0 text-[#FFFFFF] opacity-100" : "translate-x-[-6px] text-blue-200/50 opacity-0 group-hover:translate-x-0 group-hover:text-[#FFFFFF] group-hover:opacity-100"}`}
+                          className={`transition-all duration-200 ${active ? "text-[#E31B23]" : "-translate-x-1.5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"}`}
                         />
                       </Link>
                     </li>

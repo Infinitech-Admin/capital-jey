@@ -26,8 +26,8 @@ const BUSINESS = {
   name: "Capital Jey Car Trading",
   address:
     "Block 132 Lot 7 C. Arellano St. cor J. Diokno, Katarungan Village, Poblacion, Muntinlupa City, Philippines, 1776",
-  phoneDisplay: "0906 021 8568",
-  phoneHref: "tel:+639060218568",
+  phoneDisplay: "0997 253 0052",
+  phoneHref: "tel:+639972530052",
   facebook: "https://www.facebook.com/bossautoexchange",
   instagram: "https://www.instagram.com/boss.autoexchange",
   tiktok: "https://www.tiktok.com/@boss.autoexchange",

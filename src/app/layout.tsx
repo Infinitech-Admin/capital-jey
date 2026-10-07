@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Rajdhani } from "next/font/google";
 
 import "./globals.css";
 
@@ -10,13 +10,15 @@ import ChatWidget from "@/components/chat-widget";
 import FloatingSocial from "@/components/floating-social";
 import AnimatedSplash from "@/components/animated-splash";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Squared, techy headings that match the "CAPITAL JEY" lettering on the logo
+const rajdhani = Rajdhani({
+  variable: "--font-rajdhani",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -84,7 +86,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#FF2D2D",
+  themeColor: "#0B0B0B",
 };
 
 export default function RootLayout({
@@ -95,9 +97,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${rajdhani.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#060606] text-white">
+      <body className="min-h-full flex flex-col bg-white text-[#0B0B0B]">
         <AuthProvider>
           <CartProvider>
             {children}

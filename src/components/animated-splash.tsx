@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 /**
  * AnimatedSplash — "tachometer" version
  * -------------------------------------
- * The wordmark CAPITAL JEY CAR TRADING starts dark. Under it, a tachometer
- * sweeps from 0 to redline: the red arc fills, the needle climbs, and the
- * % counter runs. As the needle passes, each letter ignites in order:
- * B → gulong (O) → S → S, and the AUTO EXCHANGE bar is revealed.
- * At redline the wordmark flares, then everything fades into the homepage.
+ * The Capital Jey wordmark starts dark. Under it, a tachometer sweeps from 0
+ * to redline: the red arc fills, the needle climbs, and the % counter runs.
+ * As the needle passes, the logo ignites in order: tire -> CAPITAL -> JEY,
+ * and the CAR TRADING bar is revealed. At redline the wordmark flares, then
+ * everything fades into the homepage.
  *
  * - Shows only when running as an installed PWA (standalone).
  * - Once per session.
@@ -28,7 +28,7 @@ type Props = {
 
 type Phase = "pending" | "show" | "exit" | "done";
 
-const SESSION_KEY = "bax-splash-seen";
+const SESSION_KEY = "cj-splash-seen";
 
 /* ---------- Gauge geometry (viewBox 200 x 150, 240° sweep) ---------- */
 const CX = 100;
@@ -105,19 +105,15 @@ export default function AnimatedSplash({
       style={{ ["--bax-fade" as string]: `${fadeMs}ms` }}
     >
       <div className="bax-stage">
-        {/* B [gulong] S S — dark until the needle reaches each letter */}
-        <h1 className="bax-word" aria-label="Boss">
-          <span className="bax-l bax-b" aria-hidden="true">
-            B
-          </span>
-
+        {/* [tire] CAPITAL JEY — dark until the needle reaches each part */}
+        <h1 className="bax-word" aria-label="Capital Jey">
           <span className="bax-roll" aria-hidden="true">
             <svg className="bax-wheel" viewBox="0 0 100 100">
               <circle
                 cx="50"
                 cy="50"
                 r="47"
-                fill="#060606"
+                fill="#0B0B0B"
                 stroke="#fff"
                 strokeWidth="5"
               />
@@ -126,7 +122,7 @@ export default function AnimatedSplash({
                 cy="50"
                 r="41"
                 fill="none"
-                stroke="#FF2D2D"
+                stroke="#E31B23"
                 strokeWidth="5"
                 strokeDasharray="7 5.2"
               />
@@ -134,7 +130,7 @@ export default function AnimatedSplash({
                 cx="50"
                 cy="50"
                 r="30"
-                fill="#060606"
+                fill="#0B0B0B"
                 stroke="#fff"
                 strokeWidth="3"
               />
@@ -149,41 +145,37 @@ export default function AnimatedSplash({
                 cx="50"
                 cy="50"
                 r="8"
-                fill="#FF2D2D"
+                fill="#E31B23"
                 stroke="#fff"
                 strokeWidth="2.5"
               />
             </svg>
           </span>
 
-          <span className="bax-l bax-s1" aria-hidden="true">
-            S
+          <span className="bax-l bax-cap" aria-hidden="true">
+            Capital
           </span>
-          <span className="bax-l bax-s2" aria-hidden="true">
-            S
+          <span className="bax-l bax-jey" aria-hidden="true">
+            Jey
           </span>
         </h1>
 
-        {/* AUTO EXCHANGE — revealed in step with the needle */}
+        {/* CAR TRADING — revealed in step with the needle */}
         <div className="bax-tag">
-          <span>Auto Exchange</span>
+          <span>Car Trading</span>
         </div>
 
         {/* Tachometer = the loading bar */}
         <div className="bax-gauge" aria-hidden="true">
           <svg viewBox="0 0 200 150" overflow="visible">
             <defs>
-              <linearGradient id="baxArc" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0" stopColor="#FF2D2D" />
-                <stop offset="1" stopColor="#FF2D2D" />
-              </linearGradient>
               <linearGradient id="baxNeedle" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0" stopColor="#FF2D2D" />
-                <stop offset="1" stopColor="#ff6b78" />
+                <stop offset="0" stopColor="#E31B23" />
+                <stop offset="1" stopColor="#FF3B43" />
               </linearGradient>
               <radialGradient id="baxGlow">
-                <stop offset="0" stopColor="#FF2D2D" stopOpacity="0.5" />
-                <stop offset="1" stopColor="#FF2D2D" stopOpacity="0" />
+                <stop offset="0" stopColor="#E31B23" stopOpacity="0.5" />
+                <stop offset="1" stopColor="#E31B23" stopOpacity="0" />
               </radialGradient>
             </defs>
 
@@ -208,7 +200,7 @@ export default function AnimatedSplash({
             <path
               d="M174.48 49 A86 86 0 0 1 174.48 135"
               fill="none"
-              stroke="#FF2D2D"
+              stroke="#E31B23"
               strokeWidth="2.5"
               strokeLinecap="round"
               opacity="0.85"
@@ -219,7 +211,7 @@ export default function AnimatedSplash({
               d="M30.72 132 A80 80 0 1 1 169.28 132"
               pathLength={100}
               fill="none"
-              stroke="url(#baxArc)"
+              stroke="#E31B23"
               strokeWidth="6"
               strokeLinecap="round"
               strokeDasharray="100"
@@ -235,7 +227,7 @@ export default function AnimatedSplash({
                   x2={CX}
                   y2={CY - (t.major ? 62 : 68)}
                   transform={`rotate(${t.angle} ${CX} ${CY})`}
-                  stroke={t.red ? "#FF2D2D" : "#fff"}
+                  stroke={t.red ? "#E31B23" : "#fff"}
                   strokeOpacity={t.major ? 0.9 : 0.4}
                   strokeWidth={t.major ? 2 : 1}
                 />
@@ -249,7 +241,7 @@ export default function AnimatedSplash({
                   key={t.i}
                   x={(CX + 50 * Math.sin(rad(t.angle))).toFixed(2)}
                   y={(CY - 50 * Math.cos(rad(t.angle)) + 3.2).toFixed(2)}
-                  fill={t.red ? "#FF2D2D" : "#fff"}
+                  fill={t.red ? "#E31B23" : "#fff"}
                   fillOpacity={t.red ? 1 : 0.75}
                 >
                   {t.i / 4}
@@ -279,11 +271,11 @@ export default function AnimatedSplash({
               cx={CX}
               cy={CY}
               r="7"
-              fill="#060606"
+              fill="#0B0B0B"
               stroke="#fff"
               strokeWidth="2"
             />
-            <circle cx={CX} cy={CY} r="2.6" fill="#FF2D2D" />
+            <circle cx={CX} cy={CY} r="2.6" fill="#E31B23" />
           </svg>
 
           {/* % readout */}
@@ -299,9 +291,9 @@ export default function AnimatedSplash({
         }
 
         .bax-splash {
-          --red: #FF2D2D;
-          --red-glow: #FF2D2D;
-          --navy: #060606;
+          --red: #E31B23;
+          --black: #0B0B0B;
+          --head: var(--font-rajdhani), "Arial Black", Arial, system-ui, sans-serif;
           --t0: 300ms;      /* sweep start */
           --drive: 2600ms;  /* sweep duration (gauge = loading bar) */
           position: fixed;
@@ -312,8 +304,8 @@ export default function AnimatedSplash({
           justify-content: center;
           overflow: hidden;
           background:
-            radial-gradient(55% 40% at 50% 55%, rgba(255,45,45,0.2), transparent 70%),
-            var(--navy);
+            radial-gradient(55% 40% at 50% 55%, rgba(227,27,35,0.2), transparent 70%),
+            var(--black);
           opacity: 1;
           transition: opacity var(--bax-fade, 600ms) ease, transform var(--bax-fade, 600ms) ease;
           padding: env(safe-area-inset-top) env(safe-area-inset-right)
@@ -336,7 +328,7 @@ export default function AnimatedSplash({
           flex-direction: column;
           align-items: stretch;
           width: fit-content;
-          font-size: clamp(56px, 19vw, 104px); /* wordmark size drives everything */
+          font-size: clamp(34px, 11vw, 80px); /* wordmark size drives everything */
         }
 
         /* ---------- Wordmark ---------- */
@@ -345,35 +337,33 @@ export default function AnimatedSplash({
           display: flex;
           align-items: center;
           justify-content: center;
-          font-family: "Arial Black", "Helvetica Neue", Arial, system-ui, sans-serif;
-          font-weight: 900;
-          font-style: italic;
+          gap: 0.16em;
+          font-family: var(--head);
+          font-weight: 700;
           font-size: 1em;
           line-height: 1;
-          letter-spacing: 0.02em;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          white-space: nowrap;
           animation: bax-flare 700ms ease-out 2900ms;
         }
         .bax-l {
           display: inline-block;
-          color: #fff;
-          -webkit-text-stroke: 0.045em var(--red);
-          paint-order: stroke fill;
-          text-shadow: 0 0 0.35em rgba(255,71,87,0.55), 0.04em 0.05em 0 rgba(0,0,0,0.35);
           opacity: 0.12; /* unlit */
         }
-        /* each letter ignites as the needle passes */
-        .bax-b  { animation: bax-ignite 520ms ease-out  450ms forwards; }
-        .bax-s1 { animation: bax-ignite 520ms ease-out 1800ms forwards; }
-        .bax-s2 { animation: bax-ignite 520ms ease-out 2350ms forwards; }
+        .bax-cap { color: var(--red); text-shadow: 0 0 0.35em rgba(227,27,35,0.55); }
+        .bax-jey { color: #fff;       text-shadow: 0 0 0.35em rgba(255,255,255,0.3); }
+        /* each part ignites as the needle passes */
+        .bax-cap { animation: bax-ignite 520ms ease-out 1300ms forwards; }
+        .bax-jey { animation: bax-ignite 520ms ease-out 2200ms forwards; }
 
         .bax-roll {
           display: inline-block;
-          width: 0.82em;
-          height: 0.82em;
-          margin: 0 0.06em;
-          filter: drop-shadow(0 0 0.12em rgba(255,71,87,0.7));
+          width: 0.95em;
+          height: 0.95em;
+          filter: drop-shadow(0 0 0.1em rgba(227,27,35,0.7));
           opacity: 0.12;
-          animation: bax-ignite 520ms ease-out 1150ms forwards;
+          animation: bax-ignite 520ms ease-out 450ms forwards;
         }
         .bax-wheel {
           display: block;
@@ -381,25 +371,24 @@ export default function AnimatedSplash({
           height: 100%;
           /* revs up when lit, then idles */
           animation:
-            bax-rev 900ms cubic-bezier(0.2, 0.8, 0.3, 1) 1150ms forwards,
-            bax-spin 1400ms linear 2050ms infinite;
+            bax-rev 900ms cubic-bezier(0.2, 0.8, 0.3, 1) 450ms forwards,
+            bax-spin 1400ms linear 1350ms infinite;
         }
 
-        /* ---------- AUTO EXCHANGE ---------- */
+        /* ---------- CAR TRADING ---------- */
         .bax-tag {
-          margin-top: 0.12em;
+          margin-top: 0.14em;
           display: flex;
           justify-content: center;
           background: var(--red);
           color: #fff;
-          font-family: "Arial Black", "Helvetica Neue", Arial, system-ui, sans-serif;
-          font-weight: 900;
-          font-style: italic;
-          font-size: 0.17em;
-          letter-spacing: 0.42em;
+          font-family: var(--head);
+          font-weight: 700;
+          font-size: 0.26em;
+          letter-spacing: 0.5em;
           text-transform: uppercase;
-          padding: 0.45em 0.9em 0.45em 1.3em;
-          box-shadow: 0 0 1.4em rgba(255,71,87,0.45);
+          padding: 0.4em 0.9em 0.4em 1.4em;
+          box-shadow: 0 0 1.4em rgba(227,27,35,0.45);
           clip-path: inset(0 100% 0 0);
           animation: bax-reveal var(--drive) linear var(--t0) forwards;
         }
@@ -407,27 +396,26 @@ export default function AnimatedSplash({
         /* ---------- Gauge ---------- */
         .bax-gauge {
           position: relative;
-          width: 2.4em;
-          margin: 0.35em auto 0;
+          width: 3.4em;
+          margin: 0.45em auto 0;
           animation: bax-flare 700ms ease-out 2900ms;
         }
         .bax-gauge svg { display: block; width: 100%; height: auto; overflow: visible; }
         .bax-gauge text {
-          font-family: "Arial Black", "Helvetica Neue", Arial, system-ui, sans-serif;
-          font-weight: 900;
-          font-style: italic;
+          font-family: var(--head);
+          font-weight: 700;
         }
 
         .bax-arc {
           stroke-dashoffset: 100;
-          filter: drop-shadow(0 0 3px rgba(255,71,87,0.9));
+          filter: drop-shadow(0 0 3px rgba(227,27,35,0.9));
           animation: bax-arc var(--drive) linear var(--t0) both;
         }
         .bax-needle {
           transform-box: view-box;
           transform-origin: 100px 92px;
           transform: rotate(-120deg);
-          filter: drop-shadow(0 0 3px rgba(255,71,87,0.9));
+          filter: drop-shadow(0 0 3px rgba(227,27,35,0.9));
           animation: bax-needle var(--drive) linear var(--t0) both;
         }
         .bax-gglow {
@@ -440,13 +428,12 @@ export default function AnimatedSplash({
           left: 50%;
           top: 74%;
           transform: translateX(-50%);
-          font-family: "Arial Black", "Helvetica Neue", Arial, system-ui, sans-serif;
-          font-weight: 900;
-          font-style: italic;
+          font-family: var(--head);
+          font-weight: 700;
           font-size: 0.3em;
           line-height: 1;
           color: #fff;
-          text-shadow: 0 0 0.4em rgba(255,71,87,0.6);
+          text-shadow: 0 0 0.4em rgba(227,27,35,0.6);
           font-variant-numeric: tabular-nums;
           counter-reset: bax-n var(--bax-n);
           animation: bax-count var(--drive) linear var(--t0) both;
@@ -490,9 +477,9 @@ export default function AnimatedSplash({
         @keyframes bax-rev  { to { transform: rotate(720deg); } }
         @keyframes bax-spin { to { transform: rotate(360deg); } }
         @keyframes bax-flare {
-          0%   { filter: brightness(1) drop-shadow(0 0 0 rgba(255,71,87,0)); }
-          35%  { filter: brightness(1.35) drop-shadow(0 0 0.22em rgba(255,71,87,0.85)); }
-          100% { filter: brightness(1) drop-shadow(0 0 0 rgba(255,71,87,0)); }
+          0%   { filter: brightness(1) drop-shadow(0 0 0 rgba(227,27,35,0)); }
+          35%  { filter: brightness(1.35) drop-shadow(0 0 0.22em rgba(227,27,35,0.85)); }
+          100% { filter: brightness(1) drop-shadow(0 0 0 rgba(227,27,35,0)); }
         }
 
         @media (prefers-reduced-motion: reduce) {

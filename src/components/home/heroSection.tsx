@@ -31,195 +31,132 @@ const benefits = [
   },
 ];
 
-// Same slant as the italic Boss logo, used for the image edge and buttons.
-const SLANT = "lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]";
-
-// One entrance sequence on page load:
-// stripe sweeps in -> photo slides in and slowly settles -> headline lines
-// rise one by one -> text and buttons fade up -> benefits strip rises.
-// Everything is CSS-only and switched off for people who prefer reduced motion.
+// One page-load moment: the speed lines shoot in from the edges, then the
+// headline and buttons settle. Switched off for reduced motion.
 const heroAnimations = `
-  @keyframes hero-stripe-in {
-    from { transform: translateX(35%); opacity: 0; }
-    to   { transform: translateX(0);   opacity: 1; }
-  }
-  @keyframes hero-photo-in {
-    from { transform: translateX(12%); opacity: 0; }
-    to   { transform: translateX(0);   opacity: 1; }
-  }
-  @keyframes hero-zoom {
-    from { transform: scale(1.14); }
-    to   { transform: scale(1); }
-  }
-  @keyframes hero-line-in {
-    from { transform: translateY(110%); }
-    to   { transform: translateY(0); }
-  }
-  @keyframes hero-bar-in {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
-  @keyframes hero-fade-up {
-    from { transform: translateY(18px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
-  }
-  @keyframes hero-rise {
-    from { transform: translateY(100%); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
-  }
-  @keyframes hero-pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(255,45,45, 0.55); }
-    70%  { box-shadow: 0 0 0 16px rgba(255,45,45, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255,45,45, 0); }
-  }
-
-  .hero-stripe { animation: hero-stripe-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both; }
-  .hero-photo  { animation: hero-photo-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
-  .hero-zoom   { animation: hero-zoom 9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
-  .hero-line   { animation: hero-line-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .hero-bar    { transform-origin: left; animation: hero-bar-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
-  .hero-fade   { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .hero-rise   { animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both; }
-  .hero-pulse  { animation: hero-pulse 2.8s ease-out 2.6s infinite; }
-
+  @keyframes cj-line-left  { from { transform: translateX(-60%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes cj-line-right { from { transform: translateX(60%);  opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes cj-rise       { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0);  opacity: 1; } }
+  .cj-line-left  { animation: cj-line-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+  .cj-line-right { animation: cj-line-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+  .cj-rise       { animation: cj-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
   @media (prefers-reduced-motion: reduce) {
-    .hero-stripe, .hero-photo, .hero-zoom, .hero-line,
-    .hero-bar, .hero-fade, .hero-rise, .hero-pulse {
-      animation: none !important;
-    }
+    .cj-line-left, .cj-line-right, .cj-rise { animation: none !important; }
   }
 `;
 
-const headlineLines = ["Your next car,", "checked and", "ready to drive."];
+// Tapered red speed lines, like the swoosh off the "C" in the logo.
+function SpeedLines({ flip = false }: { flip?: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 200 60"
+      className={`h-auto w-40 text-[#E31B23] lg:w-72 ${flip ? "-scale-x-100" : ""}`}
+    >
+      <polygon points="0,6 200,24 0,14" fill="currentColor" />
+      <polygon points="30,24 200,30 30,34" fill="currentColor" opacity="0.7" />
+      <polygon points="0,46 200,36 0,54" fill="currentColor" />
+    </svg>
+  );
+}
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] flex-col overflow-hidden bg-[#060606]">
+    <section className="bg-[#0B0B0B]">
       <style>{heroAnimations}</style>
 
-      {/* Soft blue depth behind the text side */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[420px] w-[620px] rounded-full bg-[#111111] opacity-70 blur-[120px]" />
-
-      {/* Red slanted stripe (peeks out beside the photo on desktop) */}
-      <div
-        aria-hidden="true"
-        className={`hero-stripe absolute inset-y-0 right-0 hidden w-[59.5%] bg-[#FF2D2D] lg:block ${SLANT}`}
-      />
-
-      {/* Photo panel: full background on mobile, slanted right panel on desktop */}
-      <div
-        className={`hero-photo absolute inset-0 lg:left-auto lg:w-[58%] ${SLANT}`}
-      >
+      <div className="relative flex min-h-[78vh] items-center justify-center overflow-hidden">
+        {/* Full photo behind the text */}
         <Image
           src="/showroom-collection.jpg"
-          alt="Premium car showroom"
+          alt="Capital Jey showroom"
           fill
           priority
-          sizes="(min-width: 1024px) 58vw, 100vw"
-          className="hero-zoom object-cover object-center"
+          sizes="100vw"
+          className="object-cover object-center"
         />
-        {/* Mobile: darken for text. Desktop: light tint only */}
-        <div className="absolute inset-0 bg-[#060606]/80 lg:bg-[#060606]/20" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#060606]/80 to-transparent" />
-      </div>
+        <div className="absolute inset-0 bg-[#0B0B0B]/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B]/90 via-transparent to-[#0B0B0B]/30" />
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 pb-10 pt-32 sm:px-6 lg:px-8">
-        <div className="max-w-xl lg:max-w-[46%]">
-          {/* The bar is wrapped so its scale animation doesn't fight the skew */}
-          <div className="hero-bar mb-6 w-16">
-            <span
-              aria-hidden="true"
-              className="block h-1.5 w-full -skew-x-12 bg-[#FF2D2D]"
-            />
-          </div>
+        {/* Speed lines on both sides */}
+        <div className="cj-line-left pointer-events-none absolute left-0 top-1/2 -translate-y-1/2">
+          <SpeedLines />
+        </div>
+        <div className="cj-line-right pointer-events-none absolute right-0 top-1/2 -translate-y-1/2">
+          <SpeedLines flip />
+        </div>
 
-          <h1 className="text-5xl font-black italic leading-[0.95] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-            {headlineLines.map((line, index) => (
-              <span
-                key={line}
-                className="-mb-[0.1em] block overflow-hidden pb-[0.1em] pr-3"
-              >
-                <span
-                  className="hero-line block"
-                  style={{ animationDelay: `${0.4 + index * 0.14}s` }}
-                >
-                  {line}
-                </span>
-              </span>
-            ))}
+        {/* Content (centered) */}
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:px-6">
+          <h1
+            className="cj-rise text-5xl font-bold uppercase leading-[0.95] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.6)] sm:text-6xl lg:text-8xl"
+            style={{ animationDelay: "0.25s" }}
+          >
+            Your next car,
+            <span className="block text-[#E31B23]">checked and ready</span>
+            to drive.
           </h1>
 
           <p
-            className="hero-fade mt-6 max-w-md text-base leading-7 text-blue-100/80 lg:text-lg"
-            style={{ animationDelay: "0.9s" }}
+            className="cj-rise mx-auto mt-6 max-w-xl text-base leading-7 text-white/80 lg:text-lg"
+            style={{ animationDelay: "0.45s" }}
           >
             Every vehicle is inspected before it reaches the showroom, with
             clear details from your first look to the day you get the keys.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            {/* Primary CTA */}
-            <div className="hero-fade" style={{ animationDelay: "1.05s" }}>
-              <Link
-                href="/showroom"
-                className="hero-pulse group block -skew-x-12 rounded-md bg-[#FF2D2D] text-sm font-bold text-white shadow-lg shadow-[#FF2D2D]/20 transition-colors duration-300 hover:bg-[#FF5A5A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                <span className="flex skew-x-12 items-center justify-center gap-3 px-7 py-4">
-                  Browse cars
-                  <ArrowRight
-                    size={17}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
-                </span>
-              </Link>
-            </div>
+          <div
+            className="cj-rise mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <Link
+              href="/showroom"
+              className="chamfer group inline-flex items-center justify-center gap-3 bg-[#E31B23] px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-[#FF3B43] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Browse cars
+              <ArrowRight
+                size={17}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
 
-            {/* Secondary CTA */}
-            <div className="hero-fade" style={{ animationDelay: "1.17s" }}>
-              <Link
-                href="/sell-trade"
-                className="block -skew-x-12 rounded-md border-2 border-white/30 bg-[#060606]/40 text-sm font-semibold text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                <span className="flex skew-x-12 items-center justify-center px-7 py-3.5">
-                  Sell or trade your car
-                </span>
-              </Link>
-            </div>
+            <Link
+              href="/sell-trade"
+              className="chamfer inline-flex items-center justify-center bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-[#0B0B0B] transition-colors duration-300 hover:bg-[#F4F4F4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Sell or trade your car
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Benefits strip: full width, divided by hairlines instead of cards */}
-      <div className="hero-rise relative z-20 border-t-2 border-[#FF2D2D] bg-[#111111]/90 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ul className="grid grid-cols-2 gap-px bg-white/10 lg:grid-cols-4">
-            {benefits.map((benefit) => {
-              const Icon = benefit.icon;
+      {/* Tire-tread divider */}
+      <div aria-hidden="true" className="tread" />
 
-              return (
-                <li
-                  key={benefit.title}
-                  className="flex items-center gap-3 bg-[#111111] px-3 py-4 sm:gap-4 sm:px-5 sm:py-5"
-                >
-                  <Icon
-                    size={28}
-                    strokeWidth={1.8}
-                    className="shrink-0 text-[#FFFFFF]"
-                  />
-                  <div className="min-w-0">
-                    <h3 className="text-sm font-bold text-white sm:text-base">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-0.5 text-xs leading-5 text-blue-100/60 sm:text-sm">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      {/* Benefits strip: white, so the page flips from dark hero to light site */}
+      <div className="bg-white">
+        <ul className="mx-auto grid max-w-7xl grid-cols-2 divide-[#0B0B0B]/10 lg:grid-cols-4 lg:divide-x">
+          {benefits.map(({ icon: Icon, title, description }) => (
+            <li
+              key={title}
+              className="flex items-center gap-3 border-t-4 border-transparent px-4 py-5 transition-colors hover:border-[#E31B23] sm:gap-4 sm:px-6 sm:py-6"
+            >
+              <Icon
+                size={28}
+                strokeWidth={1.8}
+                className="shrink-0 text-[#E31B23]"
+              />
+              <div className="min-w-0">
+                <h3 className="text-base font-bold text-[#0B0B0B] sm:text-lg">
+                  {title}
+                </h3>
+                <p className="mt-0.5 text-xs leading-5 text-[#0B0B0B]/60 sm:text-sm">
+                  {description}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
