@@ -21,7 +21,7 @@ export function WheelO() {
           cx="50"
           cy="50"
           r="47"
-          fill="#0A0F1C"
+          fill="#000000"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
@@ -30,7 +30,7 @@ export function WheelO() {
           cx="50"
           cy="50"
           r="30"
-          fill="#1B2436"
+          fill="#1A1A1A"
           stroke="#FF6B71"
           strokeWidth="5"
         />

@@ -582,7 +582,7 @@ export default function CarDetailsPage() {
           {/* Back */}
           <Link
             href="/showroom"
-            className={`inline-flex items-center gap-2 text-sm font-medium text-[#FF6B71] transition-colors hover:text-[#3D8FD9] ${focusRing}`}
+            className={`inline-flex items-center gap-2 text-sm font-medium text-[#FF6B71] transition-colors hover:text-[#E31B23] ${focusRing}`}
           >
             <ArrowLeft size={16} />
             Back to showroom
@@ -616,14 +616,14 @@ export default function CarDetailsPage() {
                 {/* Badge */}
                 <div className="mb-4 flex items-center justify-between gap-3">
                   {car.badge ? (
-                    <span className="rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#5FA8E8]">
+                    <span className="rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#FF6B71]">
                       {car.badge}
                     </span>
                   ) : (
                     <span />
                   )}
 
-                  <span className="flex items-center gap-1 text-xs text-[#5FA8E8] sm:text-sm">
+                  <span className="flex items-center gap-1 text-xs text-[#FF6B71] sm:text-sm">
                     <Star size={14} fill="currentColor" />
                     Featured
                   </span>
@@ -696,7 +696,7 @@ export default function CarDetailsPage() {
                   type="button"
                   disabled={unavailable}
                   onClick={handleAddToCart}
-                  className={`mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#3D8FD9] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#E31B23] ${focusRing}`}
+                  className={`mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#E31B23] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#E31B23] ${focusRing}`}
                 >
                   {unavailable
                     ? statusLabel
@@ -711,7 +711,7 @@ export default function CarDetailsPage() {
                     type="button"
                     disabled={car.status === "sold"}
                     onClick={() => setTestDriveOpen(true)}
-                    className={`inline-flex items-center justify-center rounded-full border border-[#E31B23]/60 bg-[#E31B23]/10 px-5 py-3.5 text-sm font-bold text-[#5FA8E8] transition-all hover:bg-[#E31B23]/20 disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
+                    className={`inline-flex items-center justify-center rounded-full border border-[#E31B23]/60 bg-[#E31B23]/10 px-5 py-3.5 text-sm font-bold text-[#FF6B71] transition-all hover:bg-[#E31B23]/20 disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
                   >
                     Book a test drive
                   </button>

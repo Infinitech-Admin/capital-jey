@@ -98,7 +98,7 @@ export default function HeroSection() {
       <style>{heroAnimations}</style>
 
       {/* Soft blue depth behind the text side */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[420px] w-[620px] rounded-full bg-[#0C2347] opacity-70 blur-[120px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-[420px] w-[620px] rounded-full bg-[#0A0A0A] opacity-70 blur-[120px]" />
 
       {/* Red slanted stripe (peeks out beside the photo on desktop) */}
       <div

@@ -458,7 +458,7 @@ export default function TestDriveDialog({
             </p>
             <p className="mt-1 text-sm text-zinc-500">
               Reference{" "}
-              <span className="font-semibold text-[#5FA8E8]">
+              <span className="font-semibold text-[#FF6B71]">
                 {result.reference}
               </span>
             </p>
@@ -468,7 +468,7 @@ export default function TestDriveDialog({
             <button
               type="button"
               onClick={onClose}
-              className={`mt-6 inline-flex items-center justify-center rounded-full bg-[#E31B23] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#3D8FD9] ${focusRing}`}
+              className={`mt-6 inline-flex items-center justify-center rounded-full bg-[#E31B23] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#E31B23] ${focusRing}`}
             >
               Done
             </button>
@@ -612,7 +612,7 @@ export default function TestDriveDialog({
                 !form.preferred_date ||
                 !form.preferred_time
               }
-              className={`flex w-full items-center justify-center rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#3D8FD9] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#E31B23] ${focusRing}`}
+              className={`flex w-full items-center justify-center rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#E31B23] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#E31B23] ${focusRing}`}
             >
               {submitting ? "Sending request…" : "Request test drive"}
             </button>

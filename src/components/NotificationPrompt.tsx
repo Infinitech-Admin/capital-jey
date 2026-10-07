@@ -75,7 +75,7 @@ export default function NotificationPrompt() {
       aria-modal="true"
       aria-labelledby="push-prompt-title"
     >
-      <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[#0B2347] p-6 text-center shadow-2xl">
+      <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 text-center shadow-2xl">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-3xl">
           🔔
         </div>

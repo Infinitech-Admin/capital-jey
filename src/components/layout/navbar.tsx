@@ -22,7 +22,7 @@ const navigation = [
 const HEADER_OFFSET = "-mb-[73px] sm:-mb-[77px] lg:-mb-[81px]";
 
 // Capital Jey Car Trading palette
-// red #E31B23 | red hover #FF3B43 | red text #FF6B71 | blue glow #0B5BA8
+// red #E31B23 | red hover #FF3B43 | red text #FF6B71 | blue glow #B3121A
 // background #000000 | text #FFFFFF
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
@@ -31,11 +31,11 @@ const focusRing =
 const glowRed =
   "border-[#FF6B71]/70 shadow-[0_0_22px_rgba(227,27,35,0.75),inset_0_0_12px_rgba(227,27,35,0.25)] hover:border-[#FF6B71] hover:shadow-[0_0_32px_rgba(227,27,35,0.95),inset_0_0_14px_rgba(227,27,35,0.35)]";
 const glowBlue =
-  "border-[#3D8FD9]/80 shadow-[0_0_22px_rgba(61,143,217,0.7),inset_0_0_10px_rgba(61,143,217,0.2)] hover:border-[#FF6B71] hover:shadow-[0_0_28px_rgba(227,27,35,0.85)]";
+  "border-[#E31B23]/80 shadow-[0_0_22px_rgba(227,27,35,0.7),inset_0_0_10px_rgba(227,27,35,0.2)] hover:border-[#FF6B71] hover:shadow-[0_0_28px_rgba(227,27,35,0.85)]";
 
 // Applies the same glow to the Login button rendered inside <UserMenu />
 const loginGlow =
-  "[&>a]:border-[#3D8FD9]/80 [&>a]:shadow-[0_0_22px_rgba(61,143,217,0.7)] [&>a:hover]:border-[#FF6B71] [&>a:hover]:shadow-[0_0_28px_rgba(227,27,35,0.85)] [&>button]:border-[#3D8FD9]/80 [&>button]:shadow-[0_0_22px_rgba(61,143,217,0.7)] [&>button:hover]:border-[#FF6B71] [&>button:hover]:shadow-[0_0_28px_rgba(227,27,35,0.85)]";
+  "[&>a]:border-[#E31B23]/80 [&>a]:shadow-[0_0_22px_rgba(227,27,35,0.7)] [&>a:hover]:border-[#FF6B71] [&>a:hover]:shadow-[0_0_28px_rgba(227,27,35,0.85)] [&>button]:border-[#E31B23]/80 [&>button]:shadow-[0_0_22px_rgba(227,27,35,0.7)] [&>button:hover]:border-[#FF6B71] [&>button:hover]:shadow-[0_0_28px_rgba(227,27,35,0.85)]";
 
 // Minimal shape of the event we care about — not in the standard lib.dom types yet.
 interface BeforeInstallPromptEvent extends Event {
@@ -60,7 +60,7 @@ function WheelO() {
           cx="50"
           cy="50"
           r="47"
-          fill="#0A0F1C"
+          fill="#000000"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
@@ -69,7 +69,7 @@ function WheelO() {
           cx="50"
           cy="50"
           r="30"
-          fill="#1B2436"
+          fill="#1A1A1A"
           stroke="#FF6B71"
           strokeWidth="5"
         />
@@ -374,7 +374,7 @@ export default function Navbar() {
 
             {/* Label */}
             <div
-              className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#5FA8E8] transition-all duration-500 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
+              className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71] transition-all duration-500 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
             >
               Explore Capital Jey Car Trading
             </div>

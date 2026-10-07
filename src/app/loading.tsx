@@ -56,7 +56,7 @@ export default function Loading() {
                                 y1={CENTER}
                                 x2={CENTER}
                                 y2={CENTER - 74}
-                                stroke="#5FA8E8"
+                                stroke="#FF6B71"
                                 strokeWidth={2.5}
                                 strokeLinecap="round"
                                 style={{ filter: "drop-shadow(0 0 6px rgba(243,215,122,0.65))" }}
@@ -65,7 +65,7 @@ export default function Loading() {
 
                         {/* Hub */}
                         <circle cx={CENTER} cy={CENTER} r={9} fill="#0A0A0A" stroke="#E31B23" strokeWidth={2} />
-                        <circle cx={CENTER - 2.5} cy={CENTER - 2.5} r={2} fill="#5FA8E8" fillOpacity={0.8} />
+                        <circle cx={CENTER - 2.5} cy={CENTER - 2.5} r={2} fill="#FF6B71" fillOpacity={0.8} />
                     </svg>
                 </div>
 

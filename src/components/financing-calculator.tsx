@@ -705,7 +705,7 @@ export default function FinancingCalculator({
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-[#5FA8E8]">
+                      <p className="text-sm font-bold text-[#FF6B71]">
                         {termTitle(p.months)}
                       </p>
                       <p className="text-xs text-zinc-500">
@@ -750,7 +750,7 @@ export default function FinancingCalculator({
           type="button"
           disabled={disabled || !quote}
           onClick={downloadPdf}
-          className={`inline-flex min-w-[9rem] flex-1 items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-bold text-white transition-all hover:bg-[#3D8FD9] disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
+          className={`inline-flex min-w-[9rem] flex-1 items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-bold text-white transition-all hover:bg-[#E31B23] disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
         >
           <Download size={16} />
           Download PDF

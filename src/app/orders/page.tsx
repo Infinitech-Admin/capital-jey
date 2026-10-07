@@ -119,7 +119,7 @@ function Tracker({ status }: { status: OrderStatus }) {
           state === "done"
             ? "border-[#E31B23] bg-[#E31B23] text-black"
             : state === "current"
-              ? "border-[#E31B23] bg-[#E31B23]/10 text-[#5FA8E8]"
+              ? "border-[#E31B23] bg-[#E31B23]/10 text-[#FF6B71]"
               : state === "failed"
                 ? "border-[#FF3B43] bg-[#FF3B43]/10 text-[#FF6B71]"
                 : "border-white/15 bg-[#000000]/30 text-zinc-600";
@@ -204,7 +204,7 @@ function OrderCard({ order }: { order: Order }) {
               {item.vehicle_id ? (
                 <Link
                   href={`/showroom/car/${item.vehicle_id}`}
-                  className="block truncate font-semibold text-white transition-colors hover:text-[#5FA8E8]"
+                  className="block truncate font-semibold text-white transition-colors hover:text-[#FF6B71]"
                 >
                   {item.name}
                 </Link>
@@ -259,7 +259,7 @@ function OrderCard({ order }: { order: Order }) {
             href={order.payment_proof_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-semibold text-[#FF6B71] transition-colors hover:text-[#3D8FD9]"
+            className="inline-flex items-center gap-1.5 font-semibold text-[#FF6B71] transition-colors hover:text-[#E31B23]"
           >
             View screenshot
             <ExternalLink size={13} />
@@ -410,7 +410,7 @@ export default function OrdersPage() {
                   type="button"
                   onClick={handleRefresh}
                   disabled={isRefreshing}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-zinc-300 transition-colors hover:border-[#E31B23] hover:text-[#5FA8E8] disabled:opacity-60"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-zinc-300 transition-colors hover:border-[#E31B23] hover:text-[#FF6B71] disabled:opacity-60"
                 >
                   <RefreshCw
                     size={14}

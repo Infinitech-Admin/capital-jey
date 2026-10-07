@@ -336,7 +336,7 @@ export default function ShowroomPage() {
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#E31B23]/50 bg-[#E31B23]/10 px-5 py-3 text-sm font-semibold text-[#5FA8E8] transition-all duration-300 hover:border-[#E31B23] hover:bg-[#E31B23]/20"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#E31B23]/50 bg-[#E31B23]/10 px-5 py-3 text-sm font-semibold text-[#FF6B71] transition-all duration-300 hover:border-[#E31B23] hover:bg-[#E31B23]/20"
                 >
                   <X size={15} />
                   Clear filters
@@ -375,7 +375,7 @@ export default function ShowroomPage() {
                           // max-w + truncate keeps long badges inside the card.
                           <div
                             title={badgeText ?? undefined}
-                            className="absolute right-4 top-4 z-10 max-w-[calc(100%-2rem)] truncate rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#5FA8E8]"
+                            className="absolute right-4 top-4 z-10 max-w-[calc(100%-2rem)] truncate rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#FF6B71]"
                           >
                             {badgeText}
                           </div>
@@ -483,7 +483,7 @@ export default function ShowroomPage() {
                       setCurrentPage((page) => Math.max(1, page - 1))
                     }
                     disabled={currentPage === 1}
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#E31B23] hover:text-[#5FA8E8] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#E31B23] hover:text-[#FF6B71] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     Previous
                   </button>
@@ -500,7 +500,7 @@ export default function ShowroomPage() {
                         className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-all ${
                           currentPage === page
                             ? "bg-[#E31B23] text-black"
-                            : "border border-white/10 bg-white/5 text-white hover:border-[#E31B23] hover:text-[#5FA8E8]"
+                            : "border border-white/10 bg-white/5 text-white hover:border-[#E31B23] hover:text-[#FF6B71]"
                         }`}
                       >
                         {page}
@@ -514,7 +514,7 @@ export default function ShowroomPage() {
                       setCurrentPage((page) => Math.min(totalPages, page + 1))
                     }
                     disabled={currentPage === totalPages}
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#E31B23] hover:text-[#5FA8E8] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#E31B23] hover:text-[#FF6B71] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     Next
                   </button>

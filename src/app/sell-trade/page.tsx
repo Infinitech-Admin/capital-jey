@@ -312,7 +312,7 @@ export default function SellTradePage() {
               {/* Header */}
               <div className="border-b border-white/10 px-5 py-5 sm:px-7 sm:py-6">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#5FA8E8]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#FF6B71]">
                     <Gauge size={21} />
                   </div>
 
@@ -448,7 +448,7 @@ export default function SellTradePage() {
                 {/* Contact details */}
                 <div className="mt-7 border-t border-white/10 pt-6">
                   <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#5FA8E8]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#FF6B71]">
                       <UserRound size={18} />
                     </div>
                     <div>
@@ -552,7 +552,7 @@ export default function SellTradePage() {
                       </p>
                     </div>
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#5FA8E8]">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#FF6B71]">
                       <Gauge size={20} />
                     </div>
                   </div>
@@ -567,7 +567,7 @@ export default function SellTradePage() {
                           Estimated market value
                         </p>
 
-                        <span className="rounded-full border border-[#E31B23]/20 bg-[#E31B23]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#5FA8E8]">
+                        <span className="rounded-full border border-[#E31B23]/20 bg-[#E31B23]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#FF6B71]">
                           Live
                         </span>
                       </div>
@@ -634,7 +634,7 @@ export default function SellTradePage() {
 
                       <Link
                         href="/showroom"
-                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-[#E31B23]/40 hover:bg-[#E31B23]/10 hover:text-[#5FA8E8]"
+                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-[#E31B23]/40 hover:bg-[#E31B23]/10 hover:text-[#FF6B71]"
                       >
                         <CarFront
                           size={18}
@@ -662,7 +662,7 @@ export default function SellTradePage() {
                     {status === "success" && (
                       <p
                         role="status"
-                        className="mt-3 text-center text-[11px] leading-5 text-[#5FA8E8]"
+                        className="mt-3 text-center text-[11px] leading-5 text-[#FF6B71]"
                       >
                         Thanks! Your vehicle details were submitted. Our team
                         will contact you soon.

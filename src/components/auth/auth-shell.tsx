@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/layout/wordmark";
 
 export const authInputClass =
-  "w-full rounded-lg border border-[#0C2347] bg-[#000000] px-4 py-3 text-base text-white placeholder-zinc-500 outline-none transition-all focus:border-[#E31B23] focus:shadow-[0_0_0_3px_rgba(227,27,35,0.25)] aria-[invalid=true]:border-[#FF6B71]";
+  "w-full rounded-lg border border-[#0A0A0A] bg-[#000000] px-4 py-3 text-base text-white placeholder-zinc-500 outline-none transition-all focus:border-[#E31B23] focus:shadow-[0_0_0_3px_rgba(227,27,35,0.25)] aria-[invalid=true]:border-[#FF6B71]";
 
 export const authLabelClass = "mb-1.5 block text-sm font-medium text-zinc-300";
 export const authErrorClass = "mt-1.5 text-sm text-[#FF6B71]";
@@ -33,7 +33,7 @@ export function AuthShell({
       {/* Glow: red behind the brand, blue behind the card, blending in the middle */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_55%_at_35%_50%,rgba(227,27,35,0.28),transparent_70%),radial-gradient(40%_50%_at_75%_60%,rgba(11,91,168,0.30),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_55%_at_35%_50%,rgba(227,27,35,0.28),transparent_70%),radial-gradient(40%_50%_at_75%_60%,rgba(179,18,26,0.30),transparent_70%)]"
       />
 
       {/* One centered group: brand and card sit side by side */}
@@ -66,7 +66,7 @@ export function AuthShell({
             <Wordmark className="text-5xl" />
           </Link>
 
-          <div className="w-full max-w-md rounded-2xl border border-[#3D8FD9]/40 bg-[#000000]/80 p-6 shadow-[0_0_40px_rgba(61,143,217,0.18),0_0_80px_rgba(227,27,35,0.12)] backdrop-blur-md sm:p-8 lg:max-w-none">
+          <div className="w-full max-w-md rounded-2xl border border-[#E31B23]/40 bg-[#000000]/80 p-6 shadow-[0_0_40px_rgba(227,27,35,0.18),0_0_80px_rgba(227,27,35,0.12)] backdrop-blur-md sm:p-8 lg:max-w-none">
             {children}
           </div>
         </section>

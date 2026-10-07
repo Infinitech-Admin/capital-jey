@@ -117,7 +117,7 @@ export default function AnimatedSplash({
                 cx="50"
                 cy="50"
                 r="47"
-                fill="#0b1020"
+                fill="#000000"
                 stroke="#fff"
                 strokeWidth="5"
               />
@@ -175,7 +175,7 @@ export default function AnimatedSplash({
             <defs>
               <linearGradient id="baxArc" x1="0" y1="1" x2="1" y2="0">
                 <stop offset="0" stopColor="#E31B23" />
-                <stop offset="1" stopColor="#ff4757" />
+                <stop offset="1" stopColor="#E31B23" />
               </linearGradient>
               <linearGradient id="baxNeedle" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0" stopColor="#E31B23" />
@@ -235,7 +235,7 @@ export default function AnimatedSplash({
                   x2={CX}
                   y2={CY - (t.major ? 62 : 68)}
                   transform={`rotate(${t.angle} ${CX} ${CY})`}
-                  stroke={t.red ? "#ff4757" : "#fff"}
+                  stroke={t.red ? "#E31B23" : "#fff"}
                   strokeOpacity={t.major ? 0.9 : 0.4}
                   strokeWidth={t.major ? 2 : 1}
                 />
@@ -249,7 +249,7 @@ export default function AnimatedSplash({
                   key={t.i}
                   x={(CX + 50 * Math.sin(rad(t.angle))).toFixed(2)}
                   y={(CY - 50 * Math.cos(rad(t.angle)) + 3.2).toFixed(2)}
-                  fill={t.red ? "#ff4757" : "#fff"}
+                  fill={t.red ? "#E31B23" : "#fff"}
                   fillOpacity={t.red ? 1 : 0.75}
                 >
                   {t.i / 4}
@@ -279,7 +279,7 @@ export default function AnimatedSplash({
               cx={CX}
               cy={CY}
               r="7"
-              fill="#0b1020"
+              fill="#000000"
               stroke="#fff"
               strokeWidth="2"
             />
@@ -300,7 +300,7 @@ export default function AnimatedSplash({
 
         .bax-splash {
           --red: #E31B23;
-          --red-glow: #ff4757;
+          --red-glow: #E31B23;
           --navy: #000000;
           --t0: 300ms;      /* sweep start */
           --drive: 2600ms;  /* sweep duration (gauge = loading bar) */

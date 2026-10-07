@@ -83,7 +83,7 @@ export default function UserMenu() {
     return (
       <Link
         href={LOGIN_HREF}
-        className={`flex h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-[#000000]/30 px-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-[#E31B23] hover:text-[#5FA8E8] sm:h-12 sm:px-4 ${focusRing}`}
+        className={`flex h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-[#000000]/30 px-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-[#E31B23] hover:text-[#FF6B71] sm:h-12 sm:px-4 ${focusRing}`}
       >
         <LogIn size={18} strokeWidth={2} />
         <span className="hidden sm:inline">Login</span>
@@ -121,7 +121,7 @@ export default function UserMenu() {
             <Link
               href={ORDERS_HREF}
               role="menuitem"
-              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-200 transition-colors hover:bg-[#E31B23]/10 hover:text-[#5FA8E8] ${focusRing}`}
+              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-200 transition-colors hover:bg-[#E31B23]/10 hover:text-[#FF6B71] ${focusRing}`}
             >
               <ClipboardList size={16} />
               My orders

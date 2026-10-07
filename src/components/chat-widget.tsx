@@ -183,7 +183,7 @@ export default function ChatWidget() {
                 }`}
               >
                 {message.role === "bot" && (
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-[#5FA8E8]">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-[#FF6B71]">
                     <Bot size={14} />
                   </div>
                 )}
@@ -209,7 +209,7 @@ export default function ChatWidget() {
             {/* Typing indicator */}
             {isTyping && (
               <div className="flex items-end gap-2">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-[#5FA8E8]">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-[#FF6B71]">
                   <Bot size={14} />
                 </div>
 
@@ -229,7 +229,7 @@ export default function ChatWidget() {
                     key={reply}
                     type="button"
                     onClick={() => sendMessage(reply)}
-                    className={`rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-3 py-1.5 text-xs font-medium text-[#5FA8E8] transition-colors hover:bg-[#E31B23]/20 ${focusRing}`}
+                    className={`rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-3 py-1.5 text-xs font-medium text-[#FF6B71] transition-colors hover:bg-[#E31B23]/20 ${focusRing}`}
                   >
                     {reply}
                   </button>

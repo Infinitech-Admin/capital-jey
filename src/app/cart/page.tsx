@@ -48,7 +48,7 @@ export default function CartPage() {
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <Link
               href="/showroom"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#FF6B71] transition-colors hover:text-[#3D8FD9]"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#FF6B71] transition-colors hover:text-[#E31B23]"
             >
               <ArrowLeft size={16} />
               Continue browsing
@@ -148,7 +148,7 @@ export default function CartPage() {
                       </p>
                       <Link
                         href={`/showroom/car/${item.id}`}
-                        className="mt-1 block text-xl font-semibold text-white transition-colors hover:text-[#5FA8E8]"
+                        className="mt-1 block text-xl font-semibold text-white transition-colors hover:text-[#FF6B71]"
                       >
                         {item.name}
                       </Link>
@@ -166,7 +166,7 @@ export default function CartPage() {
                             updateQuantity(item.id, item.quantity - 1)
                           }
                           aria-label="Decrease quantity"
-                          className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-300 transition-colors hover:bg-[#E31B23]/10 hover:text-[#5FA8E8]"
+                          className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-300 transition-colors hover:bg-[#E31B23]/10 hover:text-[#FF6B71]"
                         >
                           <Minus size={14} />
                         </button>
@@ -179,7 +179,7 @@ export default function CartPage() {
                             updateQuantity(item.id, item.quantity + 1)
                           }
                           aria-label="Increase quantity"
-                          className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-300 transition-colors hover:bg-[#E31B23]/10 hover:text-[#5FA8E8]"
+                          className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-300 transition-colors hover:bg-[#E31B23]/10 hover:text-[#FF6B71]"
                         >
                           <Plus size={14} />
                         </button>
@@ -226,7 +226,7 @@ export default function CartPage() {
 
                 <Link
                   href="/checkout"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#3D8FD9]"
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#E31B23]"
                 >
                   Proceed to checkout
                   <ArrowRight size={16} />

@@ -299,7 +299,7 @@ export default function CheckoutPage() {
             <p className="mt-3 text-sm leading-7 text-zinc-300">
               Thank you! Your order{" "}
               {orderNumber && (
-                <span className="font-semibold text-[#5FA8E8]">
+                <span className="font-semibold text-[#FF6B71]">
                   {orderNumber}
                 </span>
               )}{" "}
@@ -382,7 +382,7 @@ export default function CheckoutPage() {
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
           <Link
             href="/cart"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#FF6B71] transition-colors hover:text-[#3D8FD9]"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#FF6B71] transition-colors hover:text-[#E31B23]"
           >
             <ArrowLeft size={16} />
             Back to cart
@@ -404,7 +404,7 @@ export default function CheckoutPage() {
               Checking out as a guest. No account needed.{" "}
               <Link
                 href={LOGIN_URL}
-                className="font-semibold text-[#FF6B71] transition-colors hover:text-[#3D8FD9]"
+                className="font-semibold text-[#FF6B71] transition-colors hover:text-[#E31B23]"
               >
                 Already have an account? Log in
               </Link>
@@ -526,7 +526,7 @@ export default function CheckoutPage() {
                 </h2>
                 <p className="mt-1 text-sm text-zinc-400">
                   Send{" "}
-                  <span className="font-semibold text-[#5FA8E8]">
+                  <span className="font-semibold text-[#FF6B71]">
                     {formatPrice(downpayment)}
                   </span>{" "}
                   using any method below, then upload your screenshot.
@@ -543,7 +543,7 @@ export default function CheckoutPage() {
                         aria-pressed={active}
                         className={`rounded-2xl border px-3 py-3 text-sm font-semibold transition-colors ${
                           active
-                            ? "border-[#E31B23] bg-[#E31B23]/10 text-[#5FA8E8]"
+                            ? "border-[#E31B23] bg-[#E31B23]/10 text-[#FF6B71]"
                             : "border-white/10 bg-[#000000]/20 text-zinc-300 hover:border-white/25"
                         }`}
                       >
@@ -704,7 +704,7 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#3D8FD9] disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#E31B23] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting
                   ? "Submitting..."

@@ -371,7 +371,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       First name
-                      <span className="text-[#F59AA2]" aria-label="required">
+                      <span className="text-[#FF6B71]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -389,7 +389,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.firstName ? (
-                      <span className="mt-2 block text-sm text-[#F59AA2]">
+                      <span className="mt-2 block text-sm text-[#FF6B71]">
                         {errors.firstName}
                       </span>
                     ) : null}
@@ -398,7 +398,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       Last name
-                      <span className="text-[#F59AA2]" aria-label="required">
+                      <span className="text-[#FF6B71]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -416,7 +416,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.lastName ? (
-                      <span className="mt-2 block text-sm text-[#F59AA2]">
+                      <span className="mt-2 block text-sm text-[#FF6B71]">
                         {errors.lastName}
                       </span>
                     ) : null}
@@ -427,7 +427,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       Email
-                      <span className="text-[#F59AA2]" aria-label="required">
+                      <span className="text-[#FF6B71]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -445,7 +445,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.email ? (
-                      <span className="mt-2 block text-sm text-[#F59AA2]">
+                      <span className="mt-2 block text-sm text-[#FF6B71]">
                         {errors.email}
                       </span>
                     ) : null}
@@ -454,7 +454,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       Phone
-                      <span className="text-[#F59AA2]" aria-label="required">
+                      <span className="text-[#FF6B71]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -476,7 +476,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.phone ? (
-                      <span className="mt-2 block text-sm text-[#F59AA2]">
+                      <span className="mt-2 block text-sm text-[#FF6B71]">
                         {errors.phone}
                       </span>
                     ) : null}
@@ -498,7 +498,7 @@ export default function Contact() {
                     className={inputClass}
                   />
                   {errors.lookingFor ? (
-                    <span className="mt-2 block text-sm text-[#F59AA2]">
+                    <span className="mt-2 block text-sm text-[#FF6B71]">
                       {errors.lookingFor}
                     </span>
                   ) : null}
@@ -507,7 +507,7 @@ export default function Contact() {
                 <label className="block">
                   <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                     Message
-                    <span className="text-[#F59AA2]" aria-label="required">
+                    <span className="text-[#FF6B71]" aria-label="required">
                       *
                     </span>
                   </span>
@@ -524,7 +524,7 @@ export default function Contact() {
                     className={`${inputClass} resize-none`}
                   />
                   {errors.message ? (
-                    <span className="mt-2 block text-sm text-[#F59AA2]">
+                    <span className="mt-2 block text-sm text-[#FF6B71]">
                       {errors.message}
                     </span>
                   ) : null}
@@ -576,7 +576,7 @@ export default function Contact() {
                 </label>
 
                 {errors.privacy || privacyError ? (
-                  <p className="text-sm text-[#F59AA2]">
+                  <p className="text-sm text-[#FF6B71]">
                     {errors.privacy || privacyError}
                   </p>
                 ) : null}
@@ -587,7 +587,7 @@ export default function Contact() {
                     className={`rounded-2xl border px-4 py-3 text-sm ${
                       status.type === "success"
                         ? "border-[#E31B23]/30 bg-[#E31B23]/10 text-[#FF6B71]"
-                        : "border-[#F59AA2]/30 bg-[#F59AA2]/10 text-[#F59AA2]"
+                        : "border-[#FF6B71]/30 bg-[#FF6B71]/10 text-[#FF6B71]"
                     }`}
                   >
                     {status.message}

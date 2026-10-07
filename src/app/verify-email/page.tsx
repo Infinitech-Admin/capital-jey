@@ -110,7 +110,7 @@ function VerifyEmailForm() {
   }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-[#000000] via-[#0C2347] to-[#000000] px-4 py-16">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-[#000000] via-[#0A0A0A] to-[#000000] px-4 py-16">
       <div className="pointer-events-none absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-[#FFFFFF]/15 blur-[130px]" />
       <div className="pointer-events-none absolute top-1/3 right-[-120px] h-[380px] w-[380px] rounded-full bg-[#E31B23]/20 blur-[130px]" />
       <div
