@@ -29,7 +29,7 @@ const ADDRESS_LINE_1 = "L7, B132, Arellano cor. Diokno St.";
 const ADDRESS_LINE_2 = "Muntinlupa City, Philippines";
 const PHONE_DISPLAY = "0997 253 0052"; // e.g. "0917 123 4567"
 const PHONE_TEL = ""; // e.g. "+639171234567"
-const EMAIL = ""; // e.g. "hello@yourdomain.com"
+const EMAIL = "capitaljeycartrading@gmail.com";
 const HOURS: { day: string; time: string }[] = [
   // { day: "Monday - Saturday", time: "9:00 AM - 6:00 PM" },
 ];

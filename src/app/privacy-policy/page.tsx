@@ -99,7 +99,7 @@ const sections: LegalSection[] = [
   {
     title: "Contact Us",
     paragraphs: [
-      "For privacy questions or to exercise your rights, contact us at hello@autotrade.com or through our Contact Us page.",
+      "For privacy questions or to exercise your rights, contact us at capitaljeycartrading@gmail.com or through our Contact Us page.",
     ],
   },
 ];

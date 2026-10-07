@@ -28,9 +28,8 @@ const BUSINESS = {
     "Block 132 Lot 7 C. Arellano St. cor J. Diokno, Katarungan Village, Poblacion, Muntinlupa City, Philippines, 1776",
   phoneDisplay: "0997 253 0052",
   phoneHref: "tel:+639972530052",
-  facebook: "https://www.facebook.com/bossautoexchange",
-  instagram: "https://www.instagram.com/boss.autoexchange",
-  tiktok: "https://www.tiktok.com/@boss.autoexchange",
+  facebook: "https://www.facebook.com/CapitalJEYCarTrading/",
+  instagram: "https://www.instagram.com/capitaljautofocus",
 };
 
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -114,7 +113,6 @@ const values = [
 const socials = [
   { label: "Facebook", href: BUSINESS.facebook },
   { label: "Instagram", href: BUSINESS.instagram },
-  { label: "TikTok", href: BUSINESS.tiktok },
 ];
 
 const focusRing =
