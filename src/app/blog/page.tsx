@@ -72,7 +72,7 @@ export default function BlogPage() {
                 <span className="block text-[#FF6B71]">& updates</span>
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
-                Fresh arrivals, deliveries, and behind-the-scenes from Boss Auto
+                Fresh arrivals, deliveries, and behind-the-scenes from Capital Jey
                 Exchange.
               </p>
             </div>

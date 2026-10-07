@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 /**
  * AnimatedSplash — "tachometer" version
  * -------------------------------------
- * The wordmark BOSS AUTO EXCHANGE starts dark. Under it, a tachometer
+ * The wordmark CAPITAL JEY CAR TRADING starts dark. Under it, a tachometer
  * sweeps from 0 to redline: the red arc fills, the needle climbs, and the
  * % counter runs. As the needle passes, each letter ignites in order:
  * B → gulong (O) → S → S, and the AUTO EXCHANGE bar is revealed.
