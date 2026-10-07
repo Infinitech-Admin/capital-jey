@@ -1,3 +1,4 @@
+// Path: app/showroom/car/[id]/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -50,7 +51,7 @@ type VideoItem = {
 const LOGO_SRC = "/logo.png";
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 /* -------------------------------------------------------------------------- */
 /*  IMAGE GALLERY (images only)                                               */
@@ -140,7 +141,7 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
   }, [safeIndex]);
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[#060606] p-3 shadow-[0_30px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:p-6">
+    <div className="overflow-hidden border-t-4 border-[#E31B23] bg-[#161616] p-3 sm:p-5">
       {/* Media */}
       <div
         role="region"
@@ -148,7 +149,7 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
         aria-label={`${carName} photos`}
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        className={`relative overflow-hidden rounded-[22px] bg-[#111111] ${focusRing}`}
+        className={`relative overflow-hidden bg-[#0B0B0B] ${focusRing}`}
       >
         {/* Sliding area */}
         <div
@@ -176,10 +177,6 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
                 aria-hidden={i !== safeIndex}
                 className="relative h-[300px] w-full shrink-0 sm:h-[420px] md:h-[480px] lg:h-[560px]"
               >
-                {slide.isCover && (
-                  <div className="absolute inset-x-8 bottom-5 h-10 rounded-full bg-[#FF2D2D]/20 blur-3xl sm:inset-x-16" />
-                )}
-
                 <Image
                   src={slide.src}
                   alt={slide.alt}
@@ -202,7 +199,7 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
               type="button"
               onClick={goPrevious}
               aria-label="Previous photo"
-              className={`absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#060606]/60 text-white backdrop-blur-xl transition-all duration-300 hover:border-[#FF2D2D] hover:bg-[#FF2D2D] hover:text-black active:scale-95 sm:left-4 sm:h-11 sm:w-11 ${focusRing}`}
+              className={`absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-[#0B0B0B]/80 text-white transition-colors hover:bg-[#E31B23] active:scale-95 sm:left-4 sm:h-11 sm:w-11 ${focusRing}`}
             >
               <ArrowLeft size={18} />
             </button>
@@ -212,7 +209,7 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
               type="button"
               onClick={goNext}
               aria-label="Next photo"
-              className={`absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#060606]/60 text-white backdrop-blur-xl transition-all duration-300 hover:border-[#FF2D2D] hover:bg-[#FF2D2D] hover:text-black active:scale-95 sm:right-4 sm:h-11 sm:w-11 ${focusRing}`}
+              className={`absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-[#0B0B0B]/80 text-white transition-colors hover:bg-[#E31B23] active:scale-95 sm:right-4 sm:h-11 sm:w-11 ${focusRing}`}
             >
               <ArrowRight size={18} />
             </button>
@@ -220,13 +217,13 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
         )}
 
         {/* COUNTER */}
-        <div className="pointer-events-none absolute bottom-3 right-3 z-20 rounded-full border border-white/10 bg-[#060606]/60 px-3 py-1.5 text-[11px] font-semibold text-white backdrop-blur-md sm:bottom-4 sm:right-4">
+        <div className="pointer-events-none absolute bottom-0 right-0 z-20 bg-[#E31B23] px-3 py-1.5 text-xs font-bold text-white">
           {safeIndex + 1} / {slides.length}
         </div>
 
         {/* Swipe hint */}
         {safeIndex === 0 && slides.length > 1 && (
-          <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 hidden -translate-x-1/2 rounded-full border border-white/10 bg-[#060606]/50 px-3 py-1.5 text-[10px] uppercase tracking-[0.15em] text-zinc-300 backdrop-blur-md sm:block">
+          <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 hidden -translate-x-1/2 bg-[#0B0B0B]/80 px-3 py-1.5 text-xs font-semibold text-white/80 sm:block">
             Swipe to explore
           </div>
         )}
@@ -251,7 +248,7 @@ function CarGallery({ carName, slides }: { carName: string; slides: Slide[] }) {
                 onClick={() => setIndex(i)}
                 aria-label={`Show photo ${i + 1}`}
                 aria-current={isActive}
-                className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border bg-[#111111] transition-all duration-300 sm:h-20 sm:w-28 ${isActive ? "border-[#FF2D2D] opacity-100 ring-1 ring-[#FF2D2D]/30" : "border-white/10 opacity-50 hover:border-white/20 hover:opacity-100"} ${focusRing}`}
+                className={`relative h-14 w-20 shrink-0 overflow-hidden border-2 bg-[#0B0B0B] transition-all duration-300 sm:h-20 sm:w-28 ${isActive ? "border-[#E31B23] opacity-100" : "border-transparent opacity-50 hover:opacity-100"} ${focusRing}`}
               >
                 <Image
                   src={slide.src}
@@ -292,24 +289,22 @@ function VideoSection({
   return (
     <section
       aria-label={`${carName} videos`}
-      className="rounded-[28px] border border-white/10 bg-[#060606] p-3 shadow-[0_30px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:p-6"
+      className="border-t-4 border-[#E31B23] bg-[#161616] p-3 sm:p-5"
     >
       {/* Header */}
       <div className="mb-4 flex items-center justify-between gap-3 px-1 sm:mb-5">
-        <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FF2D2D]/10">
-            <Video className="text-[#FFFFFF]" size={18} />
-          </div>
-          <h2 className="text-xl font-bold text-white">Videos</h2>
-        </div>
+        <h2 className="flex items-center gap-3 text-xl font-bold uppercase">
+          <Video className="text-[#E31B23]" size={20} />
+          Videos
+        </h2>
 
-        <span className="rounded-full border border-white/10 bg-[#060606]/60 px-3 py-1.5 text-[11px] font-semibold text-white">
+        <span className="bg-[#0B0B0B] px-3 py-1.5 text-xs font-bold text-white">
           {videos.length} {videos.length === 1 ? "video" : "videos"}
         </span>
       </div>
 
       {/* Player */}
-      <div className="relative overflow-hidden rounded-[22px] bg-[#111111]">
+      <div className="relative overflow-hidden bg-[#0B0B0B]">
         <div className="relative aspect-video w-full">
           {/* key forces a fresh <video> whenever the selection changes */}
           <video
@@ -323,11 +318,11 @@ function VideoSection({
             playsInline
             preload="metadata"
             aria-label={active.alt}
-            className="h-full w-full bg-[#060606] object-cover"
+            className="h-full w-full bg-[#0B0B0B] object-cover"
           />
 
           {active.duration && (
-            <span className="pointer-events-none absolute left-3 top-3 z-20 rounded-full border border-white/10 bg-[#060606]/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-md">
+            <span className="pointer-events-none absolute left-0 top-0 z-20 bg-[#E31B23] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
               {isLong ? "Full walkthrough" : "Clip"} · {active.duration}
             </span>
           )}
@@ -348,7 +343,7 @@ function VideoSection({
                 onClick={() => setIndex(i)}
                 aria-label={`Play video ${i + 1}`}
                 aria-current={isActive}
-                className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border bg-[#111111] transition-all duration-300 sm:h-20 sm:w-28 ${isActive ? "border-[#FF2D2D] opacity-100 ring-1 ring-[#FF2D2D]/30" : "border-white/10 opacity-50 hover:border-white/20 hover:opacity-100"} ${focusRing}`}
+                className={`relative h-14 w-20 shrink-0 overflow-hidden border-2 bg-[#0B0B0B] transition-all duration-300 sm:h-20 sm:w-28 ${isActive ? "border-[#E31B23] opacity-100" : "border-transparent opacity-50 hover:opacity-100"} ${focusRing}`}
               >
                 {/* Logo fallback (kita kung walang poster / hindi pa loaded ang video frame) */}
                 <Image
@@ -382,7 +377,7 @@ function VideoSection({
                   />
                 )}
 
-                <span className="absolute inset-0 z-10 flex items-center justify-center bg-[#060606]/30">
+                <span className="absolute inset-0 z-10 flex items-center justify-center bg-[#0B0B0B]/40">
                   <Play size={16} className="fill-white text-white" />
                 </span>
               </button>
@@ -508,15 +503,11 @@ export default function CarDetailsPage() {
     return (
       <>
         <Navbar />
-        <main className="flex min-h-screen items-center justify-center bg-[#111111] px-4 text-white">
-          <div className="w-full max-w-md rounded-[28px] border border-white/10 bg-[#111111] px-6 py-12 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#FF2D2D]/30 bg-[#FF2D2D]/10">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#FF2D2D]/40 border-t-[#FF2D2D]" />
-            </div>
-            <p className="mt-6 text-2xl font-bold text-white">
-              Loading vehicle
-            </p>
-            <p className="mt-2 text-sm text-zinc-400">
+        <main className="flex min-h-screen items-center justify-center bg-[#0B0B0B] px-4 text-white">
+          <div className="w-full max-w-md border-t-4 border-[#E31B23] bg-[#161616] px-6 py-12 text-center">
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-white/15 border-t-[#E31B23]" />
+            <p className="mt-6 text-2xl font-bold uppercase">Loading vehicle</p>
+            <p className="mt-2 text-sm text-white/60">
               Preparing the latest details for you.
             </p>
           </div>
@@ -530,29 +521,29 @@ export default function CarDetailsPage() {
     return (
       <>
         <Navbar />
-        <main className="flex min-h-screen items-center justify-center bg-[#111111] px-4 text-white">
-          <div className="w-full max-w-lg rounded-[28px] border border-[#FF2D2D]/30 bg-[#111111] px-6 py-12 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
+        <main className="flex min-h-screen items-center justify-center bg-[#0B0B0B] px-4 text-white">
+          <div className="w-full max-w-lg border-t-4 border-[#E31B23] bg-[#161616] px-6 py-12 text-center">
+            <p className="text-sm font-bold text-[#E31B23]">
               Vehicle unavailable
             </p>
-            <h1 className="mt-5 text-3xl font-black tracking-tight text-white">
+            <h1 className="mt-4 text-3xl font-bold uppercase leading-tight">
               We couldn’t find this car
             </h1>
-            <p className="mt-4 text-sm leading-7 text-zinc-300">
+            <p className="mt-4 text-sm leading-7 text-white/70">
               {loadError ||
                 "The vehicle you’re looking for may have been sold or moved. Explore our current inventory and we’ll help you find a great alternative."}
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/showroom"
-                className="inline-flex items-center justify-center rounded-full bg-[#FF2D2D] px-5 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A]"
+                className="chamfer inline-flex items-center justify-center bg-[#E31B23] px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-[#E31B23] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Browse showroom
               </Link>
               <button
                 type="button"
                 onClick={() => setReloadKey((k) => k + 1)}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-[#FF2D2D]/60 hover:bg-white/10"
+                className="chamfer inline-flex items-center justify-center gap-2 bg-white px-7 py-4 text-sm font-bold uppercase tracking-wider text-[#0B0B0B] transition-colors hover:bg-[#E31B23] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <RotateCcw size={16} />
                 Retry
@@ -574,224 +565,207 @@ export default function CarDetailsPage() {
           ? "Out of stock"
           : "Not available";
 
+  const specs = [
+    { label: "Mileage", value: car.mileage },
+    { label: "Engine", value: car.engine },
+    { label: "Power", value: car.horsepower },
+    { label: "Transmission", value: car.transmission },
+    {
+      label: "Availability",
+      value: unavailable ? statusLabel : `${car.stock} in stock`,
+    },
+  ];
+
+  const highlights = [
+    { icon: Gauge, label: "Engine", value: car.engine },
+    { icon: Settings2, label: "Transmission", value: car.transmission },
+    { icon: MapPin, label: "Location", value: car.location },
+    { icon: Sparkles, label: "Fuel", value: car.fuel },
+  ];
+
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-          {/* Back */}
-          <Link
-            href="/showroom"
-            className={`inline-flex items-center gap-2 text-sm font-medium text-[#FFFFFF] transition-colors hover:text-[#FF2D2D] ${focusRing}`}
-          >
-            <ArrowLeft size={16} />
-            Back to showroom
-          </Link>
+      <main className="min-h-screen bg-[#0B0B0B] text-white">
+        {/* HEADER STRIP */}
+        <section className="relative overflow-hidden bg-[#0B0B0B]">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 top-0 hidden h-full w-72 -skew-x-12 bg-[#E31B23] lg:block"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-4 top-0 hidden h-full w-6 -skew-x-12 bg-white lg:block"
+          />
 
-          {/* Vehicle Area */}
-          <div className="mt-6 grid gap-6 lg:mt-8 lg:grid-cols-[1.2fr_0.8fr] lg:grid-rows-[auto_1fr] lg:items-start lg:gap-8">
-            {/* Media column: photos, then videos */}
-            <div className="min-w-0 space-y-6 lg:col-start-1 lg:row-start-1 lg:space-y-8">
-              {slides.length > 0 ? (
-                <CarGallery key={car.id} carName={car.name} slides={slides} />
-              ) : (
-                <div className="flex h-[300px] items-center justify-center rounded-[28px] border border-white/10 bg-[#060606] text-sm text-zinc-500 sm:h-[420px] lg:h-[560px]">
-                  No photos available yet
-                </div>
-              )}
+          <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <Link
+              href="/showroom"
+              className={`inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:text-[#E31B23] ${focusRing}`}
+            >
+              <ArrowLeft size={16} className="text-[#E31B23]" />
+              Back to showroom
+            </Link>
+          </div>
+          <div aria-hidden="true" className="tread" />
+        </section>
 
-              {videos.length > 0 && (
-                <VideoSection
-                  key={`videos-${car.id}`}
-                  carName={car.name}
-                  videos={videos}
-                />
-              )}
-            </div>
+        <div className="bg-[#111111]">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+            {/* Vehicle Area */}
+            <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:grid-rows-[auto_1fr] lg:items-start lg:gap-8">
+              {/* Media column: photos, then videos */}
+              <div className="min-w-0 space-y-6 lg:col-start-1 lg:row-start-1 lg:space-y-8">
+                {slides.length > 0 ? (
+                  <CarGallery key={car.id} carName={car.name} slides={slides} />
+                ) : (
+                  <div className="flex h-[300px] items-center justify-center border-t-4 border-[#E31B23] bg-[#161616] text-sm text-white/50 sm:h-[420px] lg:h-[560px]">
+                    No photos available yet
+                  </div>
+                )}
 
-            {/* Right column: spans both rows so sticky works the whole way down */}
-            <div className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:space-y-8">
-              {/* Vehicle Info */}
-              <aside className="rounded-[28px] border border-[#FF2D2D]/20 bg-[#111111] p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-6">
-                {/* Badge */}
-                <div className="mb-4 flex items-center justify-between gap-3">
-                  {car.badge ? (
-                    <span className="rounded-full border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#FFFFFF]">
-                      {car.badge}
-                    </span>
-                  ) : (
-                    <span />
-                  )}
+                {videos.length > 0 && (
+                  <VideoSection
+                    key={`videos-${car.id}`}
+                    carName={car.name}
+                    videos={videos}
+                  />
+                )}
+              </div>
 
-                  <span className="flex items-center gap-1 text-xs text-[#FFFFFF] sm:text-sm">
-                    <Star size={14} fill="currentColor" />
-                    Featured
-                  </span>
-                </div>
+              {/* Right column: spans both rows so sticky works the whole way down */}
+              <div className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:space-y-8">
+                {/* Vehicle Info */}
+                <aside className="border-t-4 border-[#E31B23] bg-[#161616] p-5 sm:p-6">
+                  {/* Badge */}
+                  <div className="mb-4 flex items-center justify-between gap-3">
+                    {car.badge ? (
+                      <span className="bg-[#E31B23] px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                        {car.badge}
+                      </span>
+                    ) : (
+                      <span />
+                    )}
 
-                {/* Vehicle Type */}
-                <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 sm:text-sm">
-                  {car.year} • {car.type}
-                </p>
-
-                {/* Name */}
-                <h1 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                  {car.name}
-                </h1>
-
-                {/* Price */}
-                <div className="mt-5 flex flex-wrap items-end gap-2 sm:mt-6 sm:gap-3">
-                  <span className="text-3xl font-black text-[#FFFFFF] sm:text-4xl">
-                    {car.price}
-                  </span>
-                  <span className="pb-1 text-xs text-zinc-500 sm:text-sm">
-                    Starting price
-                  </span>
-                </div>
-
-                {/* Specifications */}
-                <div className="mt-6 space-y-3 border-y border-white/10 py-5 text-sm sm:mt-7 sm:py-6 sm:text-base">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-zinc-500">Mileage</span>
-                    <span className="text-right font-semibold text-white">
-                      {car.mileage}
+                    <span className="flex items-center gap-1 text-sm font-semibold text-white">
+                      <Star
+                        size={14}
+                        fill="currentColor"
+                        className="text-[#E31B23]"
+                      />
+                      Featured
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-zinc-500">Engine</span>
-                    <span className="text-right font-semibold text-white">
-                      {car.engine}
+                  {/* Vehicle Type */}
+                  <p className="text-sm font-semibold text-[#E31B23]">
+                    {car.year} | {car.type}
+                  </p>
+
+                  {/* Name */}
+                  <h1 className="mt-2 text-3xl font-bold uppercase leading-[0.95] sm:text-4xl">
+                    {car.name}
+                  </h1>
+
+                  {/* Price */}
+                  <div className="mt-5 flex flex-wrap items-end gap-2 sm:mt-6 sm:gap-3">
+                    <span className="text-4xl font-bold text-white sm:text-5xl">
+                      {car.price}
+                    </span>
+                    <span className="pb-1.5 text-sm text-white/55">
+                      Starting price
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-zinc-500">Power</span>
-                    <span className="text-right font-semibold text-white">
-                      {car.horsepower}
-                    </span>
+                  {/* Specifications */}
+                  <div className="mt-6 space-y-3 border-y border-white/10 py-5 text-sm sm:mt-7 sm:py-6 sm:text-base">
+                    {specs.map((spec) => (
+                      <div
+                        key={spec.label}
+                        className="flex items-center justify-between gap-4"
+                      >
+                        <span className="text-white/55">{spec.label}</span>
+                        <span className="text-right font-semibold text-white">
+                          {spec.value}
+                        </span>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-zinc-500">Transmission</span>
-                    <span className="text-right font-semibold text-white">
-                      {car.transmission}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-zinc-500">Availability</span>
-                    <span
-                      className={`text-right font-semibold ${
-                        unavailable ? "text-[#FFFFFF]" : "text-[#FFFFFF]"
-                      }`}
-                    >
-                      {unavailable ? statusLabel : `${car.stock} in stock`}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Add to Cart */}
-                <button
-                  type="button"
-                  disabled={unavailable}
-                  onClick={handleAddToCart}
-                  className={`mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#FF2D2D] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#FF2D2D] ${focusRing}`}
-                >
-                  {unavailable
-                    ? statusLabel
-                    : justAdded
-                      ? "Added to cart ✓"
-                      : "Add to Cart"}
-                </button>
-
-                {/* CTA */}
-                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {/* Add to Cart */}
                   <button
                     type="button"
-                    disabled={car.status === "sold"}
-                    onClick={() => setTestDriveOpen(true)}
-                    className={`inline-flex items-center justify-center rounded-full border border-[#FF2D2D]/60 bg-[#FF2D2D]/10 px-5 py-3.5 text-sm font-bold text-[#FFFFFF] transition-all hover:bg-[#FF2D2D]/20 disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
+                    disabled={unavailable}
+                    onClick={handleAddToCart}
+                    className={`chamfer mt-6 flex w-full items-center justify-center gap-2 bg-[#E31B23] px-5 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-[#E31B23] disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-white/40 disabled:hover:bg-white/10 disabled:hover:text-white/40 ${focusRing}`}
                   >
-                    Book a test drive
+                    {unavailable
+                      ? statusLabel
+                      : justAdded
+                        ? "Added to cart ✓"
+                        : "Add to Cart"}
                   </button>
 
-                  <Link
-                    href="/showroom"
-                    className={`inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-sm font-semibold text-white transition-all hover:border-[#FF2D2D] hover:bg-[#FF2D2D]/10 ${focusRing}`}
-                  >
-                    Browse more cars
-                  </Link>
-                </div>
-              </aside>
+                  {/* CTA */}
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    <button
+                      type="button"
+                      disabled={car.status === "sold"}
+                      onClick={() => setTestDriveOpen(true)}
+                      className={`chamfer inline-flex items-center justify-center bg-white px-5 py-4 text-sm font-bold uppercase tracking-wider text-[#0B0B0B] transition-colors hover:bg-[#E31B23] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
+                    >
+                      Book a test drive
+                    </button>
 
-              {/* Financing (under the info card) */}
-              <FinancingCalculator
-                key={`financing-${car.id}`}
-                carName={car.name}
-                price={car.price}
-                year={car.year}
-              />
-            </div>
+                    <Link
+                      href="/showroom"
+                      className={`inline-flex items-center justify-center border-2 border-white/25 px-5 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-[#E31B23] hover:bg-[#E31B23] ${focusRing}`}
+                    >
+                      Browse more cars
+                    </Link>
+                  </div>
+                </aside>
 
-            {/* Highlights: sits under the media, filling the left column */}
-            <section className="min-w-0 rounded-[28px] border border-white/10 bg-[#111111] p-5 sm:p-8 lg:col-start-1 lg:row-start-2">
-              <div className="mb-5 flex items-center gap-3 sm:mb-6">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FF2D2D]/10">
-                  <Sparkles className="text-[#FFFFFF]" size={18} />
-                </div>
+                {/* Financing (under the info card) */}
+                <FinancingCalculator
+                  key={`financing-${car.id}`}
+                  carName={car.name}
+                  price={car.price}
+                  year={car.year}
+                />
+              </div>
 
-                <h2 className="text-xl font-bold text-white">
+              {/* Highlights: sits under the media, filling the left column */}
+              <section className="min-w-0 border-t-4 border-[#E31B23] bg-[#161616] p-5 sm:p-8 lg:col-start-1 lg:row-start-2">
+                <h2 className="flex items-center gap-3 text-2xl font-bold uppercase">
+                  <Sparkles className="text-[#E31B23]" size={22} />
                   Vehicle highlights
                 </h2>
-              </div>
 
-              {/* Description */}
-              {car.description && (
-                <p className="max-w-3xl whitespace-pre-line text-sm leading-7 text-zinc-300 sm:text-base">
-                  {car.description}
-                </p>
-              )}
-
-              {/* Specs Grid (narrower column now, so 2 cols until xl) */}
-              <div className="mt-7 grid gap-3 sm:mt-8 sm:grid-cols-2 xl:grid-cols-4">
-                {/* Engine */}
-                <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-[#FF2D2D]/30">
-                  <Gauge className="text-[#FFFFFF]" size={18} />
-                  <p className="mt-3 text-sm text-zinc-500">Engine</p>
-                  <p className="mt-1 text-lg font-bold text-white">
-                    {car.engine}
+                {/* Description */}
+                {car.description && (
+                  <p className="mt-5 max-w-3xl whitespace-pre-line text-sm leading-7 text-white/75 sm:text-base">
+                    {car.description}
                   </p>
-                </div>
+                )}
 
-                {/* Transmission */}
-                <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-[#FF2D2D]/30">
-                  <Settings2 className="text-[#FFFFFF]" size={18} />
-                  <p className="mt-3 text-sm text-zinc-500">Transmission</p>
-                  <p className="mt-1 text-lg font-bold text-white">
-                    {car.transmission}
-                  </p>
+                {/* Specs Grid (narrower column now, so 2 cols until xl) */}
+                <div className="mt-7 grid gap-3 sm:mt-8 sm:grid-cols-2 xl:grid-cols-4">
+                  {highlights.map(({ icon: Icon, label, value }) => (
+                    <div
+                      key={label}
+                      className="border-l-4 border-[#E31B23] bg-[#0B0B0B] p-4"
+                    >
+                      <Icon className="text-[#E31B23]" size={18} />
+                      <p className="mt-3 text-sm text-white/55">{label}</p>
+                      <p className="mt-1 break-words text-lg font-bold text-white">
+                        {value}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-
-                {/* Location */}
-                <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-[#FF2D2D]/30">
-                  <MapPin className="text-[#FFFFFF]" size={18} />
-                  <p className="mt-3 text-sm text-zinc-500">Location</p>
-                  <p className="mt-1 text-lg font-bold text-white">
-                    {car.location}
-                  </p>
-                </div>
-
-                {/* Fuel */}
-                <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-[#FF2D2D]/30">
-                  <Sparkles className="text-[#FFFFFF]" size={18} />
-                  <p className="mt-3 text-sm text-zinc-500">Fuel</p>
-                  <p className="mt-1 text-lg font-bold text-white">
-                    {car.fuel}
-                  </p>
-                </div>
-              </div>
-            </section>
+              </section>
+            </div>
           </div>
         </div>
       </main>

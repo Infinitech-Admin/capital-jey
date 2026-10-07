@@ -1,7 +1,9 @@
 // Path: app/about/page.tsx
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -72,6 +74,7 @@ const services = [
 
 const journeys = [
   {
+    tab: "Buying",
     title: "Buying with us",
     steps: [
       "Browse listings with full specs, mileage, photos, and videos.",
@@ -80,6 +83,7 @@ const journeys = [
     ],
   },
   {
+    tab: "Selling or trading in",
     title: "Selling or trading in",
     steps: [
       "Enter your car's details and get a quick value estimate.",
@@ -115,266 +119,251 @@ const socials = [
   { label: "Instagram", href: BUSINESS.instagram },
 ];
 
-const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
+// Focus rings: black on light surfaces, white on dark ones.
+const ringLight =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0B0B0B]";
+const ringDark =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 export default function About() {
+  const [activeJourney, setActiveJourney] = useState(0);
+  const journey = journeys[activeJourney];
+
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#111111] text-white">
-        {/* HERO */}
-        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,45,45,0.18),transparent_50%)]" />
+      <main className="min-h-screen bg-white text-[#0B0B0B]">
+        {/* HERO: photo, text on the left */}
+        <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-[#0B0B0B]">
+          <Image
+            src="/showroom-collection.jpg"
+            alt="Capital Jey showroom"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B] via-[#0B0B0B]/75 to-[#0B0B0B]/20" />
 
-          {/* Oversized wheel, echoes the logo */}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 100 100"
-            className="pointer-events-none absolute -bottom-40 -left-40 h-[480px] w-[480px] text-[#FF2D2D] opacity-[0.09] lg:-left-24 lg:-bottom-56 lg:h-[640px] lg:w-[640px]"
-          >
-            <circle
-              cx="50"
-              cy="50"
-              r="47"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="30"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-            />
-            <g stroke="currentColor" strokeWidth="3.5" strokeLinecap="round">
-              {[0, 72, 144, 216, 288].map((angle) => (
-                <line
-                  key={angle}
-                  x1="50"
-                  y1="50"
-                  x2="50"
-                  y2="22"
-                  transform={`rotate(${angle} 50 50)`}
-                />
-              ))}
-            </g>
-            <circle cx="50" cy="50" r="7" fill="currentColor" />
-          </svg>
+          <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+            <div className="max-w-2xl border-l-4 border-[#E31B23] pl-6 sm:pl-8">
+              <h1 className="text-5xl font-bold uppercase leading-none text-white sm:text-6xl lg:text-7xl">
+                Buy. Sell.
+                <span className="block text-[#E31B23]">Trade.</span>
+              </h1>
 
-          <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pb-20 lg:pt-24">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-              <div>
-                <div className="mb-5 flex items-center gap-3">
-                  <span className="h-px w-10 bg-[#FF2D2D]" />
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                    About us
-                  </span>
-                </div>
+              <p className="mt-6 max-w-lg text-base leading-7 text-white/80 sm:text-lg">
+                {BUSINESS.name} is a car dealership in Las Piñas City. We buy,
+                sell, and trade cars, with clear details and a straightforward
+                path to ownership.
+              </p>
 
-                <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-                  Quality cars,
-                  <span className="block text-[#FFFFFF]">honest terms.</span>
-                </h1>
-
-                <p className="mt-6 max-w-xl text-base leading-7 text-zinc-300 sm:text-lg">
-                  Capital Jey Car Trading is a car dealership in Las Piñas
-                  City. We buy, sell, and trade cars, with clear
-                  details and a straightforward path to ownership.
-                </p>
-
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Link
-                    href="/showroom"
-                    className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#FF2D2D] px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A] hover:shadow-[0_0_30px_rgba(255,45,45,0.25)] ${focusRing}`}
-                  >
-                    Browse the showroom
-                    <ArrowRight size={16} />
-                  </Link>
-
-                  <Link
-                    href="/sell-trade"
-                    className={`inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-white/10 ${focusRing}`}
-                  >
-                    Sell / Trade your car
-                  </Link>
-                </div>
-              </div>
-
-              {/* Visit panel */}
-              <div className="rounded-[30px] border border-white/10 bg-[#111111] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-7">
-                <h2 className="text-2xl font-black text-white">
-                  Visit the showroom
-                </h2>
-
-                <div className="mt-6 space-y-5">
-                  <div className="flex gap-3">
-                    <MapPin
-                      size={18}
-                      className="mt-1 shrink-0 text-[#FFFFFF]"
-                    />
-                    <p className="text-sm leading-7 text-zinc-300">
-                      {BUSINESS.address}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Phone size={18} className="shrink-0 text-[#FFFFFF]" />
-                    <a
-                      href={BUSINESS.phoneHref}
-                      className="font-semibold text-[#FFFFFF] transition-colors hover:text-[#FF5A5A]"
-                    >
-                      {BUSINESS.phoneDisplay}
-                    </a>
-                  </div>
-                </div>
-
-                <a
-                  href={MAPS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#FF2D2D]/50 bg-[#FF2D2D]/10 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#FF2D2D]/20 ${focusRing}`}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/showroom"
+                  className={`chamfer inline-flex items-center justify-center gap-2 bg-[#E31B23] px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#FF3B43] ${ringDark}`}
                 >
-                  Get directions
-                  <ArrowUpRight size={16} />
-                </a>
-
-                <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-white/10 pt-5 text-sm">
-                  <span className="mr-1 text-zinc-400">Follow us</span>
-                  {socials.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-semibold text-white transition-colors hover:border-[#FF2D2D] hover:text-[#FFFFFF] ${focusRing}`}
-                    >
-                      {social.label}
-                    </a>
-                  ))}
-                </div>
+                  Browse the showroom
+                  <ArrowRight size={16} />
+                </Link>
+                <Link
+                  href="/sell-trade"
+                  className={`chamfer inline-flex items-center justify-center bg-white px-7 py-4 text-sm font-bold uppercase tracking-wider text-[#0B0B0B] transition-colors hover:bg-[#F4F4F4] ${ringDark}`}
+                >
+                  Sell / Trade your car
+                </Link>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Facts bar */}
-          <div className="relative border-t border-white/10 bg-[#060606]/80">
-            <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-4 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-              {facts.map(({ icon: Icon, text }) => (
-                <li
-                  key={text}
-                  className="flex items-center gap-3 text-sm text-zinc-300"
+        <div aria-hidden="true" className="tread" />
+
+        {/* FACTS: solid red band */}
+        <section className="bg-[#E31B23] text-white">
+          <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-4 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+            {facts.map(({ icon: Icon, text }) => (
+              <li
+                key={text}
+                className="flex items-center gap-3 text-sm font-semibold"
+              >
+                <Icon size={20} className="shrink-0" />
+                {text}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* FIND US: one row, address / phone / directions / socials */}
+        <section className="border-b border-[#0B0B0B]/10 bg-[#F4F4F4]">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_auto] lg:items-center lg:px-8">
+            <div className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#0B0B0B] text-white">
+                <MapPin size={20} />
+              </span>
+              <div>
+                <h2 className="text-xl font-bold uppercase">
+                  Visit the showroom
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-[#0B0B0B]/70">
+                  {BUSINESS.address}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#0B0B0B] text-white">
+                <Phone size={20} />
+              </span>
+              <div>
+                <h2 className="text-xl font-bold uppercase">Call us</h2>
+                <a
+                  href={BUSINESS.phoneHref}
+                  className={`mt-1 inline-block text-base font-semibold text-[#E31B23] transition-colors hover:text-[#0B0B0B] ${ringLight}`}
                 >
-                  <Icon size={18} className="shrink-0 text-[#FFFFFF]" />
-                  {text}
-                </li>
+                  {BUSINESS.phoneDisplay}
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 md:col-span-2 lg:col-span-1">
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`chamfer inline-flex items-center justify-center gap-2 bg-[#0B0B0B] px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#E31B23] ${ringLight}`}
+              >
+                Get directions
+                <ArrowUpRight size={16} />
+              </a>
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`border-2 border-[#0B0B0B] px-4 py-3 text-sm font-bold text-[#0B0B0B] transition-colors hover:bg-[#0B0B0B] hover:text-white ${ringLight}`}
+                >
+                  {social.label}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
-        {/* WHAT WE DO */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <h2 className="max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl">
+        {/* WHAT WE DO: full-width rows that flip to black on hover */}
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <h2 className="max-w-2xl text-4xl font-bold uppercase leading-none sm:text-5xl">
             One dealership for every way you move.
           </h2>
 
-          <div className="mt-10 grid overflow-hidden rounded-[28px] border border-white/10 bg-[#060606] md:grid-cols-3 md:divide-x md:divide-white/10">
+          <ul className="mt-12 border-b border-[#0B0B0B]/15">
             {services.map(({ icon: Icon, title, description, href, cta }) => (
-              <div
+              <li
                 key={title}
-                className="flex flex-col border-t border-white/10 p-6 first:border-t-0 sm:p-8 md:border-t-0"
+                className="group grid gap-5 border-t border-[#0B0B0B]/15 px-0 py-8 transition-colors duration-200 hover:bg-[#0B0B0B] hover:text-white md:grid-cols-[0.8fr_1.4fr_auto] md:items-center md:gap-10 md:px-6"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF]">
-                  <Icon size={22} />
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#E31B23] text-white">
+                    <Icon size={22} />
+                  </span>
+                  <h3 className="text-2xl font-bold uppercase">{title}</h3>
                 </div>
 
-                <h3 className="mt-5 text-xl font-bold text-white">{title}</h3>
-                <p className="mt-3 flex-1 text-base leading-7 text-zinc-400">
+                <p className="text-base leading-7 text-[#0B0B0B]/65 transition-colors group-hover:text-white/70">
                   {description}
                 </p>
 
                 <Link
                   href={href}
-                  className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#FFFFFF] transition-colors hover:text-[#FF5A5A] ${focusRing}`}
+                  className={`inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-[#E31B23] transition-colors group-hover:text-white ${ringLight}`}
                 >
                   {cta}
                   <ArrowRight size={16} />
                 </Link>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
-        {/* HOW IT WORKS */}
-        <section className="border-y border-white/10 bg-[#060606]">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-            <h2 className="max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl">
-              How it works
-            </h2>
-
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              {journeys.map((journey) => (
-                <div
-                  key={journey.title}
-                  className="rounded-[26px] border border-white/10 bg-[#111111] p-6 sm:p-8"
-                >
-                  <h3 className="text-xl font-bold text-white">
-                    {journey.title}
-                  </h3>
-
-                  <ol className="mt-6 space-y-5">
-                    {journey.steps.map((step, index) => (
-                      <li key={step} className="flex gap-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 text-sm font-bold text-[#FFFFFF]">
-                          {index + 1}
-                        </span>
-                        <span className="pt-1 text-base leading-7 text-zinc-300">
-                          {step}
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* VALUES */}
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            <div className="lg:sticky lg:top-28 lg:self-start">
-              <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
-                We make buying feel confident,{" "}
-                <span className="text-[#FFFFFF]">not complicated.</span>
+        {/* HOW IT WORKS: tabs, one path at a time */}
+        <section className="bg-[#0B0B0B] text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+              <h2 className="text-4xl font-bold uppercase leading-none sm:text-5xl">
+                How it works
               </h2>
-              <p className="mt-5 max-w-md text-base leading-7 text-zinc-300">
-                Whether you&apos;re shopping for a family SUV, a city car, or a
-                pickup for work, we help you find something that fits your life
-                and your budget.
-              </p>
+
+              <div
+                role="tablist"
+                aria-label="Choose a path"
+                className="flex flex-col gap-2 sm:flex-row"
+              >
+                {journeys.map((item, index) => {
+                  const selected = index === activeJourney;
+
+                  return (
+                    <button
+                      key={item.tab}
+                      type="button"
+                      role="tab"
+                      aria-selected={selected}
+                      onClick={() => setActiveJourney(index)}
+                      className={`chamfer px-6 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${ringDark} ${selected ? "bg-[#E31B23] text-white" : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"}`}
+                    >
+                      {item.tab}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            <ul className="divide-y divide-white/10 border-y border-white/10">
-              {values.map(({ icon: Icon, title, description }) => (
-                <li key={title} className="flex gap-5 py-7">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF]">
-                    <Icon size={22} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{title}</h3>
-                    <p className="mt-2 text-base leading-7 text-zinc-400">
-                      {description}
-                    </p>
-                  </div>
+            <ol
+              role="tabpanel"
+              aria-label={journey.title}
+              className="mt-12 grid gap-8 md:grid-cols-3"
+            >
+              {journey.steps.map((step, index) => (
+                <li key={step} className="border-t-2 border-white/20 pt-5">
+                  <span className="mb-4 flex items-center gap-3">
+                    <span className="h-3 w-3 bg-[#E31B23]" />
+                    <span className="text-sm font-semibold text-white/60">
+                      Step {index + 1}
+                    </span>
+                  </span>
+                  <p className="text-lg leading-7 text-white/90">{step}</p>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
+        </section>
+
+        {/* VALUES: statement, then three columns with a red edge */}
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-bold uppercase leading-none sm:text-5xl lg:text-6xl">
+              We make buying feel confident,{" "}
+              <span className="text-[#E31B23]">not complicated.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-[#0B0B0B]/70 sm:text-lg">
+              Whether you&apos;re shopping for a family SUV, a city car, or a
+              pickup for work, we help you find something that fits your life
+              and your budget.
+            </p>
+          </div>
+
+          <ul className="mt-14 grid gap-10 md:grid-cols-3">
+            {values.map(({ icon: Icon, title, description }) => (
+              <li key={title} className="border-l-4 border-[#E31B23] pl-6">
+                <Icon size={30} className="text-[#0B0B0B]" strokeWidth={1.8} />
+                <h3 className="mt-4 text-2xl font-bold uppercase">{title}</h3>
+                <p className="mt-3 text-base leading-7 text-[#0B0B0B]/65">
+                  {description}
+                </p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <CTA />

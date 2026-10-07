@@ -1,3 +1,4 @@
+// Path: app/sell-trade/page.tsx
 "use client";
 
 import Link from "next/link";
@@ -6,8 +7,10 @@ import {
   ArrowRight,
   BadgeCheck,
   CarFront,
+  ChevronDown,
   Users,
   Gauge,
+  Phone,
   ShieldCheck,
   Sparkles,
   UserRound,
@@ -16,6 +19,9 @@ import {
 import Navbar from "../../components/layout/navbar";
 import Footer from "../../components/layout/footer";
 import CTA from "../../components/home/cta";
+
+const PHONE_DISPLAY = "0997 253 0052";
+const PHONE_TEL = "+639972530052";
 
 const steps = [
   {
@@ -104,13 +110,13 @@ const getBasePrice = (brand: string) => {
 };
 
 const labelClass =
-  "mb-2.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400";
+  "mb-2 flex items-center gap-1 text-sm font-semibold text-white";
 
 const inputClass =
-  "h-13 w-full rounded-2xl border border-white/10 bg-[#111111] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition-all duration-300 hover:border-white/20 focus:border-[#FF2D2D]/70 focus:bg-[#111111] focus:ring-4 focus:ring-[#FF2D2D]/10";
+  "h-12 w-full border-2 border-white/10 bg-[#1A1A1A] px-4 text-white placeholder:text-white/35 outline-none transition-colors focus:border-[#E31B23] focus:bg-[#202020]";
 
 const selectClass =
-  "h-13 w-full appearance-none rounded-2xl border border-white/10 bg-[#111111] px-4 text-sm text-white outline-none transition-all duration-300 hover:border-white/20 focus:border-[#FF2D2D]/70 focus:bg-[#111111] focus:ring-4 focus:ring-[#FF2D2D]/10";
+  "h-12 w-full appearance-none border-2 border-white/10 bg-[#1A1A1A] px-4 pr-10 text-white outline-none transition-colors focus:border-[#E31B23] focus:bg-[#202020]";
 
 type FormState = {
   brand: string;
@@ -240,420 +246,400 @@ export default function SellTradePage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#111111] text-white">
-        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(191,152,13,0.18),transparent_50%)]" />
-          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-            <div className="max-w-3xl">
-              <div className="mb-5 flex items-center gap-3">
-                <span className="h-px w-10 bg-[#FF2D2D]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                  Ready to Move?
-                </span>
-              </div>
+      <main className="min-h-screen bg-[#0B0B0B] text-white">
+        {/* HEADER */}
+        <section className="relative overflow-hidden bg-[#0B0B0B]">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 top-0 hidden h-full w-72 -skew-x-12 bg-[#E31B23] lg:block"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-4 top-0 hidden h-full w-6 -skew-x-12 bg-white lg:block"
+          />
 
-              <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Turn your current car into your{" "}
-                <span className="block text-[#FFFFFF]">next upgrade</span>
+          <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:px-8 lg:py-24 xl:pr-40 2xl:pr-8">
+            <div className="lg:min-w-0 lg:flex-1">
+              <h1 className="max-w-4xl text-5xl font-bold uppercase leading-[0.92] sm:text-6xl lg:text-7xl">
+                Turn your car into your
+                <span className="block text-[#E31B23]">next upgrade.</span>
               </h1>
 
-              <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
+              <p className="mt-8 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
                 Get a competitive offer for your vehicle, trade it in for a
                 better fit, and move forward without the usual dealership
                 pressure.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* How it works */}
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="space-y-5">
-            <section className="rounded-[28px] border border-white/10 bg-[#111111] p-6">
-              <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FF2D2D]/10 text-[#FFFFFF]">
-                  <CarFront size={18} />
-                </div>
-                <h2 className="text-2xl font-black tracking-tight text-white">
-                  How it works
-                </h2>
-              </div>
+            {/* Right side: options + direct line */}
+            <div className="w-full border-t-4 border-[#E31B23] bg-[#161616] lg:w-[400px] lg:shrink-0">
+              <div className="p-6 sm:p-7">
+                <h2 className="text-2xl font-bold uppercase">Pick your path</h2>
 
-              <div className="grid gap-5 md:grid-cols-3">
-                {steps.map((step, index) => (
-                  <div
-                    key={step.title}
-                    className="rounded-[24px] border border-white/10 bg-[#111111] p-5"
-                  >
-                    <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FF2D2D] text-sm font-black text-black">
-                      {index + 1}
-                    </div>
-                    <h3 className="text-xl font-bold text-white">
-                      {step.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-zinc-300">
-                      {step.copy}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
-        </section>
-
-        {/* Vehicle Details & Estimated Value */}
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <form
-            onSubmit={handleSubmit}
-            className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start"
-          >
-            {/* Vehicle Details */}
-            <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#111111] shadow-[0_25px_80px_rgba(0,0,0,0.25)]">
-              {/* Header */}
-              <div className="border-b border-white/10 px-5 py-5 sm:px-7 sm:py-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 text-[#FFFFFF]">
-                    <Gauge size={21} />
-                  </div>
-
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                      Vehicle information
-                    </p>
-
-                    <h2 className="mt-1 text-2xl font-black tracking-tight text-white sm:text-3xl">
-                      Tell us about your car
-                    </h2>
-
-                    <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-400">
-                      Enter your vehicle details to receive an estimated market
-                      value.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Form fields */}
-              <div className="p-5 sm:p-7">
-                <div className="grid gap-x-5 gap-y-5 sm:grid-cols-2">
-                  <label className="block">
-                    <span className={labelClass}>
-                      Brand
-                      <span className="text-[#FFFFFF]">*</span>
-                    </span>
-                    <input
-                      type="text"
-                      name="brand"
-                      value={form.brand}
-                      onChange={handleChange}
-                      placeholder="e.g. BMW"
-                      required
-                      className={inputClass}
-                    />
-                  </label>
-
-                  <label className="block">
-                    <span className={labelClass}>
-                      Model
-                      <span className="text-[#FFFFFF]">*</span>
-                    </span>
-                    <input
-                      type="text"
-                      name="model"
-                      value={form.model}
-                      onChange={handleChange}
-                      placeholder="e.g. 5 Series"
-                      required
-                      className={inputClass}
-                    />
-                  </label>
-
-                  <label className="block">
-                    <span className={labelClass}>
-                      Year
-                      <span className="text-[#FFFFFF]">*</span>
-                    </span>
-                    <input
-                      type="number"
-                      name="year"
-                      min="2000"
-                      max="2035"
-                      value={form.year}
-                      onChange={handleChange}
-                      placeholder="2023"
-                      required
-                      className={inputClass}
-                    />
-                  </label>
-
-                  <label className="block">
-                    <span className={labelClass}>
-                      Vehicle type
-                      <span className="text-[#FFFFFF]">*</span>
-                    </span>
-                    <select
-                      name="type"
-                      value={form.type}
-                      onChange={handleChange}
-                      className={selectClass}
-                    >
-                      <option>Sedan</option>
-                      <option>SUV</option>
-                      <option>Hatchback</option>
-                      <option>Truck</option>
-                      <option>Luxury</option>
-                    </select>
-                  </label>
-
-                  <label className="block">
-                    <span className={labelClass}>
-                      Mileage
-                      <span className="text-[#FFFFFF]">*</span>
-                    </span>
-                    <div className="relative">
-                      <input
-                        type="number"
-                        name="mileage"
-                        min="0"
-                        value={form.mileage}
-                        onChange={handleChange}
-                        placeholder="18,500"
-                        required
-                        className={`${inputClass} pr-20`}
-                      />
-                      <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-xs font-medium text-zinc-600">
-                        KM
+                <ul className="mt-5 divide-y divide-white/10 border-y border-white/10">
+                  {[
+                    { label: "Cash", note: "Sell your car outright" },
+                    {
+                      label: "Trade-in",
+                      note: "Put its value toward your next car",
+                    },
+                    { label: "Upgrade", note: "Move up to a better fit" },
+                  ].map((item) => (
+                    <li key={item.label} className="py-4">
+                      <span className="block text-lg font-bold uppercase leading-tight">
+                        {item.label}
                       </span>
-                    </div>
-                  </label>
+                      <span className="mt-0.5 block text-sm text-white/55">
+                        {item.note}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
 
-                  <label className="block">
-                    <span className={labelClass}>
-                      Condition
-                      <span className="text-[#FFFFFF]">*</span>
+                <a
+                  href="#valuation"
+                  className="chamfer mt-6 flex items-center justify-center gap-2 bg-[#E31B23] px-6 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-[#E31B23] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  Get my estimate
+                  <ArrowRight size={16} />
+                </a>
+
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  className="mt-5 flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-white"
+                >
+                  <Phone size={18} className="shrink-0 text-[#E31B23]" />
+                  <span>
+                    Prefer to talk?{" "}
+                    <span className="font-bold text-white">
+                      {PHONE_DISPLAY}
                     </span>
-                    <select
-                      name="condition"
-                      value={form.condition}
-                      onChange={handleChange}
-                      className={selectClass}
-                    >
-                      <option>Excellent</option>
-                      <option>Good</option>
-                      <option>Fair</option>
-                    </select>
-                  </label>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div aria-hidden="true" className="tread" />
+        </section>
+
+        {/* HOW IT WORKS */}
+        <section className="bg-[#111111]">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <h2 className="flex items-center gap-3 text-3xl font-bold uppercase sm:text-4xl">
+              <CarFront size={28} className="text-[#E31B23]" />
+              How it works
+            </h2>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {steps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="border-t-4 border-[#E31B23] bg-[#161616] p-6"
+                >
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center bg-[#E31B23] text-lg font-bold text-white">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-xl font-bold uppercase leading-tight">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-white/70">
+                    {step.copy}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* VEHICLE DETAILS + ESTIMATE */}
+        <section id="valuation" className="scroll-mt-24 bg-[#0B0B0B]">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <form
+              onSubmit={handleSubmit}
+              className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start"
+            >
+              {/* Vehicle details */}
+              <div className="border-t-4 border-[#E31B23] bg-[#161616]">
+                <div className="border-b border-white/10 px-5 py-6 sm:px-7">
+                  <h2 className="flex items-center gap-3 text-3xl font-bold uppercase">
+                    <Gauge size={26} className="shrink-0 text-[#E31B23]" />
+                    Tell us about your car
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/60">
+                    Enter your vehicle details to receive an estimated market
+                    value.
+                  </p>
                 </div>
 
-                {/* Contact details */}
-                <div className="mt-7 border-t border-white/10 pt-6">
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 text-[#FFFFFF]">
-                      <UserRound size={18} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                        Contact details
-                      </p>
-                      <p className="mt-1 text-xs text-zinc-500">
-                        So our team can reach you. Phone or email is required.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-x-5 gap-y-5 sm:grid-cols-2">
-                    <label className="block sm:col-span-2">
+                <div className="p-5 sm:p-7">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <label className="block">
                       <span className={labelClass}>
-                        Full name
-                        <span className="text-[#FFFFFF]">*</span>
+                        Brand
+                        <span className="text-[#E31B23]">*</span>
                       </span>
                       <input
                         type="text"
-                        name="fullName"
-                        value={form.fullName}
+                        name="brand"
+                        value={form.brand}
                         onChange={handleChange}
-                        placeholder="Juan Dela Cruz"
-                        autoComplete="name"
+                        placeholder="e.g. BMW"
                         required
                         className={inputClass}
                       />
                     </label>
 
                     <label className="block">
-                      <span className={labelClass}>Phone</span>
+                      <span className={labelClass}>
+                        Model
+                        <span className="text-[#E31B23]">*</span>
+                      </span>
                       <input
-                        type="tel"
-                        name="phone"
-                        value={form.phone}
+                        type="text"
+                        name="model"
+                        value={form.model}
                         onChange={handleChange}
-                        placeholder="09XX XXX XXXX"
-                        autoComplete="tel"
+                        placeholder="e.g. 5 Series"
+                        required
                         className={inputClass}
                       />
                     </label>
 
                     <label className="block">
-                      <span className={labelClass}>Email</span>
+                      <span className={labelClass}>
+                        Year
+                        <span className="text-[#E31B23]">*</span>
+                      </span>
                       <input
-                        type="email"
-                        name="email"
-                        value={form.email}
+                        type="number"
+                        name="year"
+                        min="2000"
+                        max="2035"
+                        value={form.year}
                         onChange={handleChange}
-                        placeholder="you@example.com"
-                        autoComplete="email"
+                        placeholder="2023"
+                        required
                         className={inputClass}
                       />
                     </label>
-                  </div>
-                </div>
 
-                {/* Bottom message */}
-                <div className="mt-5 border-t border-white/10 pt-5">
-                  <div className="flex items-start gap-3">
-                    <Sparkles
-                      size={16}
-                      className="mt-0.5 shrink-0 text-[#FFFFFF]"
-                    />
-
-                    <p className="text-xs leading-5 text-zinc-500">
-                      Your final offer may vary depending on inspection results,
-                      vehicle history, documentation, and current market
-                      conditions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Estimated Value */}
-            <div className="relative">
-              <div className="pointer-events-none absolute -inset-4 rounded-[40px] bg-[#FF2D2D]/5 blur-3xl" />
-
-              <div className="relative overflow-hidden rounded-[30px] border border-[#FF2D2D]/25 bg-[#111111] shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
-                <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#FF2D2D] to-transparent" />
-
-                <div className="p-5 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#FF2D2D] shadow-[0_0_10px_rgba(191,152,13,0.8)]" />
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                          Instant estimate
-                        </p>
+                    <label className="block">
+                      <span className={labelClass}>
+                        Vehicle type
+                        <span className="text-[#E31B23]">*</span>
+                      </span>
+                      <div className="relative">
+                        <select
+                          name="type"
+                          value={form.type}
+                          onChange={handleChange}
+                          className={selectClass}
+                        >
+                          <option>Sedan</option>
+                          <option>SUV</option>
+                          <option>Hatchback</option>
+                          <option>Truck</option>
+                          <option>Luxury</option>
+                        </select>
+                        <ChevronDown
+                          size={18}
+                          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#E31B23]"
+                        />
                       </div>
+                    </label>
 
-                      <h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
-                        Your Car Value
-                      </h2>
-
-                      <p className="mt-2 text-sm leading-6 text-zinc-500">
-                        A preliminary estimate based on your vehicle
-                        information.
-                      </p>
-                    </div>
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 text-[#FFFFFF]">
-                      <Gauge size={20} />
-                    </div>
-                  </div>
-
-                  {/* Main Value */}
-                  <div className="relative mt-5 overflow-hidden rounded-[24px] border border-[#FF2D2D]/20 bg-gradient-to-br from-[#111111] via-[#111111] to-[#111111] p-6 sm:p-7">
-                    <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-white/[0.06] blur-3xl" />
-
-                    <div className="relative">
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
-                          Estimated market value
-                        </p>
-
-                        <span className="rounded-full border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#FFFFFF]">
-                          Live
+                    <label className="block">
+                      <span className={labelClass}>
+                        Mileage
+                        <span className="text-[#E31B23]">*</span>
+                      </span>
+                      <div className="relative">
+                        <input
+                          type="number"
+                          name="mileage"
+                          min="0"
+                          value={form.mileage}
+                          onChange={handleChange}
+                          placeholder="18,500"
+                          required
+                          className={`${inputClass} pr-14`}
+                        />
+                        <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-xs font-bold text-white/50">
+                          KM
                         </span>
                       </div>
+                    </label>
 
-                      <p className="mt-3 text-4xl font-black tracking-tight text-white sm:text-5xl">
-                        ₱{estimate.toLocaleString()}
-                      </p>
+                    <label className="block">
+                      <span className={labelClass}>
+                        Condition
+                        <span className="text-[#E31B23]">*</span>
+                      </span>
+                      <div className="relative">
+                        <select
+                          name="condition"
+                          value={form.condition}
+                          onChange={handleChange}
+                          className={selectClass}
+                        >
+                          <option>Excellent</option>
+                          <option>Good</option>
+                          <option>Fair</option>
+                        </select>
+                        <ChevronDown
+                          size={18}
+                          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#E31B23]"
+                        />
+                      </div>
+                    </label>
+                  </div>
 
-                      <p className="mt-2 text-xs text-zinc-500">
-                        Preliminary estimate • Subject to inspection
-                      </p>
+                  {/* Contact details */}
+                  <div className="mt-8 border-t border-white/10 pt-7">
+                    <h3 className="flex items-center gap-3 text-xl font-bold uppercase">
+                      <UserRound size={20} className="text-[#E31B23]" />
+                      Contact details
+                    </h3>
+                    <p className="mt-2 text-sm text-white/55">
+                      So our team can reach you. Phone or email is required.
+                    </p>
+
+                    <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                      <label className="block sm:col-span-2">
+                        <span className={labelClass}>
+                          Full name
+                          <span className="text-[#E31B23]">*</span>
+                        </span>
+                        <input
+                          type="text"
+                          name="fullName"
+                          value={form.fullName}
+                          onChange={handleChange}
+                          placeholder="Juan Dela Cruz"
+                          autoComplete="name"
+                          required
+                          className={inputClass}
+                        />
+                      </label>
+
+                      <label className="block">
+                        <span className={labelClass}>Phone</span>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="09XX XXX XXXX"
+                          autoComplete="tel"
+                          className={inputClass}
+                        />
+                      </label>
+
+                      <label className="block">
+                        <span className={labelClass}>Email</span>
+                        <input
+                          type="email"
+                          name="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          placeholder="you@example.com"
+                          autoComplete="email"
+                          className={inputClass}
+                        />
+                      </label>
                     </div>
+                  </div>
+
+                  <p className="mt-7 border-l-4 border-white/20 bg-white/5 px-4 py-3 text-xs leading-5 text-white/60">
+                    Your final offer may vary depending on inspection results,
+                    vehicle history, documentation, and current market
+                    conditions.
+                  </p>
+                </div>
+              </div>
+
+              {/* Estimated value */}
+              <div className="border-t-4 border-[#E31B23] bg-[#161616] lg:sticky lg:top-28">
+                <div className="p-5 sm:p-7">
+                  <h2 className="flex items-center gap-3 text-3xl font-bold uppercase">
+                    <BadgeCheck size={26} className="shrink-0 text-[#E31B23]" />
+                    Your car value
+                  </h2>
+                  <p className="mt-3 text-sm leading-6 text-white/60">
+                    A preliminary estimate based on your vehicle information.
+                  </p>
+
+                  {/* Main value */}
+                  <div className="mt-6 border-l-4 border-[#E31B23] bg-[#0B0B0B] p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-sm font-semibold text-white/60">
+                        Estimated market value
+                      </p>
+                      <span className="bg-[#E31B23] px-2 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                        Live
+                      </span>
+                    </div>
+
+                    <p className="mt-3 break-words text-4xl font-bold tracking-tight sm:text-5xl">
+                      ₱{estimate.toLocaleString()}
+                    </p>
+
+                    <p className="mt-2 text-xs text-white/50">
+                      Preliminary estimate. Subject to inspection.
+                    </p>
                   </div>
 
                   {/* Stats */}
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-white/15">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                    <div className="bg-[#0B0B0B] p-4">
+                      <p className="text-xs font-semibold text-white/55">
                         Market range
                       </p>
-
-                      <p className="mt-2 text-base font-bold leading-6 text-white">
+                      <p className="mt-2 text-base font-bold leading-6">
                         ₱{rangeLow.toLocaleString()}
-                        <span className="mx-1 text-zinc-600">—</span>₱
+                        <span className="mx-1 text-[#E31B23]">to</span>₱
                         {rangeHigh.toLocaleString()}
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-white/15">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                    <div className="bg-[#0B0B0B] p-4">
+                      <p className="text-xs font-semibold text-white/55">
                         Vehicle condition
                       </p>
-
-                      <p className="mt-2 text-base font-bold text-white">
+                      <p className="mt-2 text-base font-bold">
                         {form.condition}
                       </p>
                     </div>
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-6 border-t border-white/10 pt-5">
-                    <div className="flex flex-col gap-3 sm:flex-row">
+                  <div className="mt-6 border-t border-white/10 pt-6">
+                    <div className="flex flex-col gap-3">
                       <button
                         type="submit"
                         disabled={status === "submitting"}
-                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl bg-[#FF2D2D] px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF2D2D]/10 transition-all duration-300 hover:bg-[#FF5A5A] hover:shadow-[#FF2D2D]/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="chamfer inline-flex items-center justify-center gap-2 bg-[#E31B23] px-6 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-[#E31B23] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-white/40"
                       >
-                        <BadgeCheck
-                          size={18}
-                          className="transition-transform duration-300 group-hover:scale-110"
-                        />
-
-                        <span>
-                          {status === "submitting"
-                            ? "Submitting..."
-                            : "Submit for Review"}
-                        </span>
-
-                        <ArrowRight
-                          size={17}
-                          className="transition-transform duration-300 group-hover:translate-x-1"
-                        />
+                        {status === "submitting"
+                          ? "Submitting..."
+                          : "Submit for review"}
+                        <ArrowRight size={16} />
                       </button>
 
                       <Link
                         href="/showroom"
-                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-[#FF2D2D]/40 hover:bg-[#FF2D2D]/10 hover:text-[#FFFFFF]"
+                        className="chamfer inline-flex items-center justify-center gap-2 bg-white px-6 py-4 text-sm font-bold uppercase tracking-wider text-[#0B0B0B] transition-colors hover:bg-[#E31B23] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                       >
-                        <CarFront
-                          size={18}
-                          className="text-[#FFFFFF] transition-transform duration-300 group-hover:scale-110"
-                        />
-
-                        <span>View Showroom</span>
-
-                        <ArrowRight
-                          size={16}
-                          className="text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#FFFFFF]"
-                        />
+                        <CarFront size={16} />
+                        View showroom
                       </Link>
                     </div>
 
                     {status === "error" && (
                       <p
                         role="alert"
-                        className="mt-3 text-center text-[11px] leading-5 text-[#FFFFFF]"
+                        className="mt-4 border-l-4 border-[#E31B23] bg-[#E31B23]/15 px-4 py-3 text-sm font-medium text-[#FF8A90]"
                       >
                         {errorMessage}
                       </p>
@@ -662,7 +648,7 @@ export default function SellTradePage() {
                     {status === "success" && (
                       <p
                         role="status"
-                        className="mt-3 text-center text-[11px] leading-5 text-[#FFFFFF]"
+                        className="mt-4 border-l-4 border-white bg-white/10 px-4 py-3 text-sm font-medium text-white"
                       >
                         Thanks! Your vehicle details were submitted. Our team
                         will contact you soon.
@@ -670,7 +656,7 @@ export default function SellTradePage() {
                     )}
 
                     {(status === "idle" || status === "submitting") && (
-                      <p className="mt-3 text-center text-[11px] leading-5 text-zinc-600">
+                      <p className="mt-4 text-xs leading-5 text-white/50">
                         Submit your vehicle details for our team to review your
                         estimate.
                       </p>
@@ -678,23 +664,16 @@ export default function SellTradePage() {
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+        </section>
 
-          <div className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="mb-5 flex items-center justify-center gap-3">
-                <span className="h-px w-10 bg-[#FF2D2D]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                  Why drivers choose us
-                </span>
-                <span className="h-px w-10 bg-[#FF2D2D]" />
-              </div>
-
-              <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
-                A car buying experience built around you.
-              </h2>
-            </div>
+        {/* WHY US */}
+        <section className="bg-[#111111]">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <h2 className="max-w-3xl border-l-8 border-[#E31B23] pl-5 text-3xl font-bold uppercase leading-[1] sm:text-4xl lg:text-5xl">
+              A car buying experience built around you.
+            </h2>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {values.map((value) => {
@@ -703,19 +682,17 @@ export default function SellTradePage() {
                 return (
                   <div
                     key={value.title}
-                    className="group rounded-[26px] border border-white/10 bg-[#111111] p-6 transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-[#111111] hover:shadow-[0_15px_50px_rgba(0,0,0,0.25)]"
+                    className="border-t-4 border-transparent bg-[#161616] p-6 transition-colors hover:border-[#E31B23] hover:bg-[#1C1C1C]"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF] transition-all duration-300 group-hover:border-[#FF2D2D]/60 group-hover:bg-[#FF2D2D]/20">
-                        <Icon size={22} />
-                      </div>
-
-                      <h3 className="text-md font-bold leading-tight text-white sm:text-xl">
-                        {value.title}
-                      </h3>
+                    <div className="flex h-12 w-12 items-center justify-center bg-[#E31B23] text-white">
+                      <Icon size={22} />
                     </div>
 
-                    <p className="text-md mt-5 leading-7 text-zinc-400">
+                    <h3 className="mt-5 text-xl font-bold uppercase leading-tight">
+                      {value.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-white/70">
                       {value.description}
                     </p>
                   </div>

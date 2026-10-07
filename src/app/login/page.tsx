@@ -9,6 +9,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { login, fetchMe, type ApiError } from "@/lib/api";
 import {
   AuthShell,
+  authAlertClass,
   authButtonClass,
   authErrorClass,
   authInputClass,
@@ -105,21 +106,20 @@ export default function LoginPage() {
       blurb="Sign in to save listings, track offers and pick up where you left off."
     >
       <form onSubmit={handleSubmit} noValidate>
-        <h1 className="mb-1 text-2xl font-bold text-white">Welcome back</h1>
-        <p className="mb-6 text-sm text-zinc-400">
+        <h1 className="text-3xl font-bold uppercase leading-none text-white">
+          Welcome back
+        </h1>
+        <p className="mb-7 mt-3 text-sm text-white/60">
           Sign in to your Capital Jey Car Trading account.
         </p>
 
         {formError && (
-          <div
-            role="alert"
-            className="mb-5 rounded-lg border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]"
-          >
+          <div role="alert" className={authAlertClass}>
             {formError}
           </div>
         )}
 
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="email" className={authLabelClass}>
             Email
           </label>
@@ -143,7 +143,7 @@ export default function LoginPage() {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="password" className={authLabelClass}>
             Password
           </label>
@@ -164,7 +164,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1 text-zinc-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF2D2D]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/60 transition-colors hover:text-[#E31B23] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -177,14 +177,14 @@ export default function LoginPage() {
           )}
         </div>
 
-        <div className="mb-6 flex items-center justify-between">
-          <label className="flex items-center gap-2 text-sm text-zinc-400">
+        <div className="mb-7 flex items-center justify-between">
+          <label className="flex items-center gap-2 text-sm text-white/75">
             <input
               type="checkbox"
               name="remember"
               checked={form.remember}
               onChange={handleChange}
-              className="h-4 w-4 rounded border-zinc-700 bg-[#060606] accent-[#FF2D2D]"
+              className="h-4 w-4 accent-[#E31B23]"
             />
             Remember me
           </label>
@@ -198,7 +198,7 @@ export default function LoginPage() {
           {loading ? "Signing in..." : "Sign in"}
         </button>
 
-        <p className="mt-6 text-center text-sm text-zinc-400">
+        <p className="mt-7 border-t border-white/10 pt-6 text-center text-sm text-white/65">
           New to Capital Jey Car Trading?{" "}
           <Link href="/register" className={authLinkClass}>
             Create an account

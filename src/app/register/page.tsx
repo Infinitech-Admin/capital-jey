@@ -15,6 +15,7 @@ import { Check, Eye, EyeOff, Loader2, X } from "lucide-react";
 import { register, type ApiError } from "@/lib/api";
 import {
   AuthShell,
+  authAlertClass,
   authButtonClass,
   authErrorClass,
   authInputClass,
@@ -169,24 +170,21 @@ export default function RegisterPage() {
       blurb="Create an account to save listings, track offers and sell or trade in your car."
     >
       <form onSubmit={handleSubmit} noValidate>
-        <h1 className="mb-1 text-2xl font-bold text-white">
+        <h1 className="text-3xl font-bold uppercase leading-none text-white">
           Create your account
         </h1>
-        <p className="mb-6 text-sm text-zinc-400">
+        <p className="mb-7 mt-3 text-sm text-white/60">
           Join Capital Jey Car Trading in a few quick steps.
         </p>
 
         {formError && (
-          <div
-            role="alert"
-            className="mb-5 rounded-lg border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]"
-          >
+          <div role="alert" className={authAlertClass}>
             {formError}
           </div>
         )}
 
         {/* Name */}
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="name" className={authLabelClass}>
             Full name
           </label>
@@ -211,9 +209,9 @@ export default function RegisterPage() {
         </div>
 
         {/* Phone */}
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="phone" className={authLabelClass}>
-            Phone <span className="font-normal text-zinc-500">(optional)</span>
+            Phone <span className="font-normal text-white/45">(optional)</span>
           </label>
           <input
             id="phone"
@@ -239,7 +237,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Email */}
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="email" className={authLabelClass}>
             Email
           </label>
@@ -265,7 +263,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Password */}
-        <div className="mb-4">
+        <div className="mb-5">
           <label htmlFor="password" className={authLabelClass}>
             Password
           </label>
@@ -286,7 +284,7 @@ export default function RegisterPage() {
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1 text-zinc-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF2D2D]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/60 transition-colors hover:text-[#E31B23] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -299,7 +297,7 @@ export default function RegisterPage() {
           )}
 
           {form.password.length > 0 && (
-            <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm">
+            <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 bg-[#0B0B0B] p-3 text-sm">
               <RuleItem met={rules.length}>10+ characters</RuleItem>
               <RuleItem met={rules.upper && rules.lower}>
                 Upper &amp; lowercase
@@ -311,7 +309,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Confirm password */}
-        <div className="mb-6">
+        <div className="mb-7">
           <label htmlFor="password_confirmation" className={authLabelClass}>
             Confirm password
           </label>
@@ -343,7 +341,7 @@ export default function RegisterPage() {
           {loading ? "Creating account..." : "Create account"}
         </button>
 
-        <p className="mt-6 text-center text-sm text-zinc-400">
+        <p className="mt-7 border-t border-white/10 pt-6 text-center text-sm text-white/65">
           Already have an account?{" "}
           <Link href="/login" className={authLinkClass}>
             Sign in
@@ -357,9 +355,13 @@ export default function RegisterPage() {
 function RuleItem({ met, children }: { met: boolean; children: ReactNode }) {
   return (
     <li
-      className={`flex items-center gap-1.5 ${met ? "font-medium text-emerald-400" : "text-zinc-400"}`}
+      className={`flex items-center gap-1.5 ${met ? "font-semibold text-white" : "text-white/50"}`}
     >
-      {met ? <Check size={14} aria-hidden /> : <X size={14} aria-hidden />}
+      {met ? (
+        <Check size={14} aria-hidden className="text-[#E31B23]" />
+      ) : (
+        <X size={14} aria-hidden />
+      )}
       {children}
       <span className="sr-only">{met ? " (met)" : " (not met)"}</span>
     </li>
