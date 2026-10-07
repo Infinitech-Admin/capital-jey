@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { Bot, MessageCircle, Send, User, X } from "lucide-react";
 
 const BUSINESS_NAME = "Capital Jey Car Trading";
-const FACEBOOK_URL = "https://www.facebook.com/bossautoexchange";
-const ADDRESS = "L7, B132, Arellano cor. Diokno St., Muntinlupa City";
+const FACEBOOK_URL = "https://www.facebook.com/CapitalJEYCarTrading/";
+const ADDRESS = "Blk 28, Lot 26 Vatican City Drive, BF Resort Village, Talon Dos, Las Piñas City";
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";

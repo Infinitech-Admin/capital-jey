@@ -52,7 +52,7 @@ export default function StandardSection() {
                         <div className="mb-5 flex items-center justify-center gap-3">
                             <span className="h-px w-10 bg-[#FF2D2D]" />
                             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
-                                AutoTrade Standard
+                                Capital Jey Standard
                             </span>
                             <span className="h-px w-10 bg-[#FF2D2D]" />
                         </div>
