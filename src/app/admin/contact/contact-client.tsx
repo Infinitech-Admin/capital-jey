@@ -31,7 +31,7 @@ import {
 /*  Helpers                                                                   */
 /* -------------------------------------------------------------------------- */
 
-const DEFAULT_SUBJECT = "Re: Your enquiry with AutoTrade";
+const DEFAULT_SUBJECT = "Re: Your enquiry with Capital Jey Car Trading";
 
 const fullName = (i: Pick<Inquiry, "first_name" | "last_name">) =>
   `${i.first_name} ${i.last_name}`.trim();

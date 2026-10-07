@@ -528,7 +528,7 @@ export default function ShowroomPage() {
           <div className="rounded-[28px] border border-[#FF2D2D]/20 bg-[#111111] p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <h3 className="text-2xl font-bold text-white">
-                Why drivers choose AutoTrade?
+                Why drivers choose Capital Jey Car Trading?
               </h3>
             </div>
 

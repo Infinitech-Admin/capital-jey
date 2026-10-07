@@ -24,11 +24,11 @@ import Footer from "../../components/layout/footer";
 // automatically instead of showing placeholder text.
 // ---------------------------------------------------------------------------
 const BUSINESS_NAME = "Capital Jey Car Trading";
-const FACEBOOK_URL = "https://www.facebook.com/bossautoexchange";
-const ADDRESS_LINE_1 = "L7, B132, Arellano cor. Diokno St.";
-const ADDRESS_LINE_2 = "Muntinlupa City, Philippines";
+const FACEBOOK_URL = "https://www.facebook.com/CapitalJEYCarTrading/";
+const ADDRESS_LINE_1 = "Blk 28, Lot 26 Vatican City Drive,";
+const ADDRESS_LINE_2 = "BF Resort Village, Talon Dos, Las Piñas City 1747";
 const PHONE_DISPLAY = "0997 253 0052"; // e.g. "0917 123 4567"
-const PHONE_TEL = ""; // e.g. "+639171234567"
+const PHONE_TEL = "+639972530052";
 const EMAIL = "capitaljeycartrading@gmail.com";
 const HOURS: { day: string; time: string }[] = [
   // { day: "Monday - Saturday", time: "9:00 AM - 6:00 PM" },

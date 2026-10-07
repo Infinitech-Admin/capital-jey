@@ -25,7 +25,7 @@ import CTA from "../../components/home/cta";
 const BUSINESS = {
   name: "Capital Jey Car Trading",
   address:
-    "Block 132 Lot 7 C. Arellano St. cor J. Diokno, Katarungan Village, Poblacion, Muntinlupa City, Philippines, 1776",
+    "Blk 28, Lot 26 Vatican City Drive, BF Resort Village, Talon Dos, Las Piñas City, Philippines, 1747",
   phoneDisplay: "0997 253 0052",
   phoneHref: "tel:+639972530052",
   facebook: "https://www.facebook.com/CapitalJEYCarTrading/",
@@ -37,7 +37,7 @@ const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
 )}`;
 
 const facts = [
-  { icon: MapPin, text: "Poblacion, Muntinlupa City" },
+  { icon: MapPin, text: "Las Piñas City" },
   { icon: Repeat, text: "Buy, sell, and trade in one place" },
   { icon: Images, text: "Photos and videos on every listing" },
   { icon: CalendarCheck, text: "Book a test drive online" },
@@ -181,8 +181,8 @@ export default function About() {
                 </h1>
 
                 <p className="mt-6 max-w-xl text-base leading-7 text-zinc-300 sm:text-lg">
-                  Capital Jey Car Trading is a car dealership in Poblacion,
-                  Muntinlupa City. We buy, sell, and trade cars, with clear
+                  Capital Jey Car Trading is a car dealership in Las Piñas
+                  City. We buy, sell, and trade cars, with clear
                   details and a straightforward path to ownership.
                 </p>
 
