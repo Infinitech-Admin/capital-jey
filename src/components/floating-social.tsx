@@ -10,7 +10,7 @@ const TIKTOK_URL = "https://www.tiktok.com/@boss.autoexchange";
 const PHONE_NUMBER = "+639060218568"; // 0906 021 8568
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 // lucide-react no longer ships brand/logo icons, so these are inline SVGs.
 interface BrandIconProps {
@@ -134,9 +134,9 @@ export default function FloatingSocial({
       className="fixed right-3 top-1/2 z-40 -translate-y-1/2"
     >
       {/* Connecting line */}
-      <div className="pointer-events-none absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#E31B23]/40 to-transparent" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#FF2D2D]/40 to-transparent" />
 
-      <div className="flex flex-col items-center gap-3 rounded-full border border-white/10 bg-[#000000]/40 p-2 backdrop-blur-md">
+      <div className="flex flex-col items-center gap-3 rounded-full border border-white/10 bg-[#060606]/40 p-2 backdrop-blur-md">
         {links.map((link) => {
           const Icon = link.icon;
 
@@ -154,7 +154,7 @@ export default function FloatingSocial({
               <Icon size={18} strokeWidth={2.25} className="sm:h-5 sm:w-5" />
 
               {/* Tooltip */}
-              <span className="pointer-events-none absolute right-full mr-3 translate-x-1 whitespace-nowrap rounded-md border border-white/10 bg-[#000000] px-2.5 py-1 text-xs font-medium text-white opacity-0 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+              <span className="pointer-events-none absolute right-full mr-3 translate-x-1 whitespace-nowrap rounded-md border border-white/10 bg-[#060606] px-2.5 py-1 text-xs font-medium text-white opacity-0 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                 {link.name}
               </span>
             </Link>

@@ -22,20 +22,20 @@ const navigation = [
 const HEADER_OFFSET = "-mb-[73px] sm:-mb-[77px] lg:-mb-[81px]";
 
 // Capital Jey Car Trading palette
-// red #E31B23 | red hover #FF3B43 | red text #FF6B71 | blue glow #B3121A
-// background #000000 | text #FFFFFF
+// red #FF2D2D | red hover #FF5A5A | red text #FFFFFF | blue glow #A80000
+// background #060606 | text #FFFFFF
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 // Glow styles shared by the header buttons
 const glowRed =
-  "border-[#FF6B71]/70 shadow-[0_0_22px_rgba(227,27,35,0.75),inset_0_0_12px_rgba(227,27,35,0.25)] hover:border-[#FF6B71] hover:shadow-[0_0_32px_rgba(227,27,35,0.95),inset_0_0_14px_rgba(227,27,35,0.35)]";
+  "border-[#FFFFFF]/70 shadow-[0_0_22px_rgba(255,45,45,0.75),inset_0_0_12px_rgba(255,45,45,0.25)] hover:border-[#FFFFFF] hover:shadow-[0_0_32px_rgba(255,45,45,0.95),inset_0_0_14px_rgba(255,45,45,0.35)]";
 const glowBlue =
-  "border-[#E31B23]/80 shadow-[0_0_22px_rgba(227,27,35,0.7),inset_0_0_10px_rgba(227,27,35,0.2)] hover:border-[#FF6B71] hover:shadow-[0_0_28px_rgba(227,27,35,0.85)]";
+  "border-[#FF2D2D]/80 shadow-[0_0_22px_rgba(255,45,45,0.7),inset_0_0_10px_rgba(255,45,45,0.2)] hover:border-[#FFFFFF] hover:shadow-[0_0_28px_rgba(255,45,45,0.85)]";
 
 // Applies the same glow to the Login button rendered inside <UserMenu />
 const loginGlow =
-  "[&>a]:border-[#E31B23]/80 [&>a]:shadow-[0_0_22px_rgba(227,27,35,0.7)] [&>a:hover]:border-[#FF6B71] [&>a:hover]:shadow-[0_0_28px_rgba(227,27,35,0.85)] [&>button]:border-[#E31B23]/80 [&>button]:shadow-[0_0_22px_rgba(227,27,35,0.7)] [&>button:hover]:border-[#FF6B71] [&>button:hover]:shadow-[0_0_28px_rgba(227,27,35,0.85)]";
+  "[&>a]:border-[#FF2D2D]/80 [&>a]:shadow-[0_0_22px_rgba(255,45,45,0.7)] [&>a:hover]:border-[#FFFFFF] [&>a:hover]:shadow-[0_0_28px_rgba(255,45,45,0.85)] [&>button]:border-[#FF2D2D]/80 [&>button]:shadow-[0_0_22px_rgba(255,45,45,0.7)] [&>button:hover]:border-[#FFFFFF] [&>button:hover]:shadow-[0_0_28px_rgba(255,45,45,0.85)]";
 
 // Minimal shape of the event we care about — not in the standard lib.dom types yet.
 interface BeforeInstallPromptEvent extends Event {
@@ -53,14 +53,14 @@ function WheelO() {
     >
       <svg
         viewBox="0 0 100 100"
-        className="h-full w-full drop-shadow-[0_0_8px_rgba(227,27,35,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
+        className="h-full w-full drop-shadow-[0_0_8px_rgba(255,45,45,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
       >
         {/* Tire */}
         <circle
           cx="50"
           cy="50"
           r="47"
-          fill="#000000"
+          fill="#060606"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
@@ -69,8 +69,8 @@ function WheelO() {
           cx="50"
           cy="50"
           r="30"
-          fill="#1A1A1A"
-          stroke="#FF6B71"
+          fill="#1F1F1F"
+          stroke="#FFFFFF"
           strokeWidth="5"
         />
         {/* Spokes */}
@@ -88,7 +88,7 @@ function WheelO() {
         </g>
         {/* Hub */}
         <circle cx="50" cy="50" r="9" fill="#FFFFFF" />
-        <circle cx="50" cy="50" r="3.5" fill="#E31B23" />
+        <circle cx="50" cy="50" r="3.5" fill="#FF2D2D" />
       </svg>
     </span>
   );
@@ -105,13 +105,13 @@ function Wordmark({ className = "" }: { className?: string }) {
       <span
         role="img"
         aria-label="Boss"
-        className="flex items-center font-black uppercase italic tracking-[0.08em] text-white [text-shadow:0_0_22px_rgba(227,27,35,0.95),0_0_6px_rgba(255,255,255,0.35),2px_2px_0_#E31B23] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),2px_2px_0_#FF3B43]"
+        className="flex items-center font-black uppercase italic tracking-[0.08em] text-white [text-shadow:0_0_22px_rgba(255,45,45,0.95),0_0_6px_rgba(255,255,255,0.35),2px_2px_0_#FF2D2D] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),2px_2px_0_#FF5A5A]"
       >
         <span aria-hidden="true">B</span>
         <WheelO />
         <span aria-hidden="true">SS</span>
       </span>
-      <span className="mt-1.5 rounded-[3px] bg-[#E31B23] px-2 py-[3px] text-[0.34em] font-extrabold uppercase italic tracking-[0.24em] text-white shadow-[0_0_16px_rgba(227,27,35,0.85)] transition-colors duration-300 group-hover:bg-[#FF3B43]">
+      <span className="mt-1.5 rounded-[3px] bg-[#FF2D2D] px-2 py-[3px] text-[0.34em] font-extrabold uppercase italic tracking-[0.24em] text-white shadow-[0_0_16px_rgba(255,45,45,0.85)] transition-colors duration-300 group-hover:bg-[#FF5A5A]">
         Auto Exchange
       </span>
     </span>
@@ -229,7 +229,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 border-b transition-all duration-300 motion-reduce:transition-none ${isHome ? HEADER_OFFSET : ""} ${isSolid ? "border-[#E31B23]/20 bg-[#000000]/90 backdrop-blur-xl" : "border-transparent bg-transparent"}`}
+        className={`sticky top-0 z-50 border-b transition-all duration-300 motion-reduce:transition-none ${isHome ? HEADER_OFFSET : ""} ${isSolid ? "border-[#FF2D2D]/20 bg-[#060606]/90 backdrop-blur-xl" : "border-transparent bg-transparent"}`}
       >
         <nav
           aria-label="Main"
@@ -246,7 +246,7 @@ export default function Navbar() {
             </Link>
 
             {/* DESKTOP NAVIGATION */}
-            <div className="hidden items-center gap-1 rounded-full border border-white/15 bg-[#000000]/75 p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:flex">
+            <div className="hidden items-center gap-1 rounded-full border border-white/15 bg-[#060606]/75 p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:flex">
               {navigation.map((item) => {
                 const active = isActive(item.href);
 
@@ -255,7 +255,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${focusRing} ${active ? "bg-[#E31B23] text-white shadow-[0_0_18px_rgba(227,27,35,0.7)]" : "text-white/85 hover:bg-white/10 hover:text-white"}`}
+                    className={`relative flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${focusRing} ${active ? "bg-[#FF2D2D] text-white shadow-[0_0_18px_rgba(255,45,45,0.7)]" : "text-white/85 hover:bg-white/10 hover:text-white"}`}
                   >
                     {item.name}
                   </Link>
@@ -270,7 +270,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={handleInstallClick}
-                  className={`hidden items-center gap-2 rounded-full border bg-[#E31B23]/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-[#E31B23]/20 sm:flex ${glowRed} ${focusRing}`}
+                  className={`hidden items-center gap-2 rounded-full border bg-[#FF2D2D]/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-[#FF2D2D]/20 sm:flex ${glowRed} ${focusRing}`}
                 >
                   <Download size={16} strokeWidth={2.25} />
                   Install App
@@ -284,11 +284,11 @@ export default function Navbar() {
               <Link
                 href="/cart"
                 aria-label={`View cart${totalItems > 0 ? `, ${totalItems} item${totalItems === 1 ? "" : "s"}` : ""}`}
-                className={`relative flex h-11 w-11 items-center justify-center rounded-full border bg-[#000000]/30 text-white backdrop-blur-md transition-all duration-300 hover:text-[#FF6B71] sm:h-12 sm:w-12 ${glowBlue} ${focusRing}`}
+                className={`relative flex h-11 w-11 items-center justify-center rounded-full border bg-[#060606]/30 text-white backdrop-blur-md transition-all duration-300 hover:text-[#FFFFFF] sm:h-12 sm:w-12 ${glowBlue} ${focusRing}`}
               >
                 <ShoppingCart size={20} strokeWidth={2} />
                 {totalItems > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#E31B23] px-1 text-[10px] font-bold text-white">
+                  <span className="absolute -right-1 -top-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#FF2D2D] px-1 text-[10px] font-bold text-white">
                     {totalItems > 99 ? "99+" : totalItems}
                   </span>
                 )}
@@ -306,7 +306,7 @@ export default function Navbar() {
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
                 onClick={() => setIsMenuOpen((open) => !open)}
-                className={`flex h-11 w-11 items-center justify-center rounded-full border text-white backdrop-blur-md transition-all duration-300 sm:h-12 sm:w-12 lg:hidden ${isMenuOpen ? `bg-[#E31B23]/10 ${glowRed}` : `bg-[#000000]/30 ${glowBlue}`} ${focusRing}`}
+                className={`flex h-11 w-11 items-center justify-center rounded-full border text-white backdrop-blur-md transition-all duration-300 sm:h-12 sm:w-12 lg:hidden ${isMenuOpen ? `bg-[#FF2D2D]/10 ${glowRed}` : `bg-[#060606]/30 ${glowBlue}`} ${focusRing}`}
               >
                 {isMenuOpen ? (
                   <X size={21} strokeWidth={2} />
@@ -330,12 +330,12 @@ export default function Navbar() {
           type="button"
           aria-label="Close navigation"
           onClick={() => setIsMenuOpen(false)}
-          className="absolute inset-0 cursor-default bg-[#000000]/70 backdrop-blur-md"
+          className="absolute inset-0 cursor-default bg-[#060606]/70 backdrop-blur-md"
         />
 
         {/* Navigation Drawer */}
         <div
-          className={`absolute right-0 top-0 h-full w-full max-w-md border-l border-[#E31B23]/20 bg-[#000000] shadow-[-20px_0_80px_rgba(0,0,0,0.55)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`absolute right-0 top-0 h-full w-full max-w-md border-l border-[#FF2D2D]/20 bg-[#060606] shadow-[-20px_0_80px_rgba(0,0,0,0.55)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           {/* Drawer Header */}
           <div className="flex h-[72px] items-center justify-between border-b border-white/10 px-5 sm:h-[76px] sm:px-6">
@@ -352,7 +352,7 @@ export default function Navbar() {
               type="button"
               aria-label="Close menu"
               onClick={() => setIsMenuOpen(false)}
-              className={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-blue-100 transition-all hover:border-[#E31B23] hover:text-white hover:shadow-[0_0_18px_rgba(227,27,35,0.55)] ${focusRing}`}
+              className={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-blue-100 transition-all hover:border-[#FF2D2D] hover:text-white hover:shadow-[0_0_18px_rgba(255,45,45,0.55)] ${focusRing}`}
             >
               <X size={19} />
             </button>
@@ -365,7 +365,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={handleInstallClick}
-                className={`mb-6 flex items-center justify-center gap-2 rounded-full border bg-[#E31B23]/10 px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#E31B23]/20 ${glowRed} ${focusRing}`}
+                className={`mb-6 flex items-center justify-center gap-2 rounded-full border bg-[#FF2D2D]/10 px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#FF2D2D]/20 ${glowRed} ${focusRing}`}
               >
                 <Download size={16} strokeWidth={2.25} />
                 Install App
@@ -374,7 +374,7 @@ export default function Navbar() {
 
             {/* Label */}
             <div
-              className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71] transition-all duration-500 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
+              className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF] transition-all duration-500 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
             >
               Explore Capital Jey Car Trading
             </div>
@@ -399,19 +399,19 @@ export default function Navbar() {
                         href={item.href}
                         aria-current={active ? "page" : undefined}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`group relative flex min-h-[62px] items-center justify-between border-b border-white/[0.07] rounded-lg px-3 text-xl font-semibold tracking-tight transition-all duration-300 sm:min-h-[68px] sm:text-2xl ${focusRing} ${active ? "border-l-2 border-l-[#E31B23] bg-gradient-to-r from-[#E31B23]/25 to-transparent text-white" : "text-white/85 hover:bg-white/5 hover:text-white"}`}
+                        className={`group relative flex min-h-[62px] items-center justify-between border-b border-white/[0.07] rounded-lg px-3 text-xl font-semibold tracking-tight transition-all duration-300 sm:min-h-[68px] sm:text-2xl ${focusRing} ${active ? "border-l-2 border-l-[#FF2D2D] bg-gradient-to-r from-[#FF2D2D]/25 to-transparent text-white" : "text-white/85 hover:bg-white/5 hover:text-white"}`}
                       >
                         <span className="flex items-center gap-4">
                           {/* Active indicator */}
                           <span
-                            className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${active ? "bg-[#E31B23] shadow-[0_0_14px_rgba(227,27,35,0.8)]" : "bg-transparent group-hover:bg-[#E31B23]/50"}`}
+                            className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${active ? "bg-[#FF2D2D] shadow-[0_0_14px_rgba(255,45,45,0.8)]" : "bg-transparent group-hover:bg-[#FF2D2D]/50"}`}
                           />
                           {item.name}
                         </span>
 
                         <ArrowRight
                           size={19}
-                          className={`transition-all duration-300 ${active ? "translate-x-0 text-[#FF6B71] opacity-100" : "translate-x-[-6px] text-blue-200/50 opacity-0 group-hover:translate-x-0 group-hover:text-[#FF6B71] group-hover:opacity-100"}`}
+                          className={`transition-all duration-300 ${active ? "translate-x-0 text-[#FFFFFF] opacity-100" : "translate-x-[-6px] text-blue-200/50 opacity-0 group-hover:translate-x-0 group-hover:text-[#FFFFFF] group-hover:opacity-100"}`}
                         />
                       </Link>
                     </li>

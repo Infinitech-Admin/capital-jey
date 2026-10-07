@@ -37,16 +37,16 @@ import { fetchAdminDashboard, type DashboardData } from "@/lib/api";
 /* -------------------------------------------------------------------------- */
 
 const CATEGORY_COLORS = [
-  "#E31B23",
+  "#FF2D2D",
   "#FFFFFF",
   "#9CA3AF",
-  "#FF3B43",
+  "#FF5A5A",
   "#6B7280",
   "#8E1520",
 ];
 
 const TOOLTIP_STYLE = {
-  background: "#0A0A0A",
+  background: "#111111",
   border: "1px solid rgba(255,255,255,0.1)",
   borderRadius: 12,
   color: "#fff",
@@ -54,13 +54,13 @@ const TOOLTIP_STYLE = {
 };
 
 const STATUS_STYLES: Record<string, string> = {
-  confirmed: "bg-[#E31B23]/10 text-[#FF6B71]",
-  completed: "bg-[#E31B23]/10 text-[#FF6B71]",
+  confirmed: "bg-[#FF2D2D]/10 text-[#FFFFFF]",
+  completed: "bg-[#FF2D2D]/10 text-[#FFFFFF]",
   ready_for_pick_up: "bg-zinc-500/15 text-zinc-300",
-  pending_verification: "bg-[#E31B23]/10 text-[#FF6B71]",
+  pending_verification: "bg-[#FF2D2D]/10 text-[#FFFFFF]",
   reserved: "bg-zinc-500/15 text-zinc-300",
-  cancelled: "bg-[#E31B23]/10 text-[#FF6B71]",
-  rejected: "bg-[#E31B23]/10 text-[#FF6B71]",
+  cancelled: "bg-[#FF2D2D]/10 text-[#FFFFFF]",
+  rejected: "bg-[#FF2D2D]/10 text-[#FFFFFF]",
 };
 
 function statusLabel(status: string): string {
@@ -137,7 +137,7 @@ export default function AdminDashboardPage() {
         <div
           role="group"
           aria-label="Date range"
-          className="flex rounded-full border border-white/10 bg-[#0A0A0A]/70 p-1"
+          className="flex rounded-full border border-white/10 bg-[#111111]/70 p-1"
         >
           {RANGES.map((range) => (
             <button
@@ -147,7 +147,7 @@ export default function AdminDashboardPage() {
               aria-pressed={months === range}
               className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                 months === range
-                  ? "bg-[#E31B23] text-white"
+                  ? "bg-[#FF2D2D] text-white"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
@@ -158,7 +158,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {error && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E31B23]/30 bg-[#E31B23]/5 p-4 text-sm text-[#FF6B71]">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/5 p-4 text-sm text-[#FFFFFF]">
           <span>{error}</span>
           <button
             type="button"
@@ -247,8 +247,8 @@ function DashboardContent({
               >
                 <defs>
                   <linearGradient id="revenueFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#E31B23" stopOpacity={0.35} />
-                    <stop offset="100%" stopColor="#E31B23" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#FF2D2D" stopOpacity={0.35} />
+                    <stop offset="100%" stopColor="#FF2D2D" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid stroke="#ffffff14" vertical={false} />
@@ -281,7 +281,7 @@ function DashboardContent({
                   yAxisId="revenue"
                   type="monotone"
                   dataKey="revenue"
-                  stroke="#E31B23"
+                  stroke="#FF2D2D"
                   strokeWidth={2}
                   fill="url(#revenueFill)"
                 />
@@ -335,7 +335,7 @@ function DashboardContent({
       {/* Cart analytics */}
       <section aria-label="Cart analytics" className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E31B23]/10 text-[#FF6B71]">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF2D2D]/10 text-[#FFFFFF]">
             <ShoppingCart size={16} />
           </span>
           <div>
@@ -401,13 +401,13 @@ function DashboardContent({
                   <Bar
                     dataKey="added"
                     name="Added"
-                    fill="#E31B23"
+                    fill="#FF2D2D"
                     radius={[4, 4, 0, 0]}
                   />
                   <Bar
                     dataKey="removed"
                     name="Removed"
-                    fill="#E31B23"
+                    fill="#FF2D2D"
                     radius={[4, 4, 0, 0]}
                   />
                 </BarChart>
@@ -429,7 +429,7 @@ function DashboardContent({
                       {row.vehicle}
                     </span>
                     <span className="shrink-0 text-xs text-zinc-400">
-                      <span className="font-semibold text-[#FF6B71]">
+                      <span className="font-semibold text-[#FFFFFF]">
                         {row.removed}
                       </span>{" "}
                       removed / {row.added} added
@@ -479,7 +479,7 @@ function DashboardContent({
                 <Bar
                   dataKey="unitsSold"
                   name="Units sold"
-                  fill="#E31B23"
+                  fill="#FF2D2D"
                   radius={[0, 6, 6, 0]}
                   barSize={16}
                 />
@@ -488,7 +488,7 @@ function DashboardContent({
           )}
         </ChartCard>
 
-        <div className="rounded-2xl border border-white/10 bg-[#0A0A0A]/70 p-4 sm:p-5 xl:col-span-2">
+        <div className="rounded-2xl border border-white/10 bg-[#111111]/70 p-4 sm:p-5 xl:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <div>
               <h2 className="text-sm font-semibold text-white">
@@ -498,7 +498,7 @@ function DashboardContent({
             </div>
             <a
               href="/admin/orders"
-              className="text-xs font-medium text-[#FF6B71] hover:text-[#FF6B71]"
+              className="text-xs font-medium text-[#FFFFFF] hover:text-[#FFFFFF]"
             >
               View all
             </a>
@@ -576,12 +576,12 @@ function StatCard({
   const trend = change !== null && change < 0 ? "down" : "up";
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0A0A0A]/70 p-4 sm:p-5">
+    <div className="rounded-2xl border border-white/10 bg-[#111111]/70 p-4 sm:p-5">
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium uppercase tracking-wide text-zinc-400">
           {label}
         </span>
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E31B23]/10 text-[#FF6B71]">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF2D2D]/10 text-[#FFFFFF]">
           {icon}
         </span>
       </div>
@@ -590,7 +590,7 @@ function StatCard({
         {change !== null && (
           <span
             className={`flex items-center gap-1 text-xs font-semibold ${
-              trend === "up" ? "text-[#FF6B71]" : "text-[#FF6B71]"
+              trend === "up" ? "text-[#FFFFFF]" : "text-[#FFFFFF]"
             }`}
           >
             {trend === "up" ? (
@@ -618,7 +618,7 @@ function MiniStat({
 }) {
   return (
     <div
-      className={`rounded-2xl border border-white/10 bg-[#0A0A0A]/70 p-4 ${className}`}
+      className={`rounded-2xl border border-white/10 bg-[#111111]/70 p-4 ${className}`}
     >
       <p className="text-xs text-zinc-400">{label}</p>
       <p className="mt-1 text-2xl font-bold text-white">
@@ -641,7 +641,7 @@ function ChartCard({
 }) {
   return (
     <div
-      className={`rounded-2xl border border-white/10 bg-[#0A0A0A]/70 p-4 sm:p-5 ${className}`}
+      className={`rounded-2xl border border-white/10 bg-[#111111]/70 p-4 sm:p-5 ${className}`}
     >
       <div className="mb-2">
         <h2 className="text-sm font-semibold text-white">{title}</h2>
@@ -667,13 +667,13 @@ function DashboardSkeleton() {
         {[0, 1, 2, 3].map((i) => (
           <div
             key={i}
-            className="h-[104px] rounded-2xl border border-white/10 bg-[#0A0A0A]/50"
+            className="h-[104px] rounded-2xl border border-white/10 bg-[#111111]/50"
           />
         ))}
       </div>
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
-        <div className="h-[350px] rounded-2xl border border-white/10 bg-[#0A0A0A]/50 xl:col-span-2" />
-        <div className="h-[350px] rounded-2xl border border-white/10 bg-[#0A0A0A]/50" />
+        <div className="h-[350px] rounded-2xl border border-white/10 bg-[#111111]/50 xl:col-span-2" />
+        <div className="h-[350px] rounded-2xl border border-white/10 bg-[#111111]/50" />
       </div>
     </div>
   );

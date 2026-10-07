@@ -8,16 +8,16 @@ import Link from "next/link";
 import { Wordmark } from "@/components/layout/wordmark";
 
 export const authInputClass =
-  "w-full rounded-lg border border-[#0A0A0A] bg-[#000000] px-4 py-3 text-base text-white placeholder-zinc-500 outline-none transition-all focus:border-[#E31B23] focus:shadow-[0_0_0_3px_rgba(227,27,35,0.25)] aria-[invalid=true]:border-[#FF6B71]";
+  "w-full rounded-lg border border-[#111111] bg-[#060606] px-4 py-3 text-base text-white placeholder-zinc-500 outline-none transition-all focus:border-[#FF2D2D] focus:shadow-[0_0_0_3px_rgba(255,45,45,0.25)] aria-[invalid=true]:border-[#FFFFFF]";
 
 export const authLabelClass = "mb-1.5 block text-sm font-medium text-zinc-300";
-export const authErrorClass = "mt-1.5 text-sm text-[#FF6B71]";
+export const authErrorClass = "mt-1.5 text-sm text-[#FFFFFF]";
 
 export const authButtonClass =
-  "flex w-full items-center justify-center gap-2 rounded-lg bg-[#E31B23] py-3.5 text-base font-bold text-white shadow-[0_0_22px_rgba(227,27,35,0.55)] transition-all hover:bg-[#FF3B43] hover:shadow-[0_0_30px_rgba(227,27,35,0.8)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6B71] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none";
+  "flex w-full items-center justify-center gap-2 rounded-lg bg-[#FF2D2D] py-3.5 text-base font-bold text-white shadow-[0_0_22px_rgba(255,45,45,0.55)] transition-all hover:bg-[#FF5A5A] hover:shadow-[0_0_30px_rgba(255,45,45,0.8)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFFFFF] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none";
 
 export const authLinkClass =
-  "font-semibold text-[#FF6B71] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "font-semibold text-[#FFFFFF] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 export function AuthShell({
   headline,
@@ -29,11 +29,11 @@ export function AuthShell({
   children: ReactNode;
 }) {
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#000000] px-4 py-12 sm:px-8">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#060606] px-4 py-12 sm:px-8">
       {/* Glow: red behind the brand, blue behind the card, blending in the middle */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_55%_at_35%_50%,rgba(227,27,35,0.28),transparent_70%),radial-gradient(40%_50%_at_75%_60%,rgba(179,18,26,0.30),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_55%_at_35%_50%,rgba(255,45,45,0.28),transparent_70%),radial-gradient(40%_50%_at_75%_60%,rgba(168,0,0,0.30),transparent_70%)]"
       />
 
       {/* One centered group: brand and card sit side by side */}
@@ -43,7 +43,7 @@ export function AuthShell({
           <Link
             href="/"
             aria-label="Capital Jey Car Trading home"
-            className="group w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#E31B23]"
+            className="group w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#FF2D2D]"
           >
             <Wordmark className="text-7xl xl:text-8xl" />
           </Link>
@@ -61,12 +61,12 @@ export function AuthShell({
           <Link
             href="/"
             aria-label="Capital Jey Car Trading home"
-            className="group mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E31B23] lg:hidden"
+            className="group mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF2D2D] lg:hidden"
           >
             <Wordmark className="text-5xl" />
           </Link>
 
-          <div className="w-full max-w-md rounded-2xl border border-[#E31B23]/40 bg-[#000000]/80 p-6 shadow-[0_0_40px_rgba(227,27,35,0.18),0_0_80px_rgba(227,27,35,0.12)] backdrop-blur-md sm:p-8 lg:max-w-none">
+          <div className="w-full max-w-md rounded-2xl border border-[#FF2D2D]/40 bg-[#060606]/80 p-6 shadow-[0_0_40px_rgba(255,45,45,0.18),0_0_80px_rgba(255,45,45,0.12)] backdrop-blur-md sm:p-8 lg:max-w-none">
             {children}
           </div>
         </section>

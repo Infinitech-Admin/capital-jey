@@ -9,7 +9,7 @@ const FACEBOOK_URL = "https://www.facebook.com/bossautoexchange";
 const ADDRESS = "L7, B132, Arellano cor. Diokno St., Muntinlupa City";
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 interface ChatMessage {
   id: string;
@@ -140,11 +140,11 @@ export default function ChatWidget() {
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {/* Chat panel */}
       {isOpen && (
-        <div className="flex h-[min(70vh,560px)] w-[min(92vw,360px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#000000] shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
+        <div className="flex h-[min(70vh,560px)] w-[min(92vw,360px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#060606] shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
           {/* Header */}
-          <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-[#0A0A0A] px-4 py-3.5">
+          <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-[#111111] px-4 py-3.5">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#E31B23] text-black">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FF2D2D] text-black">
                 <Bot size={18} strokeWidth={2.25} />
               </div>
 
@@ -154,7 +154,7 @@ export default function ChatWidget() {
                 </div>
 
                 <div className="flex items-center gap-1.5 text-xs text-zinc-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#E31B23]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF2D2D]" />
                   Online now
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function ChatWidget() {
                 }`}
               >
                 {message.role === "bot" && (
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-[#FF6B71]">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FF2D2D]/15 text-[#FFFFFF]">
                     <Bot size={14} />
                   </div>
                 )}
@@ -191,7 +191,7 @@ export default function ChatWidget() {
                 <div
                   className={`max-w-[75%] break-words rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                     message.role === "user"
-                      ? "rounded-br-sm bg-[#E31B23] text-black"
+                      ? "rounded-br-sm bg-[#FF2D2D] text-black"
                       : "rounded-bl-sm bg-white/[0.06] text-zinc-100"
                   }`}
                 >
@@ -209,7 +209,7 @@ export default function ChatWidget() {
             {/* Typing indicator */}
             {isTyping && (
               <div className="flex items-end gap-2">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-[#FF6B71]">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FF2D2D]/15 text-[#FFFFFF]">
                   <Bot size={14} />
                 </div>
 
@@ -229,7 +229,7 @@ export default function ChatWidget() {
                     key={reply}
                     type="button"
                     onClick={() => sendMessage(reply)}
-                    className={`rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-3 py-1.5 text-xs font-medium text-[#FF6B71] transition-colors hover:bg-[#E31B23]/20 ${focusRing}`}
+                    className={`rounded-full border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 px-3 py-1.5 text-xs font-medium text-[#FFFFFF] transition-colors hover:bg-[#FF2D2D]/20 ${focusRing}`}
                   >
                     {reply}
                   </button>
@@ -241,7 +241,7 @@ export default function ChatWidget() {
           {/* Input */}
           <form
             onSubmit={handleSubmit}
-            className="flex items-center gap-2 border-t border-white/10 bg-[#0A0A0A] p-3"
+            className="flex items-center gap-2 border-t border-white/10 bg-[#111111] p-3"
           >
             <input
               type="text"
@@ -249,14 +249,14 @@ export default function ChatWidget() {
               onChange={(event) => setInput(event.target.value)}
               placeholder="Type your message..."
               aria-label="Type your message"
-              className={`flex-1 rounded-full border border-white/10 bg-[#000000]/40 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 ${focusRing}`}
+              className={`flex-1 rounded-full border border-white/10 bg-[#060606]/40 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 ${focusRing}`}
             />
 
             <button
               type="submit"
               aria-label="Send message"
               disabled={!input.trim()}
-              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E31B23] text-black transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 ${focusRing}`}
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FF2D2D] text-black transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 ${focusRing}`}
             >
               <Send size={16} strokeWidth={2.25} />
             </button>
@@ -269,7 +269,7 @@ export default function ChatWidget() {
         type="button"
         aria-label={isOpen ? "Close chat" : "Open chat"}
         onClick={() => (isOpen ? setIsOpen(false) : handleOpen())}
-        className={`relative flex h-14 w-14 items-center justify-center rounded-full bg-[#E31B23] text-black shadow-[0_10px_30px_rgba(227,27,35,0.45)] transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_35px_rgba(227,27,35,0.65)] ${focusRing}`}
+        className={`relative flex h-14 w-14 items-center justify-center rounded-full bg-[#FF2D2D] text-black shadow-[0_10px_30px_rgba(255,45,45,0.45)] transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_35px_rgba(255,45,45,0.65)] ${focusRing}`}
       >
         {isOpen ? (
           <X size={24} strokeWidth={2.25} />
@@ -278,8 +278,8 @@ export default function ChatWidget() {
         )}
 
         {hasUnread && !isOpen && (
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#E31B23] ring-2 ring-[#000000]">
-            <span className="h-2 w-2 animate-ping rounded-full bg-[#FF3B43]" />
+          <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#FF2D2D] ring-2 ring-[#060606]">
+            <span className="h-2 w-2 animate-ping rounded-full bg-[#FF5A5A]" />
           </span>
         )}
       </button>

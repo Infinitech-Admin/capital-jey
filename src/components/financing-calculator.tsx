@@ -243,7 +243,7 @@ const DISCLAIMER =
 const SHOW_INTEREST_BREAKDOWN = false;
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 function download(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
@@ -520,12 +520,12 @@ export default function FinancingCalculator({
   return (
     <section
       aria-label="Financing"
-      className="min-w-0 rounded-[28px] border border-white/10 bg-[#0A0A0A] p-5 sm:p-6"
+      className="min-w-0 rounded-[28px] border border-white/10 bg-[#111111] p-5 sm:p-6"
     >
       {/* Header */}
       <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#E31B23]/10">
-          <Calculator className="text-[#FF6B71]" size={18} />
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#FF2D2D]/10">
+          <Calculator className="text-[#FFFFFF]" size={18} />
         </div>
         <h2 className="text-xl font-bold text-white">Loan Calculator</h2>
       </div>
@@ -549,8 +549,8 @@ export default function FinancingCalculator({
               onClick={() => setLenderId(l.id)}
               className={`rounded-full border px-4 py-2 text-sm font-bold transition-all sm:px-5 sm:py-2.5 ${
                 active
-                  ? "border-[#E31B23] bg-[#E31B23] text-white"
-                  : "border-white/15 bg-white/5 text-white hover:border-[#E31B23]/60"
+                  ? "border-[#FF2D2D] bg-[#FF2D2D] text-white"
+                  : "border-white/15 bg-white/5 text-white hover:border-[#FF2D2D]/60"
               } ${focusRing}`}
             >
               {l.name}
@@ -570,7 +570,7 @@ export default function FinancingCalculator({
           <div className="grid grid-cols-1 gap-6">
             <div className="min-w-0">
               <p className="mb-4 text-xs text-zinc-400">
-                Fields marked with an <span className="text-[#FF6B71]">*</span>{" "}
+                Fields marked with an <span className="text-[#FFFFFF]">*</span>{" "}
                 are required
               </p>
 
@@ -581,7 +581,7 @@ export default function FinancingCalculator({
                       htmlFor={`${lender.id}-${f.key}`}
                       className="mb-2 block text-sm font-bold text-white"
                     >
-                      {f.label} <span className="text-[#FF6B71]">*</span>
+                      {f.label} <span className="text-[#FFFFFF]">*</span>
                     </label>
                     <input
                       id={`${lender.id}-${f.key}`}
@@ -604,14 +604,14 @@ export default function FinancingCalculator({
                         }))
                       }
                       className={`${inputClass} ${
-                        errors[f.key] ? "border-[#FF6B71]" : ""
+                        errors[f.key] ? "border-[#FFFFFF]" : ""
                       }`}
                     />
                     {(errors[f.key] || f.hint) && (
                       <p
                         id={`${lender.id}-${f.key}-note`}
                         className={`mt-1.5 text-xs ${
-                          errors[f.key] ? "text-[#FF6B71]" : "text-zinc-500"
+                          errors[f.key] ? "text-[#FFFFFF]" : "text-zinc-500"
                         }`}
                       >
                         {errors[f.key] ?? f.hint}
@@ -666,8 +666,8 @@ export default function FinancingCalculator({
                     }
                     className={`rounded-full border px-5 py-2.5 text-sm font-bold transition-all ${
                       active
-                        ? "border-[#E31B23] bg-[#E31B23] text-white"
-                        : "border-white/15 bg-white/5 text-white hover:border-[#E31B23]/60"
+                        ? "border-[#FF2D2D] bg-[#FF2D2D] text-white"
+                        : "border-white/15 bg-white/5 text-white hover:border-[#FF2D2D]/60"
                     } ${focusRing}`}
                   >
                     {opt}%
@@ -676,7 +676,7 @@ export default function FinancingCalculator({
               })}
             </div>
 
-            <dl className="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#0A0A0A] text-sm">
+            <dl className="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#111111] text-sm">
               {[
                 ["Vehicle price", peso(total)],
                 [`Down payment (${dp}%)`, peso(downPayment)],
@@ -701,11 +701,11 @@ export default function FinancingCalculator({
               {plans.map((p) => (
                 <li
                   key={`${lender.id}-${dp}-${p.months}`}
-                  className="min-w-0 rounded-2xl border border-[#E31B23]/25 bg-[#0A0A0A] px-4 py-3 transition-colors hover:border-[#E31B23]/60"
+                  className="min-w-0 rounded-2xl border border-[#FF2D2D]/25 bg-[#111111] px-4 py-3 transition-colors hover:border-[#FF2D2D]/60"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-[#FF6B71]">
+                      <p className="text-sm font-bold text-[#FFFFFF]">
                         {termTitle(p.months)}
                       </p>
                       <p className="text-xs text-zinc-500">
@@ -714,7 +714,7 @@ export default function FinancingCalculator({
                       </p>
                     </div>
                     <div className="min-w-0 text-right">
-                      <p className="break-words text-lg font-black leading-tight text-[#FF6B71] sm:text-xl">
+                      <p className="break-words text-lg font-black leading-tight text-[#FFFFFF] sm:text-xl">
                         {peso(p.monthly)}
                       </p>
                       <p className="text-xs text-zinc-500">per month</p>
@@ -750,7 +750,7 @@ export default function FinancingCalculator({
           type="button"
           disabled={disabled || !quote}
           onClick={downloadPdf}
-          className={`inline-flex min-w-[9rem] flex-1 items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-bold text-white transition-all hover:bg-[#E31B23] disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
+          className={`inline-flex min-w-[9rem] flex-1 items-center justify-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-3 text-sm font-bold text-white transition-all hover:bg-[#FF2D2D] disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
         >
           <Download size={16} />
           Download PDF
@@ -759,7 +759,7 @@ export default function FinancingCalculator({
           type="button"
           disabled={disabled || !quote}
           onClick={downloadWord}
-          className={`inline-flex min-w-[9rem] flex-1 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all hover:border-[#E31B23] hover:bg-[#E31B23]/10 disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
+          className={`inline-flex min-w-[9rem] flex-1 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all hover:border-[#FF2D2D] hover:bg-[#FF2D2D]/10 disabled:cursor-not-allowed disabled:opacity-50 ${focusRing}`}
         >
           <FileText size={16} />
           Download Word

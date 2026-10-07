@@ -130,9 +130,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
   if (authState === "checking") {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#000000]">
+      <div className="flex min-h-screen items-center justify-center bg-[#060606]">
         <div className="flex items-center gap-2 text-sm text-zinc-400">
-          <Loader2 size={18} className="animate-spin text-[#FF6B71]" />
+          <Loader2 size={18} className="animate-spin text-[#FFFFFF]" />
           Checking session...
         </div>
       </div>
@@ -140,18 +140,18 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#060606] text-white">
       {/* Mobile overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#000000]/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-[#060606]/60 backdrop-blur-sm lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-white/10 bg-[#000000] transition-transform duration-200 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-white/10 bg-[#060606] transition-transform duration-200 lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -161,11 +161,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             href="/admin"
             className="flex items-center gap-2 text-lg font-black text-white"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E31B23]/15 text-[#FF6B71]">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF2D2D]/15 text-[#FFFFFF]">
               <Car size={17} />
             </span>
             Auto
-            <span className="text-[#FF6B71]">Trade</span>
+            <span className="text-[#FFFFFF]">Trade</span>
           </Link>
 
           <button
@@ -213,7 +213,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                   active
-                    ? "bg-[#E31B23]/10 text-[#FF6B71]"
+                    ? "bg-[#FF2D2D]/10 text-[#FFFFFF]"
                     : "text-zinc-300 hover:bg-white/5 hover:text-white"
                 }`}
               >
@@ -239,7 +239,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       {/* Main column */}
       <div className="lg:pl-64">
         {/* Header */}
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-white/10 bg-[#000000]/90 px-4 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-white/10 bg-[#060606]/90 px-4 backdrop-blur sm:px-6">
           {/* Mobile menu */}
           <button
             onClick={() => setSidebarOpen(true)}
@@ -259,7 +259,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <input
               type="text"
               placeholder="Search vehicles, orders..."
-              className="w-full rounded-lg border border-white/10 bg-[#0A0A0A]/70 py-2 pl-9 pr-3 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#E31B23]/60"
+              className="w-full rounded-lg border border-white/10 bg-[#111111]/70 py-2 pl-9 pr-3 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#FF2D2D]/60"
             />
           </div>
 
@@ -272,7 +272,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             >
               <Bell size={19} />
 
-              <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-[#E31B23]" />
+              <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-[#FF2D2D]" />
             </button>
 
             {/* User */}
@@ -288,7 +288,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               </div>
 
               <div
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/15 text-xs font-bold text-[#FF6B71]"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FF2D2D]/15 text-xs font-bold text-[#FFFFFF]"
                 title={user?.email}
               >
                 {getInitials(user?.name)}

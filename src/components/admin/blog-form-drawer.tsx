@@ -13,10 +13,10 @@ import {
 } from "@/lib/api";
 
 const inputClass =
-  "w-full rounded-xl border border-white/10 bg-[#000000]/60 px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#E31B23]/60";
+  "w-full rounded-xl border border-white/10 bg-[#060606]/60 px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#FF2D2D]/60";
 
 const fileClass =
-  "block w-full text-xs text-zinc-400 file:mr-3 file:rounded-full file:border-0 file:bg-[#E31B23]/15 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-[#FF6B71]";
+  "block w-full text-xs text-zinc-400 file:mr-3 file:rounded-full file:border-0 file:bg-[#FF2D2D]/15 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-[#FFFFFF]";
 
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -38,7 +38,7 @@ function ProgressBar({ percent }: { percent: number }) {
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
         <div
-          className="h-full bg-[#E31B23] transition-all"
+          className="h-full bg-[#FF2D2D] transition-all"
           style={{ width: `${percent}%` }}
         />
       </div>
@@ -177,8 +177,8 @@ export default function BlogFormDrawer({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]/60 p-4 backdrop-blur-sm">
-      <div className="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-[#000000] shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#060606]/60 p-4 backdrop-blur-sm">
+      <div className="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-[#060606] shadow-2xl">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
           <h2 className="text-lg font-bold text-white">
@@ -200,7 +200,7 @@ export default function BlogFormDrawer({
         >
           <div className="flex-1 space-y-5 overflow-y-auto px-6 py-6">
             {error && (
-              <div className="rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 px-4 py-3 text-sm text-[#FF6B71]">
+              <div className="rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]">
                 {error}
               </div>
             )}
@@ -229,7 +229,7 @@ export default function BlogFormDrawer({
             {/* Image */}
             <Field label="Image (optional)">
               <div className="flex items-center gap-3">
-                <div className="flex h-20 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-[#000000]">
+                <div className="flex h-20 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-[#060606]">
                   {imagePreview ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -256,7 +256,7 @@ export default function BlogFormDrawer({
                     <button
                       type="button"
                       onClick={clearImage}
-                      className="mt-2 inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#FF6B71]"
+                      className="mt-2 inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#FFFFFF]"
                     >
                       <Trash2 size={12} /> Remove image
                     </button>
@@ -300,7 +300,7 @@ export default function BlogFormDrawer({
                   <button
                     type="button"
                     onClick={clearVideo}
-                    className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#FF6B71]"
+                    className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#FFFFFF]"
                   >
                     <Trash2 size={12} /> Remove video
                   </button>
@@ -325,7 +325,7 @@ export default function BlogFormDrawer({
             <button
               type="submit"
               disabled={saving || uploading}
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E31B23] to-[#FF3B43] px-5 py-2.5 text-sm font-bold text-white disabled:opacity-60"
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF2D2D] to-[#FF5A5A] px-5 py-2.5 text-sm font-bold text-white disabled:opacity-60"
             >
               {(saving || uploading) && (
                 <Loader2 size={15} className="animate-spin" />

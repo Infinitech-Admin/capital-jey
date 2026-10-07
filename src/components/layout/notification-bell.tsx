@@ -179,7 +179,7 @@ export default function NotificationBell({
         onClick={handleClick}
         aria-label={label}
         title={label}
-        className={`relative flex h-11 w-11 items-center justify-center rounded-full border bg-[#000000]/30 text-white backdrop-blur-md transition-all duration-300 hover:text-[#FF6B71] sm:h-12 sm:w-12 ${className}`}
+        className={`relative flex h-11 w-11 items-center justify-center rounded-full border bg-[#060606]/30 text-white backdrop-blur-md transition-all duration-300 hover:text-[#FFFFFF] sm:h-12 sm:w-12 ${className}`}
       >
         <Icon
           size={20}
@@ -187,14 +187,14 @@ export default function NotificationBell({
           className={busy ? "animate-spin" : ""}
         />
         {status === "subscribed" && !busy && (
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#E31B23] ring-2 ring-[#000000]" />
+          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#FF2D2D] ring-2 ring-[#060606]" />
         )}
       </button>
 
       {notice && (
         <div
           role="status"
-          className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-white/10 bg-[#0A0A0A] p-3 text-xs leading-5 text-zinc-200 shadow-xl"
+          className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-white/10 bg-[#111111] p-3 text-xs leading-5 text-zinc-200 shadow-xl"
         >
           {notice}
         </div>

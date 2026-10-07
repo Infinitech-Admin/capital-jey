@@ -60,12 +60,12 @@ export default function BlogPostPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#0A0A0A] text-white">
-        <div className="border-b border-[#E31B23]/20 bg-[#000000] pb-10 pt-28 sm:pt-32">
+      <main className="min-h-screen bg-[#111111] text-white">
+        <div className="border-b border-[#FF2D2D]/20 bg-[#060606] pb-10 pt-28 sm:pt-32">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF6B71] hover:text-[#FF3B43]"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#FFFFFF] hover:text-[#FF5A5A]"
             >
               <ArrowLeft size={16} />
               Back to blog
@@ -90,12 +90,12 @@ export default function BlogPostPage() {
 
         <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
           {isLoading ? (
-            <div className="rounded-[28px] border border-white/10 bg-[#0A0A0A] px-6 py-16 text-center">
-              <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#E31B23]/40 border-t-[#E31B23]" />
+            <div className="rounded-[28px] border border-white/10 bg-[#111111] px-6 py-16 text-center">
+              <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#FF2D2D]/40 border-t-[#FF2D2D]" />
               <p className="mt-4 text-sm text-zinc-400">Loading post...</p>
             </div>
           ) : loadError || !post ? (
-            <div className="rounded-[28px] border border-[#E31B23]/30 bg-[#0A0A0A] px-6 py-16 text-center">
+            <div className="rounded-[28px] border border-[#FF2D2D]/30 bg-[#111111] px-6 py-16 text-center">
               <p className="text-2xl font-bold text-white">
                 Something went wrong
               </p>
@@ -105,7 +105,7 @@ export default function BlogPostPage() {
               <button
                 type="button"
                 onClick={() => load()}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-semibold text-white hover:bg-[#FF3B43]"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-3 text-sm font-semibold text-white hover:bg-[#FF5A5A]"
               >
                 <RotateCcw size={16} />
                 Retry
@@ -125,7 +125,7 @@ export default function BlogPostPage() {
                   />
                 </div>
               ) : imageSrc ? (
-                <div className="overflow-hidden rounded-[26px] border border-white/10 bg-[#000000]">
+                <div className="overflow-hidden rounded-[26px] border border-white/10 bg-[#060606]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imageSrc}

@@ -127,21 +127,21 @@ export default function ShowcaseSection() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Cinematic background glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E31B23]/5 blur-[140px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF2D2D]/5 blur-[140px]" />
 
       <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
         <div className="flex max-w-7xl mx-auto justify-between items-center gap-10 lg:gap-20">
           <div className="max-w-3xl mx-0 py-10">
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#E31B23]" />
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+              <span className="h-px w-10 bg-[#FF2D2D]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                 Featured Vehicles
               </span>
-              <span className="h-px w-10 bg-[#E31B23]" />
+              <span className="h-px w-10 bg-[#FF2D2D]" />
             </div>
 
             <h2 className="text-4xl font-black tracking-tight text-[var(--foreground)] sm:text-5xl lg:text-6xl">
-              Drive <span className="text-[#FF6B71]">Excellence.</span>
+              Drive <span className="text-[#FFFFFF]">Excellence.</span>
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-[var(--muted)] sm:text-base">
@@ -152,7 +152,7 @@ export default function ShowcaseSection() {
           <div className="group mt-6 inline-block">
             <Link
               href="/showroom"
-              className="flex items-center gap-2 text-lg font-semibold text-[#FF6B71] underline decoration-transparent decoration-2 underline-offset-4 transition-all duration-300 hover:decoration-[#E31B23]"
+              className="flex items-center gap-2 text-lg font-semibold text-[#FFFFFF] underline decoration-transparent decoration-2 underline-offset-4 transition-all duration-300 hover:decoration-[#FF2D2D]"
             >
               Visit Showroom
               <ArrowRight
@@ -166,8 +166,8 @@ export default function ShowcaseSection() {
         {/* Loading */}
         {isLoading && (
           <div className="mx-auto mt-16 flex h-[360px] max-w-4xl flex-col items-center justify-center text-center sm:h-[480px] lg:h-[620px]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#E31B23]/30 bg-[#E31B23]/10">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#E31B23]/40 border-t-[#E31B23]" />
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FF2D2D]/30 bg-[#FF2D2D]/10">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#FF2D2D]/40 border-t-[#FF2D2D]" />
             </div>
             <p className="mt-6 text-lg font-semibold text-[var(--foreground)]">
               Loading featured vehicles...
@@ -177,13 +177,13 @@ export default function ShowcaseSection() {
 
         {/* Error */}
         {!isLoading && loadError && (
-          <div className="mx-auto mt-16 flex max-w-xl flex-col items-center rounded-[28px] border border-[#E31B23]/30 bg-[#0A0A0A] px-6 py-12 text-center">
+          <div className="mx-auto mt-16 flex max-w-xl flex-col items-center rounded-[28px] border border-[#FF2D2D]/30 bg-[#111111] px-6 py-12 text-center">
             <p className="text-xl font-bold text-white">Something went wrong</p>
             <p className="mt-3 text-sm leading-6 text-zinc-300">{loadError}</p>
             <button
               type="button"
               onClick={() => load()}
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF3B43]"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A]"
             >
               <RotateCcw size={16} />
               Retry
@@ -212,7 +212,7 @@ export default function ShowcaseSection() {
                   type="button"
                   onClick={goPrevious}
                   aria-label="Previous vehicle"
-                  className="absolute left-1 top-1/2 z-50 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#000000]/60 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-[#E31B23] hover:bg-[#E31B23] hover:text-black sm:left-5 sm:h-12 sm:w-12 lg:left-10"
+                  className="absolute left-1 top-1/2 z-50 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#060606]/60 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-[#FF2D2D] hover:bg-[#FF2D2D] hover:text-black sm:left-5 sm:h-12 sm:w-12 lg:left-10"
                 >
                   <ArrowLeft size={19} />
                 </button>
@@ -221,7 +221,7 @@ export default function ShowcaseSection() {
                   type="button"
                   onClick={goNext}
                   aria-label="Next vehicle"
-                  className="absolute right-1 top-1/2 z-50 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#000000]/60 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-[#E31B23] hover:bg-[#E31B23] hover:text-black sm:right-5 sm:h-12 sm:w-12 lg:right-10"
+                  className="absolute right-1 top-1/2 z-50 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#060606]/60 text-white backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-[#FF2D2D] hover:bg-[#FF2D2D] hover:text-black sm:right-5 sm:h-12 sm:w-12 lg:right-10"
                 >
                   <ArrowRight size={19} />
                 </button>
@@ -260,7 +260,7 @@ export default function ShowcaseSection() {
                     <div className="relative h-full w-full">
                       {/* Floor reflection/glow */}
                       {isCenter && (
-                        <div className="absolute bottom-[4%] left-1/2 h-16 w-[65%] -translate-x-1/2 rounded-full bg-[#E31B23]/20 blur-3xl transition-opacity duration-700" />
+                        <div className="absolute bottom-[4%] left-1/2 h-16 w-[65%] -translate-x-1/2 rounded-full bg-[#FF2D2D]/20 blur-3xl transition-opacity duration-700" />
                       )}
 
                       <Image
@@ -305,7 +305,7 @@ export default function ShowcaseSection() {
               {/* Specs */}
               <div className="mt-6 flex items-center justify-center divide-x divide-[var(--border)]">
                 <div className="flex items-center gap-2 px-4 sm:px-7">
-                  <Gauge size={17} className="text-[#FF6B71]" />
+                  <Gauge size={17} className="text-[#FFFFFF]" />
                   <div className="text-left">
                     <p className="text-sm font-semibold text-[var(--foreground)]">
                       {activeCar.engine}
@@ -317,7 +317,7 @@ export default function ShowcaseSection() {
                 </div>
 
                 <div className="flex items-center gap-2 px-4 sm:px-7">
-                  <CarFront size={17} className="text-[#FF6B71]" />
+                  <CarFront size={17} className="text-[#FFFFFF]" />
                   <div className="text-left">
                     <p className="text-sm font-semibold text-[var(--foreground)]">
                       {activeCar.horsepower}
@@ -329,7 +329,7 @@ export default function ShowcaseSection() {
                 </div>
 
                 <div className="hidden items-center gap-2 px-4 sm:flex sm:px-7">
-                  <Settings2 size={17} className="text-[#FF6B71]" />
+                  <Settings2 size={17} className="text-[#FFFFFF]" />
                   <div className="text-left">
                     <p className="text-sm font-semibold text-[var(--foreground)]">
                       {activeCar.transmission}
@@ -345,7 +345,7 @@ export default function ShowcaseSection() {
               <div className="mt-7">
                 <Link
                   href={`/showroom/car/${activeCar.id}`}
-                  className="group inline-flex items-center gap-3 rounded-full border border-[#E31B23] px-6 py-3 text-sm font-semibold text-[#FF6B71] transition-all duration-300 hover:scale-105 hover:bg-[#E31B23] hover:text-black"
+                  className="group inline-flex items-center gap-3 rounded-full border border-[#FF2D2D] px-6 py-3 text-sm font-semibold text-[#FFFFFF] transition-all duration-300 hover:scale-105 hover:bg-[#FF2D2D] hover:text-black"
                 >
                   View Details
                   <ArrowRight
@@ -369,7 +369,7 @@ export default function ShowcaseSection() {
                       aria-label={`View ${car.name}`}
                       className={`h-1.5 rounded-full transition-all duration-500 ${
                         index === safeIndex
-                          ? "w-7 bg-[#E31B23]"
+                          ? "w-7 bg-[#FF2D2D]"
                           : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
                       }`}
                     />

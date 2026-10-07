@@ -118,23 +118,23 @@ const socials = [
 ];
 
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 export default function About() {
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#0A0A0A] text-white">
+      <main className="min-h-screen bg-[#111111] text-white">
         {/* HERO */}
-        <section className="relative overflow-hidden border-b border-[#E31B23]/20 bg-[#000000]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(227,27,35,0.18),transparent_50%)]" />
+        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,45,45,0.18),transparent_50%)]" />
 
           {/* Oversized wheel, echoes the logo */}
           <svg
             aria-hidden="true"
             viewBox="0 0 100 100"
-            className="pointer-events-none absolute -bottom-40 -left-40 h-[480px] w-[480px] text-[#E31B23] opacity-[0.09] lg:-left-24 lg:-bottom-56 lg:h-[640px] lg:w-[640px]"
+            className="pointer-events-none absolute -bottom-40 -left-40 h-[480px] w-[480px] text-[#FF2D2D] opacity-[0.09] lg:-left-24 lg:-bottom-56 lg:h-[640px] lg:w-[640px]"
           >
             <circle
               cx="50"
@@ -171,15 +171,15 @@ export default function About() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
               <div>
                 <div className="mb-5 flex items-center gap-3">
-                  <span className="h-px w-10 bg-[#E31B23]" />
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                  <span className="h-px w-10 bg-[#FF2D2D]" />
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                     About us
                   </span>
                 </div>
 
                 <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
                   Quality cars,
-                  <span className="block text-[#FF6B71]">honest terms.</span>
+                  <span className="block text-[#FFFFFF]">honest terms.</span>
                 </h1>
 
                 <p className="mt-6 max-w-xl text-base leading-7 text-zinc-300 sm:text-lg">
@@ -191,7 +191,7 @@ export default function About() {
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Link
                     href="/showroom"
-                    className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#E31B23] px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF3B43] hover:shadow-[0_0_30px_rgba(227,27,35,0.25)] ${focusRing}`}
+                    className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#FF2D2D] px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A] hover:shadow-[0_0_30px_rgba(255,45,45,0.25)] ${focusRing}`}
                   >
                     Browse the showroom
                     <ArrowRight size={16} />
@@ -199,7 +199,7 @@ export default function About() {
 
                   <Link
                     href="/sell-trade"
-                    className={`inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#E31B23]/50 hover:bg-white/10 ${focusRing}`}
+                    className={`inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-white/10 ${focusRing}`}
                   >
                     Sell / Trade your car
                   </Link>
@@ -207,7 +207,7 @@ export default function About() {
               </div>
 
               {/* Visit panel */}
-              <div className="rounded-[30px] border border-white/10 bg-[#0A0A0A] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-7">
+              <div className="rounded-[30px] border border-white/10 bg-[#111111] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-7">
                 <h2 className="text-2xl font-black text-white">
                   Visit the showroom
                 </h2>
@@ -216,7 +216,7 @@ export default function About() {
                   <div className="flex gap-3">
                     <MapPin
                       size={18}
-                      className="mt-1 shrink-0 text-[#FF6B71]"
+                      className="mt-1 shrink-0 text-[#FFFFFF]"
                     />
                     <p className="text-sm leading-7 text-zinc-300">
                       {BUSINESS.address}
@@ -224,10 +224,10 @@ export default function About() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <Phone size={18} className="shrink-0 text-[#FF6B71]" />
+                    <Phone size={18} className="shrink-0 text-[#FFFFFF]" />
                     <a
                       href={BUSINESS.phoneHref}
-                      className="font-semibold text-[#FF6B71] transition-colors hover:text-[#FF3B43]"
+                      className="font-semibold text-[#FFFFFF] transition-colors hover:text-[#FF5A5A]"
                     >
                       {BUSINESS.phoneDisplay}
                     </a>
@@ -238,7 +238,7 @@ export default function About() {
                   href={MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#E31B23]/50 bg-[#E31B23]/10 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#E31B23]/20 ${focusRing}`}
+                  className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#FF2D2D]/50 bg-[#FF2D2D]/10 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#FF2D2D]/20 ${focusRing}`}
                 >
                   Get directions
                   <ArrowUpRight size={16} />
@@ -252,7 +252,7 @@ export default function About() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-semibold text-white transition-colors hover:border-[#E31B23] hover:text-[#FF6B71] ${focusRing}`}
+                      className={`rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-semibold text-white transition-colors hover:border-[#FF2D2D] hover:text-[#FFFFFF] ${focusRing}`}
                     >
                       {social.label}
                     </a>
@@ -263,14 +263,14 @@ export default function About() {
           </div>
 
           {/* Facts bar */}
-          <div className="relative border-t border-white/10 bg-[#000000]/80">
+          <div className="relative border-t border-white/10 bg-[#060606]/80">
             <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-4 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
               {facts.map(({ icon: Icon, text }) => (
                 <li
                   key={text}
                   className="flex items-center gap-3 text-sm text-zinc-300"
                 >
-                  <Icon size={18} className="shrink-0 text-[#FF6B71]" />
+                  <Icon size={18} className="shrink-0 text-[#FFFFFF]" />
                   {text}
                 </li>
               ))}
@@ -284,13 +284,13 @@ export default function About() {
             One dealership for every way you move.
           </h2>
 
-          <div className="mt-10 grid overflow-hidden rounded-[28px] border border-white/10 bg-[#000000] md:grid-cols-3 md:divide-x md:divide-white/10">
+          <div className="mt-10 grid overflow-hidden rounded-[28px] border border-white/10 bg-[#060606] md:grid-cols-3 md:divide-x md:divide-white/10">
             {services.map(({ icon: Icon, title, description, href, cta }) => (
               <div
                 key={title}
                 className="flex flex-col border-t border-white/10 p-6 first:border-t-0 sm:p-8 md:border-t-0"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 text-[#FF6B71]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF]">
                   <Icon size={22} />
                 </div>
 
@@ -301,7 +301,7 @@ export default function About() {
 
                 <Link
                   href={href}
-                  className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#FF6B71] transition-colors hover:text-[#FF3B43] ${focusRing}`}
+                  className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#FFFFFF] transition-colors hover:text-[#FF5A5A] ${focusRing}`}
                 >
                   {cta}
                   <ArrowRight size={16} />
@@ -312,7 +312,7 @@ export default function About() {
         </section>
 
         {/* HOW IT WORKS */}
-        <section className="border-y border-white/10 bg-[#000000]">
+        <section className="border-y border-white/10 bg-[#060606]">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <h2 className="max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl">
               How it works
@@ -322,7 +322,7 @@ export default function About() {
               {journeys.map((journey) => (
                 <div
                   key={journey.title}
-                  className="rounded-[26px] border border-white/10 bg-[#0A0A0A] p-6 sm:p-8"
+                  className="rounded-[26px] border border-white/10 bg-[#111111] p-6 sm:p-8"
                 >
                   <h3 className="text-xl font-bold text-white">
                     {journey.title}
@@ -331,7 +331,7 @@ export default function About() {
                   <ol className="mt-6 space-y-5">
                     {journey.steps.map((step, index) => (
                       <li key={step} className="flex gap-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 text-sm font-bold text-[#FF6B71]">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 text-sm font-bold text-[#FFFFFF]">
                           {index + 1}
                         </span>
                         <span className="pt-1 text-base leading-7 text-zinc-300">
@@ -352,7 +352,7 @@ export default function About() {
             <div className="lg:sticky lg:top-28 lg:self-start">
               <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
                 We make buying feel confident,{" "}
-                <span className="text-[#FF6B71]">not complicated.</span>
+                <span className="text-[#FFFFFF]">not complicated.</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-zinc-300">
                 Whether you&apos;re shopping for a family SUV, a city car, or a
@@ -364,7 +364,7 @@ export default function About() {
             <ul className="divide-y divide-white/10 border-y border-white/10">
               {values.map(({ icon: Icon, title, description }) => (
                 <li key={title} className="flex gap-5 py-7">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 text-[#FF6B71]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF]">
                     <Icon size={22} />
                   </div>
                   <div>

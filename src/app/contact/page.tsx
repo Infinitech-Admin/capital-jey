@@ -119,7 +119,7 @@ const NAME_PATTERN = new RegExp("^[\\p{L}\\p{M}\\s.'’-]+$", "u");
 const PHONE_PATTERN = /^09\d{9}$/;
 
 const inputClass =
-  "w-full rounded-2xl border border-white/10 bg-[#000000] px-4 py-3 text-white placeholder:text-zinc-500 focus:border-[#E31B23] focus:outline-none";
+  "w-full rounded-2xl border border-white/10 bg-[#060606] px-4 py-3 text-white placeholder:text-zinc-500 focus:border-[#FF2D2D] focus:outline-none";
 
 export default function Contact() {
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
@@ -271,22 +271,22 @@ export default function Contact() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#0A0A0A] text-white">
-        <section className="relative overflow-hidden border-b border-[#E31B23]/20 bg-[#000000]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(227,27,35,0.18),transparent_50%)]" />
+      <main className="min-h-screen bg-[#111111] text-white">
+        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,45,45,0.18),transparent_50%)]" />
 
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="max-w-3xl">
               <div className="mb-5 flex items-center gap-3">
-                <span className="h-px w-10 bg-[#E31B23]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                <span className="h-px w-10 bg-[#FF2D2D]" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                   Contact us
                 </span>
               </div>
 
               <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Let’s find your
-                <span className="block text-[#FF6B71]">next ideal drive.</span>
+                <span className="block text-[#FFFFFF]">next ideal drive.</span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
@@ -310,9 +310,9 @@ export default function Contact() {
                   rel={
                     href.startsWith("http") ? "noopener noreferrer" : undefined
                   }
-                  className="group flex items-start gap-4 rounded-[24px] border border-white/10 bg-[#0A0A0A] p-5 transition-all duration-300 hover:border-[#E31B23]/50 hover:bg-[#0A0A0A]"
+                  className="group flex items-start gap-4 rounded-[24px] border border-white/10 bg-[#111111] p-5 transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-[#111111]"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/30 bg-[#E31B23]/10 text-[#FF6B71]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF]">
                     <Icon size={20} />
                   </div>
 
@@ -320,15 +320,15 @@ export default function Contact() {
                     <p className="text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
                       {title}
                     </p>
-                    <p className="mt-2 text-lg font-semibold text-white transition-colors group-hover:text-[#FF6B71]">
+                    <p className="mt-2 text-lg font-semibold text-white transition-colors group-hover:text-[#FFFFFF]">
                       {value}
                     </p>
                   </div>
                 </a>
               ))}
 
-              <div className="rounded-[24px] border border-white/10 bg-[#0A0A0A] p-5">
-                <div className="mb-4 flex items-center gap-3 text-[#FF6B71]">
+              <div className="rounded-[24px] border border-white/10 bg-[#111111] p-5">
+                <div className="mb-4 flex items-center gap-3 text-[#FFFFFF]">
                   <Clock3 size={18} />
                   <p className="text-xs font-semibold uppercase tracking-[0.25em]">
                     Opening hours
@@ -358,8 +358,8 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-[#E31B23]/20 bg-[#0A0A0A] p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-7">
-              <div className="mb-6 flex items-center gap-3 text-[#FF6B71]">
+            <div className="rounded-[30px] border border-[#FF2D2D]/20 bg-[#111111] p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)] sm:p-7">
+              <div className="mb-6 flex items-center gap-3 text-[#FFFFFF]">
                 <Send size={18} />
                 <span className="text-xs font-semibold uppercase tracking-[0.28em]">
                   Enquire now
@@ -371,7 +371,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       First name
-                      <span className="text-[#FF6B71]" aria-label="required">
+                      <span className="text-[#FFFFFF]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -389,7 +389,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.firstName ? (
-                      <span className="mt-2 block text-sm text-[#FF6B71]">
+                      <span className="mt-2 block text-sm text-[#FFFFFF]">
                         {errors.firstName}
                       </span>
                     ) : null}
@@ -398,7 +398,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       Last name
-                      <span className="text-[#FF6B71]" aria-label="required">
+                      <span className="text-[#FFFFFF]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -416,7 +416,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.lastName ? (
-                      <span className="mt-2 block text-sm text-[#FF6B71]">
+                      <span className="mt-2 block text-sm text-[#FFFFFF]">
                         {errors.lastName}
                       </span>
                     ) : null}
@@ -427,7 +427,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       Email
-                      <span className="text-[#FF6B71]" aria-label="required">
+                      <span className="text-[#FFFFFF]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -445,7 +445,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.email ? (
-                      <span className="mt-2 block text-sm text-[#FF6B71]">
+                      <span className="mt-2 block text-sm text-[#FFFFFF]">
                         {errors.email}
                       </span>
                     ) : null}
@@ -454,7 +454,7 @@ export default function Contact() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                       Phone
-                      <span className="text-[#FF6B71]" aria-label="required">
+                      <span className="text-[#FFFFFF]" aria-label="required">
                         *
                       </span>
                     </span>
@@ -476,7 +476,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                     {errors.phone ? (
-                      <span className="mt-2 block text-sm text-[#FF6B71]">
+                      <span className="mt-2 block text-sm text-[#FFFFFF]">
                         {errors.phone}
                       </span>
                     ) : null}
@@ -498,7 +498,7 @@ export default function Contact() {
                     className={inputClass}
                   />
                   {errors.lookingFor ? (
-                    <span className="mt-2 block text-sm text-[#FF6B71]">
+                    <span className="mt-2 block text-sm text-[#FFFFFF]">
                       {errors.lookingFor}
                     </span>
                   ) : null}
@@ -507,7 +507,7 @@ export default function Contact() {
                 <label className="block">
                   <span className="mb-2 flex items-center gap-1 text-sm text-zinc-300">
                     Message
-                    <span className="text-[#FF6B71]" aria-label="required">
+                    <span className="text-[#FFFFFF]" aria-label="required">
                       *
                     </span>
                   </span>
@@ -524,7 +524,7 @@ export default function Contact() {
                     className={`${inputClass} resize-none`}
                   />
                   {errors.message ? (
-                    <span className="mt-2 block text-sm text-[#FF6B71]">
+                    <span className="mt-2 block text-sm text-[#FFFFFF]">
                       {errors.message}
                     </span>
                   ) : null}
@@ -560,14 +560,14 @@ export default function Contact() {
                         setErrors((current) => ({ ...current, privacy: "" }));
                       }
                     }}
-                    className="h-4 w-4 rounded border-white/20 bg-[#000000] text-[#FF6B71] focus:ring-[#E31B23]"
+                    className="h-4 w-4 rounded border-white/20 bg-[#060606] text-[#FFFFFF] focus:ring-[#FF2D2D]"
                   />
                   <span>
                     I agree to the{" "}
                     <button
                       type="button"
                       onClick={() => setActiveModal("privacy")}
-                      className="font-medium text-[#FF6B71] transition-colors hover:text-[#FF6B71]"
+                      className="font-medium text-[#FFFFFF] transition-colors hover:text-[#FFFFFF]"
                     >
                       Privacy Policy
                     </button>{" "}
@@ -576,7 +576,7 @@ export default function Contact() {
                 </label>
 
                 {errors.privacy || privacyError ? (
-                  <p className="text-sm text-[#FF6B71]">
+                  <p className="text-sm text-[#FFFFFF]">
                     {errors.privacy || privacyError}
                   </p>
                 ) : null}
@@ -586,8 +586,8 @@ export default function Contact() {
                     role="status"
                     className={`rounded-2xl border px-4 py-3 text-sm ${
                       status.type === "success"
-                        ? "border-[#E31B23]/30 bg-[#E31B23]/10 text-[#FF6B71]"
-                        : "border-[#FF6B71]/30 bg-[#FF6B71]/10 text-[#FF6B71]"
+                        ? "border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF]"
+                        : "border-[#FFFFFF]/30 bg-[#FFFFFF]/10 text-[#FFFFFF]"
                     }`}
                   >
                     {status.message}
@@ -602,7 +602,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={!acceptedPrivacy || submitting}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#E31B23] px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF3B43] disabled:cursor-not-allowed disabled:bg-[#E31B23]/25 disabled:text-zinc-400"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF2D2D] px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A] disabled:cursor-not-allowed disabled:bg-[#FF2D2D]/25 disabled:text-zinc-400"
                   >
                     {submitting ? "Sending..." : "Send inquiry"}
                     <ArrowRight size={16} />
@@ -613,22 +613,22 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-[#E31B23]/30 bg-[#000000] py-14 text-center">
+        <section className="relative overflow-hidden border-t border-[#FF2D2D]/30 bg-[#060606] py-14 text-center">
           {/* Background glow */}
           <div className="absolute left-1/2 top-1/2 h-[450px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.06] blur-[130px]" />
 
           <div className="relative mx-auto max-w-4xl px-5 sm:px-6">
             <div className="mb-5 flex items-center justify-center gap-3">
-              <span className="h-px w-10 bg-[#E31B23]" />
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+              <span className="h-px w-10 bg-[#FF2D2D]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                 Visit our showroom
               </span>
-              <span className="h-px w-10 bg-[#E31B23]" />
+              <span className="h-px w-10 bg-[#FF2D2D]" />
             </div>
 
             <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
               Book your{" "}
-              <span className="block text-[#FF6B71]">Next Journey</span>
+              <span className="block text-[#FFFFFF]">Next Journey</span>
             </h2>
 
             <p className="mt-5 text-sm leading-7 text-zinc-400 sm:text-base">
@@ -639,14 +639,14 @@ export default function Contact() {
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/showroom"
-                className="inline-flex items-center justify-center rounded-full bg-[#E31B23] px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF3B43] hover:shadow-[0_0_30px_rgba(227,27,35,0.25)]"
+                className="inline-flex items-center justify-center rounded-full bg-[#FF2D2D] px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A] hover:shadow-[0_0_30px_rgba(255,45,45,0.25)]"
               >
                 Visit Showroom
               </Link>
 
               <Link
                 href="/sell-trade"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#E31B23]/50 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-white/10"
               >
                 Sell / Trade Car
               </Link>
@@ -658,8 +658,8 @@ export default function Contact() {
       <Footer />
 
       {activeModal && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-[#000000]/70 p-4 backdrop-blur-sm">
-          <div className="max-h-[85vh] w-full max-w-2xl overflow-hidden rounded-[28px] border border-[#E31B23]/20 bg-[#0A0A0A] shadow-[0_30px_90px_rgba(0,0,0,0.5)]">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-[#060606]/70 p-4 backdrop-blur-sm">
+          <div className="max-h-[85vh] w-full max-w-2xl overflow-hidden rounded-[28px] border border-[#FF2D2D]/20 bg-[#111111] shadow-[0_30px_90px_rgba(0,0,0,0.5)]">
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
               <h3 className="text-xl font-bold text-white">
                 {privacyCopy.title}
@@ -668,7 +668,7 @@ export default function Contact() {
                 type="button"
                 aria-label="Close privacy policy"
                 onClick={() => setActiveModal(null)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-300 transition-all hover:border-[#E31B23] hover:text-[#FF6B71]"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-300 transition-all hover:border-[#FF2D2D] hover:text-[#FFFFFF]"
               >
                 ×
               </button>

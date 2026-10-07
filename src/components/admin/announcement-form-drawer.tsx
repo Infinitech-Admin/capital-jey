@@ -10,7 +10,7 @@ import {
 } from "@/lib/api";
 
 const inputClass =
-  "w-full rounded-xl border border-white/10 bg-[#000000]/60 px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#E31B23]/60";
+  "w-full rounded-xl border border-white/10 bg-[#060606]/60 px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#FF2D2D]/60";
 
 const TITLE_MAX = 150;
 const MESSAGE_MAX = 1000;
@@ -98,8 +98,8 @@ export default function AnnouncementFormDrawer({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]/60 p-4 backdrop-blur-sm">
-      <div className="flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-[#000000] shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#060606]/60 p-4 backdrop-blur-sm">
+      <div className="flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-[#060606] shadow-2xl">
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
           <h2 className="text-lg font-bold text-white">
             {isEditing ? "Edit announcement" : "New announcement"}
@@ -120,7 +120,7 @@ export default function AnnouncementFormDrawer({
         >
           <div className="flex-1 space-y-5 overflow-y-auto px-6 py-6">
             {error && (
-              <div className="rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 px-4 py-3 text-sm text-[#FF6B71]">
+              <div className="rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]">
                 {error}
               </div>
             )}
@@ -165,7 +165,7 @@ export default function AnnouncementFormDrawer({
                 type="checkbox"
                 checked={isPublished}
                 onChange={(e) => setIsPublished(e.target.checked)}
-                className="h-4 w-4 rounded border-white/20 bg-[#000000] text-[#FF6B71] focus:ring-[#E31B23]"
+                className="h-4 w-4 rounded border-white/20 bg-[#060606] text-[#FFFFFF] focus:ring-[#FF2D2D]"
               />
               Published (visible to customers)
             </label>
@@ -177,7 +177,7 @@ export default function AnnouncementFormDrawer({
                     type="checkbox"
                     checked={sendPush}
                     onChange={(e) => setSendPush(e.target.checked)}
-                    className="h-4 w-4 rounded border-white/20 bg-[#000000] text-[#FF6B71] focus:ring-[#E31B23]"
+                    className="h-4 w-4 rounded border-white/20 bg-[#060606] text-[#FFFFFF] focus:ring-[#FF2D2D]"
                   />
                   {announcement?.push_sent_at
                     ? "Send the phone notification again"
@@ -203,7 +203,7 @@ export default function AnnouncementFormDrawer({
             <button
               type="submit"
               disabled={saving}
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E31B23] to-[#FF3B43] px-5 py-2.5 text-sm font-bold text-white disabled:opacity-60"
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF2D2D] to-[#FF5A5A] px-5 py-2.5 text-sm font-bold text-white disabled:opacity-60"
             >
               {saving && <Loader2 size={15} className="animate-spin" />}
               {isEditing

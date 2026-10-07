@@ -56,20 +56,20 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#0A0A0A] text-white">
-        <section className="relative overflow-hidden border-b border-[#E31B23]/20 bg-[#000000]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(227,27,35,0.18),transparent_50%)]" />
+      <main className="min-h-screen bg-[#111111] text-white">
+        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,45,45,0.18),transparent_50%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="max-w-3xl">
               <div className="mb-5 flex items-center gap-3">
-                <span className="h-px w-10 bg-[#E31B23]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                <span className="h-px w-10 bg-[#FF2D2D]" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                   Blog
                 </span>
               </div>
               <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
                 News, stories
-                <span className="block text-[#FF6B71]">& updates</span>
+                <span className="block text-[#FFFFFF]">& updates</span>
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
                 Fresh arrivals, deliveries, and behind-the-scenes from Capital Jey
@@ -81,16 +81,16 @@ export default function BlogPage() {
 
         <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           {isLoading ? (
-            <div className="rounded-[28px] border border-white/10 bg-[#0A0A0A] px-6 py-16 text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#E31B23]/30 bg-[#E31B23]/10">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#E31B23]/40 border-t-[#E31B23]" />
+            <div className="rounded-[28px] border border-white/10 bg-[#111111] px-6 py-16 text-center">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#FF2D2D]/30 bg-[#FF2D2D]/10">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#FF2D2D]/40 border-t-[#FF2D2D]" />
               </div>
               <p className="mt-6 text-2xl font-bold text-white">
                 Loading posts...
               </p>
             </div>
           ) : loadError ? (
-            <div className="rounded-[28px] border border-[#E31B23]/30 bg-[#0A0A0A] px-6 py-16 text-center">
+            <div className="rounded-[28px] border border-[#FF2D2D]/30 bg-[#111111] px-6 py-16 text-center">
               <p className="text-2xl font-bold text-white">
                 Something went wrong
               </p>
@@ -100,14 +100,14 @@ export default function BlogPage() {
               <button
                 type="button"
                 onClick={() => load()}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#FF3B43]"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#FF5A5A]"
               >
                 <RotateCcw size={16} />
                 Retry
               </button>
             </div>
           ) : posts.length === 0 ? (
-            <div className="rounded-[28px] border border-dashed border-white/15 bg-[#0A0A0A] px-6 py-16 text-center">
+            <div className="rounded-[28px] border border-dashed border-white/15 bg-[#111111] px-6 py-16 text-center">
               <p className="text-xl font-semibold text-white">No posts yet</p>
               <p className="mt-2 text-sm text-zinc-400">
                 Please check back soon.
@@ -123,9 +123,9 @@ export default function BlogPage() {
                   <Link
                     key={post.id}
                     href={`/blog/${post.id}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#0A0A0A] transition-all duration-300 hover:-translate-y-1 hover:border-[#E31B23]/50 hover:shadow-[0_25px_60px_rgba(227,27,35,0.15)]"
+                    className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#111111] transition-all duration-300 hover:-translate-y-1 hover:border-[#FF2D2D]/50 hover:shadow-[0_25px_60px_rgba(255,45,45,0.15)]"
                   >
-                    <div className="relative aspect-video overflow-hidden bg-[#000000]">
+                    <div className="relative aspect-video overflow-hidden bg-[#060606]">
                       {imageSrc ? (
                         <Image
                           src={imageSrc}
@@ -150,8 +150,8 @@ export default function BlogPage() {
                       )}
 
                       {hasVideo && (
-                        <span className="absolute inset-0 flex items-center justify-center bg-[#000000]/30">
-                          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#E31B23] shadow-[0_0_24px_rgba(227,27,35,0.7)]">
+                        <span className="absolute inset-0 flex items-center justify-center bg-[#060606]/30">
+                          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#FF2D2D] shadow-[0_0_24px_rgba(255,45,45,0.7)]">
                             <Play
                               size={22}
                               className="ml-0.5 fill-white text-white"
@@ -171,7 +171,7 @@ export default function BlogPage() {
                       <p className="mt-2 line-clamp-3 text-sm leading-6 text-zinc-300">
                         {post.description}
                       </p>
-                      <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#FF6B71]">
+                      <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[#FFFFFF]">
                         Read more
                         <ArrowRight
                           size={16}

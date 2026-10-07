@@ -117,7 +117,7 @@ export default function AnimatedSplash({
                 cx="50"
                 cy="50"
                 r="47"
-                fill="#000000"
+                fill="#060606"
                 stroke="#fff"
                 strokeWidth="5"
               />
@@ -126,7 +126,7 @@ export default function AnimatedSplash({
                 cy="50"
                 r="41"
                 fill="none"
-                stroke="#E31B23"
+                stroke="#FF2D2D"
                 strokeWidth="5"
                 strokeDasharray="7 5.2"
               />
@@ -134,7 +134,7 @@ export default function AnimatedSplash({
                 cx="50"
                 cy="50"
                 r="30"
-                fill="#000000"
+                fill="#060606"
                 stroke="#fff"
                 strokeWidth="3"
               />
@@ -149,7 +149,7 @@ export default function AnimatedSplash({
                 cx="50"
                 cy="50"
                 r="8"
-                fill="#E31B23"
+                fill="#FF2D2D"
                 stroke="#fff"
                 strokeWidth="2.5"
               />
@@ -174,16 +174,16 @@ export default function AnimatedSplash({
           <svg viewBox="0 0 200 150" overflow="visible">
             <defs>
               <linearGradient id="baxArc" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0" stopColor="#E31B23" />
-                <stop offset="1" stopColor="#E31B23" />
+                <stop offset="0" stopColor="#FF2D2D" />
+                <stop offset="1" stopColor="#FF2D2D" />
               </linearGradient>
               <linearGradient id="baxNeedle" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0" stopColor="#E31B23" />
+                <stop offset="0" stopColor="#FF2D2D" />
                 <stop offset="1" stopColor="#ff6b78" />
               </linearGradient>
               <radialGradient id="baxGlow">
-                <stop offset="0" stopColor="#E31B23" stopOpacity="0.5" />
-                <stop offset="1" stopColor="#E31B23" stopOpacity="0" />
+                <stop offset="0" stopColor="#FF2D2D" stopOpacity="0.5" />
+                <stop offset="1" stopColor="#FF2D2D" stopOpacity="0" />
               </radialGradient>
             </defs>
 
@@ -208,7 +208,7 @@ export default function AnimatedSplash({
             <path
               d="M174.48 49 A86 86 0 0 1 174.48 135"
               fill="none"
-              stroke="#E31B23"
+              stroke="#FF2D2D"
               strokeWidth="2.5"
               strokeLinecap="round"
               opacity="0.85"
@@ -235,7 +235,7 @@ export default function AnimatedSplash({
                   x2={CX}
                   y2={CY - (t.major ? 62 : 68)}
                   transform={`rotate(${t.angle} ${CX} ${CY})`}
-                  stroke={t.red ? "#E31B23" : "#fff"}
+                  stroke={t.red ? "#FF2D2D" : "#fff"}
                   strokeOpacity={t.major ? 0.9 : 0.4}
                   strokeWidth={t.major ? 2 : 1}
                 />
@@ -249,7 +249,7 @@ export default function AnimatedSplash({
                   key={t.i}
                   x={(CX + 50 * Math.sin(rad(t.angle))).toFixed(2)}
                   y={(CY - 50 * Math.cos(rad(t.angle)) + 3.2).toFixed(2)}
-                  fill={t.red ? "#E31B23" : "#fff"}
+                  fill={t.red ? "#FF2D2D" : "#fff"}
                   fillOpacity={t.red ? 1 : 0.75}
                 >
                   {t.i / 4}
@@ -279,11 +279,11 @@ export default function AnimatedSplash({
               cx={CX}
               cy={CY}
               r="7"
-              fill="#000000"
+              fill="#060606"
               stroke="#fff"
               strokeWidth="2"
             />
-            <circle cx={CX} cy={CY} r="2.6" fill="#E31B23" />
+            <circle cx={CX} cy={CY} r="2.6" fill="#FF2D2D" />
           </svg>
 
           {/* % readout */}
@@ -299,9 +299,9 @@ export default function AnimatedSplash({
         }
 
         .bax-splash {
-          --red: #E31B23;
-          --red-glow: #E31B23;
-          --navy: #000000;
+          --red: #FF2D2D;
+          --red-glow: #FF2D2D;
+          --navy: #060606;
           --t0: 300ms;      /* sweep start */
           --drive: 2600ms;  /* sweep duration (gauge = loading bar) */
           position: fixed;
@@ -312,7 +312,7 @@ export default function AnimatedSplash({
           justify-content: center;
           overflow: hidden;
           background:
-            radial-gradient(55% 40% at 50% 55%, rgba(227,27,35,0.2), transparent 70%),
+            radial-gradient(55% 40% at 50% 55%, rgba(255,45,45,0.2), transparent 70%),
             var(--navy);
           opacity: 1;
           transition: opacity var(--bax-fade, 600ms) ease, transform var(--bax-fade, 600ms) ease;

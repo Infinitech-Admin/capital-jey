@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <main className="bg-[#0A0A0A] min-h-screen">
+      <main className="bg-[#111111] min-h-screen">
         <HeroSection />
         <ShowcaseSection />
         <StandardSection />

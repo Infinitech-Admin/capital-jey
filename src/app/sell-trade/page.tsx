@@ -107,10 +107,10 @@ const labelClass =
   "mb-2.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400";
 
 const inputClass =
-  "h-13 w-full rounded-2xl border border-white/10 bg-[#0A0A0A] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition-all duration-300 hover:border-white/20 focus:border-[#E31B23]/70 focus:bg-[#0A0A0A] focus:ring-4 focus:ring-[#E31B23]/10";
+  "h-13 w-full rounded-2xl border border-white/10 bg-[#111111] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition-all duration-300 hover:border-white/20 focus:border-[#FF2D2D]/70 focus:bg-[#111111] focus:ring-4 focus:ring-[#FF2D2D]/10";
 
 const selectClass =
-  "h-13 w-full appearance-none rounded-2xl border border-white/10 bg-[#0A0A0A] px-4 text-sm text-white outline-none transition-all duration-300 hover:border-white/20 focus:border-[#E31B23]/70 focus:bg-[#0A0A0A] focus:ring-4 focus:ring-[#E31B23]/10";
+  "h-13 w-full appearance-none rounded-2xl border border-white/10 bg-[#111111] px-4 text-sm text-white outline-none transition-all duration-300 hover:border-white/20 focus:border-[#FF2D2D]/70 focus:bg-[#111111] focus:ring-4 focus:ring-[#FF2D2D]/10";
 
 type FormState = {
   brand: string;
@@ -240,21 +240,21 @@ export default function SellTradePage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#0A0A0A] text-white">
-        <section className="relative overflow-hidden border-b border-[#E31B23]/20 bg-[#000000]">
+      <main className="min-h-screen bg-[#111111] text-white">
+        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(191,152,13,0.18),transparent_50%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="max-w-3xl">
               <div className="mb-5 flex items-center gap-3">
-                <span className="h-px w-10 bg-[#E31B23]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                <span className="h-px w-10 bg-[#FF2D2D]" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                   Ready to Move?
                 </span>
               </div>
 
               <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Turn your current car into your{" "}
-                <span className="block text-[#FF6B71]">next upgrade</span>
+                <span className="block text-[#FFFFFF]">next upgrade</span>
               </h1>
 
               <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
@@ -269,9 +269,9 @@ export default function SellTradePage() {
         {/* How it works */}
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="space-y-5">
-            <section className="rounded-[28px] border border-white/10 bg-[#0A0A0A] p-6">
+            <section className="rounded-[28px] border border-white/10 bg-[#111111] p-6">
               <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E31B23]/10 text-[#FF6B71]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FF2D2D]/10 text-[#FFFFFF]">
                   <CarFront size={18} />
                 </div>
                 <h2 className="text-2xl font-black tracking-tight text-white">
@@ -283,9 +283,9 @@ export default function SellTradePage() {
                 {steps.map((step, index) => (
                   <div
                     key={step.title}
-                    className="rounded-[24px] border border-white/10 bg-[#0A0A0A] p-5"
+                    className="rounded-[24px] border border-white/10 bg-[#111111] p-5"
                   >
-                    <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#E31B23] text-sm font-black text-black">
+                    <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FF2D2D] text-sm font-black text-black">
                       {index + 1}
                     </div>
                     <h3 className="text-xl font-bold text-white">
@@ -308,16 +308,16 @@ export default function SellTradePage() {
             className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start"
           >
             {/* Vehicle Details */}
-            <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0A0A0A] shadow-[0_25px_80px_rgba(0,0,0,0.25)]">
+            <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#111111] shadow-[0_25px_80px_rgba(0,0,0,0.25)]">
               {/* Header */}
               <div className="border-b border-white/10 px-5 py-5 sm:px-7 sm:py-6">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#FF6B71]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 text-[#FFFFFF]">
                     <Gauge size={21} />
                   </div>
 
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                       Vehicle information
                     </p>
 
@@ -339,7 +339,7 @@ export default function SellTradePage() {
                   <label className="block">
                     <span className={labelClass}>
                       Brand
-                      <span className="text-[#FF6B71]">*</span>
+                      <span className="text-[#FFFFFF]">*</span>
                     </span>
                     <input
                       type="text"
@@ -355,7 +355,7 @@ export default function SellTradePage() {
                   <label className="block">
                     <span className={labelClass}>
                       Model
-                      <span className="text-[#FF6B71]">*</span>
+                      <span className="text-[#FFFFFF]">*</span>
                     </span>
                     <input
                       type="text"
@@ -371,7 +371,7 @@ export default function SellTradePage() {
                   <label className="block">
                     <span className={labelClass}>
                       Year
-                      <span className="text-[#FF6B71]">*</span>
+                      <span className="text-[#FFFFFF]">*</span>
                     </span>
                     <input
                       type="number"
@@ -389,7 +389,7 @@ export default function SellTradePage() {
                   <label className="block">
                     <span className={labelClass}>
                       Vehicle type
-                      <span className="text-[#FF6B71]">*</span>
+                      <span className="text-[#FFFFFF]">*</span>
                     </span>
                     <select
                       name="type"
@@ -408,7 +408,7 @@ export default function SellTradePage() {
                   <label className="block">
                     <span className={labelClass}>
                       Mileage
-                      <span className="text-[#FF6B71]">*</span>
+                      <span className="text-[#FFFFFF]">*</span>
                     </span>
                     <div className="relative">
                       <input
@@ -430,7 +430,7 @@ export default function SellTradePage() {
                   <label className="block">
                     <span className={labelClass}>
                       Condition
-                      <span className="text-[#FF6B71]">*</span>
+                      <span className="text-[#FFFFFF]">*</span>
                     </span>
                     <select
                       name="condition"
@@ -448,11 +448,11 @@ export default function SellTradePage() {
                 {/* Contact details */}
                 <div className="mt-7 border-t border-white/10 pt-6">
                   <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#FF6B71]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 text-[#FFFFFF]">
                       <UserRound size={18} />
                     </div>
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                         Contact details
                       </p>
                       <p className="mt-1 text-xs text-zinc-500">
@@ -465,7 +465,7 @@ export default function SellTradePage() {
                     <label className="block sm:col-span-2">
                       <span className={labelClass}>
                         Full name
-                        <span className="text-[#FF6B71]">*</span>
+                        <span className="text-[#FFFFFF]">*</span>
                       </span>
                       <input
                         type="text"
@@ -512,7 +512,7 @@ export default function SellTradePage() {
                   <div className="flex items-start gap-3">
                     <Sparkles
                       size={16}
-                      className="mt-0.5 shrink-0 text-[#FF6B71]"
+                      className="mt-0.5 shrink-0 text-[#FFFFFF]"
                     />
 
                     <p className="text-xs leading-5 text-zinc-500">
@@ -527,17 +527,17 @@ export default function SellTradePage() {
 
             {/* Estimated Value */}
             <div className="relative">
-              <div className="pointer-events-none absolute -inset-4 rounded-[40px] bg-[#E31B23]/5 blur-3xl" />
+              <div className="pointer-events-none absolute -inset-4 rounded-[40px] bg-[#FF2D2D]/5 blur-3xl" />
 
-              <div className="relative overflow-hidden rounded-[30px] border border-[#E31B23]/25 bg-[#0A0A0A] shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
-                <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#E31B23] to-transparent" />
+              <div className="relative overflow-hidden rounded-[30px] border border-[#FF2D2D]/25 bg-[#111111] shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#FF2D2D] to-transparent" />
 
                 <div className="p-5 sm:p-7">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#E31B23] shadow-[0_0_10px_rgba(191,152,13,0.8)]" />
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#FF2D2D] shadow-[0_0_10px_rgba(191,152,13,0.8)]" />
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                           Instant estimate
                         </p>
                       </div>
@@ -552,13 +552,13 @@ export default function SellTradePage() {
                       </p>
                     </div>
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E31B23]/20 bg-[#E31B23]/10 text-[#FF6B71]">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 text-[#FFFFFF]">
                       <Gauge size={20} />
                     </div>
                   </div>
 
                   {/* Main Value */}
-                  <div className="relative mt-5 overflow-hidden rounded-[24px] border border-[#E31B23]/20 bg-gradient-to-br from-[#0A0A0A] via-[#0A0A0A] to-[#0A0A0A] p-6 sm:p-7">
+                  <div className="relative mt-5 overflow-hidden rounded-[24px] border border-[#FF2D2D]/20 bg-gradient-to-br from-[#111111] via-[#111111] to-[#111111] p-6 sm:p-7">
                     <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-white/[0.06] blur-3xl" />
 
                     <div className="relative">
@@ -567,7 +567,7 @@ export default function SellTradePage() {
                           Estimated market value
                         </p>
 
-                        <span className="rounded-full border border-[#E31B23]/20 bg-[#E31B23]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#FF6B71]">
+                        <span className="rounded-full border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#FFFFFF]">
                           Live
                         </span>
                       </div>
@@ -584,7 +584,7 @@ export default function SellTradePage() {
 
                   {/* Stats */}
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-4 transition-colors hover:border-white/15">
+                    <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-white/15">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
                         Market range
                       </p>
@@ -596,7 +596,7 @@ export default function SellTradePage() {
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-4 transition-colors hover:border-white/15">
+                    <div className="rounded-2xl border border-white/10 bg-[#111111] p-4 transition-colors hover:border-white/15">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
                         Vehicle condition
                       </p>
@@ -613,7 +613,7 @@ export default function SellTradePage() {
                       <button
                         type="submit"
                         disabled={status === "submitting"}
-                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl bg-[#E31B23] px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E31B23]/10 transition-all duration-300 hover:bg-[#FF3B43] hover:shadow-[#E31B23]/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl bg-[#FF2D2D] px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF2D2D]/10 transition-all duration-300 hover:bg-[#FF5A5A] hover:shadow-[#FF2D2D]/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         <BadgeCheck
                           size={18}
@@ -634,18 +634,18 @@ export default function SellTradePage() {
 
                       <Link
                         href="/showroom"
-                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-[#E31B23]/40 hover:bg-[#E31B23]/10 hover:text-[#FF6B71]"
+                        className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-[#FF2D2D]/40 hover:bg-[#FF2D2D]/10 hover:text-[#FFFFFF]"
                       >
                         <CarFront
                           size={18}
-                          className="text-[#FF6B71] transition-transform duration-300 group-hover:scale-110"
+                          className="text-[#FFFFFF] transition-transform duration-300 group-hover:scale-110"
                         />
 
                         <span>View Showroom</span>
 
                         <ArrowRight
                           size={16}
-                          className="text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#FF6B71]"
+                          className="text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#FFFFFF]"
                         />
                       </Link>
                     </div>
@@ -653,7 +653,7 @@ export default function SellTradePage() {
                     {status === "error" && (
                       <p
                         role="alert"
-                        className="mt-3 text-center text-[11px] leading-5 text-[#FF6B71]"
+                        className="mt-3 text-center text-[11px] leading-5 text-[#FFFFFF]"
                       >
                         {errorMessage}
                       </p>
@@ -662,7 +662,7 @@ export default function SellTradePage() {
                     {status === "success" && (
                       <p
                         role="status"
-                        className="mt-3 text-center text-[11px] leading-5 text-[#FF6B71]"
+                        className="mt-3 text-center text-[11px] leading-5 text-[#FFFFFF]"
                       >
                         Thanks! Your vehicle details were submitted. Our team
                         will contact you soon.
@@ -684,11 +684,11 @@ export default function SellTradePage() {
           <div className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <div className="mb-5 flex items-center justify-center gap-3">
-                <span className="h-px w-10 bg-[#E31B23]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                <span className="h-px w-10 bg-[#FF2D2D]" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                   Why drivers choose us
                 </span>
-                <span className="h-px w-10 bg-[#E31B23]" />
+                <span className="h-px w-10 bg-[#FF2D2D]" />
               </div>
 
               <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
@@ -703,10 +703,10 @@ export default function SellTradePage() {
                 return (
                   <div
                     key={value.title}
-                    className="group rounded-[26px] border border-white/10 bg-[#0A0A0A] p-6 transition-all duration-300 hover:border-[#E31B23]/50 hover:bg-[#0A0A0A] hover:shadow-[0_15px_50px_rgba(0,0,0,0.25)]"
+                    className="group rounded-[26px] border border-white/10 bg-[#111111] p-6 transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-[#111111] hover:shadow-[0_15px_50px_rgba(0,0,0,0.25)]"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 text-[#FF6B71] transition-all duration-300 group-hover:border-[#E31B23]/60 group-hover:bg-[#E31B23]/20">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 text-[#FFFFFF] transition-all duration-300 group-hover:border-[#FF2D2D]/60 group-hover:bg-[#FF2D2D]/20">
                         <Icon size={22} />
                       </div>
 

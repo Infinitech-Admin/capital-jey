@@ -62,9 +62,9 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 // Capital Jey Car Trading palette
-// red #E31B23 | red hover #FF3B43 | red text #FF6B71 | background #000000
+// red #FF2D2D | red hover #FF5A5A | red text #FFFFFF | background #060606
 const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E31B23]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF2D2D]";
 
 // Wheel used as the "O" in BOSS. Sized in em so it scales with the wordmark.
 // Spins when the parent `group` is hovered (disabled for reduced motion).
@@ -76,14 +76,14 @@ function WheelO() {
     >
       <svg
         viewBox="0 0 100 100"
-        className="h-full w-full drop-shadow-[0_0_8px_rgba(227,27,35,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
+        className="h-full w-full drop-shadow-[0_0_8px_rgba(255,45,45,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
       >
         {/* Tire */}
         <circle
           cx="50"
           cy="50"
           r="47"
-          fill="#000000"
+          fill="#060606"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
@@ -92,8 +92,8 @@ function WheelO() {
           cx="50"
           cy="50"
           r="30"
-          fill="#1A1A1A"
-          stroke="#FF6B71"
+          fill="#1F1F1F"
+          stroke="#FFFFFF"
           strokeWidth="5"
         />
         {/* Spokes */}
@@ -111,7 +111,7 @@ function WheelO() {
         </g>
         {/* Hub */}
         <circle cx="50" cy="50" r="9" fill="#FFFFFF" />
-        <circle cx="50" cy="50" r="3.5" fill="#E31B23" />
+        <circle cx="50" cy="50" r="3.5" fill="#FF2D2D" />
       </svg>
     </span>
   );
@@ -128,13 +128,13 @@ function Wordmark({ className = "" }: { className?: string }) {
       <span
         role="img"
         aria-label="Boss"
-        className="flex items-center font-black uppercase italic tracking-[0.08em] text-white [text-shadow:0_0_22px_rgba(227,27,35,0.95),0_0_6px_rgba(255,255,255,0.35),2px_2px_0_#E31B23] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),2px_2px_0_#FF3B43]"
+        className="flex items-center font-black uppercase italic tracking-[0.08em] text-white [text-shadow:0_0_22px_rgba(255,45,45,0.95),0_0_6px_rgba(255,255,255,0.35),2px_2px_0_#FF2D2D] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),2px_2px_0_#FF5A5A]"
       >
         <span aria-hidden="true">B</span>
         <WheelO />
         <span aria-hidden="true">SS</span>
       </span>
-      <span className="mt-1.5 rounded-[3px] bg-[#E31B23] px-2 py-[3px] text-[0.34em] font-extrabold uppercase italic tracking-[0.24em] text-white shadow-[0_0_16px_rgba(227,27,35,0.85)] transition-colors duration-300 group-hover:bg-[#FF3B43]">
+      <span className="mt-1.5 rounded-[3px] bg-[#FF2D2D] px-2 py-[3px] text-[0.34em] font-extrabold uppercase italic tracking-[0.24em] text-white shadow-[0_0_16px_rgba(255,45,45,0.85)] transition-colors duration-300 group-hover:bg-[#FF5A5A]">
         Auto Exchange
       </span>
     </span>
@@ -142,12 +142,12 @@ function Wordmark({ className = "" }: { className?: string }) {
 }
 
 const socialLink =
-  "flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-400 transition-all duration-300 hover:border-[#E31B23]/50 hover:bg-[#E31B23]/10 hover:text-[#FF6B71]";
+  "flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-400 transition-all duration-300 hover:border-[#FF2D2D]/50 hover:bg-[#FF2D2D]/10 hover:text-[#FFFFFF]";
 
 export default function Footer() {
   return (
     <>
-      <footer className="border-t border-[#E31B23] bg-[#000000] text-white">
+      <footer className="border-t border-[#FF2D2D] bg-[#060606] text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           {/* Main Footer */}
           <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-4 lg:py-16">
@@ -215,7 +215,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/showroom"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     Browse Inventory
                   </Link>
@@ -224,7 +224,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/sell-trade"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     Sell / Trade Car
                   </Link>
@@ -233,7 +233,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/about"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     About Us
                   </Link>
@@ -242,7 +242,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     Contact Us
                   </Link>
@@ -260,7 +260,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/showroom"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     Vehicle Sales
                   </Link>
@@ -269,7 +269,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/sell-trade"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     Vehicle Trade-In
                   </Link>
@@ -278,7 +278,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
                     Test Drive
                   </Link>
@@ -297,9 +297,9 @@ export default function Footer() {
                   href={MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-3 text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                  className="flex gap-3 text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                 >
-                  <MapPin className="mt-0.5 size-4 shrink-0 text-[#FF6B71]" />
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-[#FFFFFF]" />
                   <address className="not-italic">
                     {ADDRESS_LINE_1}
                     <br />
@@ -310,9 +310,9 @@ export default function Footer() {
                 {PHONE_DISPLAY && PHONE_TEL ? (
                   <a
                     href={`tel:${PHONE_TEL}`}
-                    className="flex items-center gap-3 text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="flex items-center gap-3 text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
-                    <Phone className="size-4 text-[#FF6B71]" />
+                    <Phone className="size-4 text-[#FFFFFF]" />
                     {PHONE_DISPLAY}
                   </a>
                 ) : null}
@@ -320,9 +320,9 @@ export default function Footer() {
                 {EMAIL ? (
                   <a
                     href={`mailto:${EMAIL}`}
-                    className="flex items-center gap-3 text-zinc-400 transition-colors hover:text-[#FF6B71]"
+                    className="flex items-center gap-3 text-zinc-400 transition-colors hover:text-[#FFFFFF]"
                   >
-                    <Mail className="size-4 text-[#FF6B71]" />
+                    <Mail className="size-4 text-[#FFFFFF]" />
                     {EMAIL}
                   </a>
                 ) : null}
@@ -341,7 +341,7 @@ export default function Footer() {
                 Powered by{" "}
                 <Link
                   href="https://www.infinitechphil.com/"
-                  className="transition-colors hover:text-[#FF6B71]"
+                  className="transition-colors hover:text-[#FFFFFF]"
                 >
                   Infinitech Advertising Corporation
                 </Link>
@@ -351,14 +351,14 @@ export default function Footer() {
             <div className="flex justify-center gap-5 sm:justify-end">
               <Link
                 href="/privacy-policy"
-                className="transition-colors hover:text-[#FF6B71]"
+                className="transition-colors hover:text-[#FFFFFF]"
               >
                 Privacy Policy
               </Link>
 
               <Link
                 href="/terms-and-conditions"
-                className="transition-colors hover:text-[#FF6B71]"
+                className="transition-colors hover:text-[#FFFFFF]"
               >
                 Terms &amp; Conditions
               </Link>

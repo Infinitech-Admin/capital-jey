@@ -84,7 +84,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#E31B23",
+  themeColor: "#FF2D2D",
 };
 
 export default function RootLayout({
@@ -97,7 +97,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#000000] text-white">
+      <body className="min-h-full flex flex-col bg-[#060606] text-white">
         <AuthProvider>
           <CartProvider>
             {children}

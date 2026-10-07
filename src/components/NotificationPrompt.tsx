@@ -75,7 +75,7 @@ export default function NotificationPrompt() {
       aria-modal="true"
       aria-labelledby="push-prompt-title"
     >
-      <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 text-center shadow-2xl">
+      <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[#111111] p-6 text-center shadow-2xl">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-3xl">
           🔔
         </div>
@@ -94,7 +94,7 @@ export default function NotificationPrompt() {
           <button
             onClick={handleEnable}
             disabled={loading}
-            className="rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-[#0A0A0A] transition hover:bg-white/90 disabled:opacity-60"
+            className="rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-[#111111] transition hover:bg-white/90 disabled:opacity-60"
           >
             {loading ? "Enabling..." : "Enable notifications"}
           </button>

@@ -68,9 +68,9 @@ const heroAnimations = `
     to   { transform: translateY(0);    opacity: 1; }
   }
   @keyframes hero-pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(227,27,35, 0.55); }
-    70%  { box-shadow: 0 0 0 16px rgba(227,27,35, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(227,27,35, 0); }
+    0%   { box-shadow: 0 0 0 0 rgba(255,45,45, 0.55); }
+    70%  { box-shadow: 0 0 0 16px rgba(255,45,45, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,45,45, 0); }
   }
 
   .hero-stripe { animation: hero-stripe-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both; }
@@ -94,16 +94,16 @@ const headlineLines = ["Your next car,", "checked and", "ready to drive."];
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] flex-col overflow-hidden bg-[#000000]">
+    <section className="relative flex min-h-[85vh] flex-col overflow-hidden bg-[#060606]">
       <style>{heroAnimations}</style>
 
       {/* Soft blue depth behind the text side */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[420px] w-[620px] rounded-full bg-[#0A0A0A] opacity-70 blur-[120px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-[420px] w-[620px] rounded-full bg-[#111111] opacity-70 blur-[120px]" />
 
       {/* Red slanted stripe (peeks out beside the photo on desktop) */}
       <div
         aria-hidden="true"
-        className={`hero-stripe absolute inset-y-0 right-0 hidden w-[59.5%] bg-[#E31B23] lg:block ${SLANT}`}
+        className={`hero-stripe absolute inset-y-0 right-0 hidden w-[59.5%] bg-[#FF2D2D] lg:block ${SLANT}`}
       />
 
       {/* Photo panel: full background on mobile, slanted right panel on desktop */}
@@ -119,8 +119,8 @@ export default function HeroSection() {
           className="hero-zoom object-cover object-center"
         />
         {/* Mobile: darken for text. Desktop: light tint only */}
-        <div className="absolute inset-0 bg-[#000000]/80 lg:bg-[#000000]/20" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#000000]/80 to-transparent" />
+        <div className="absolute inset-0 bg-[#060606]/80 lg:bg-[#060606]/20" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#060606]/80 to-transparent" />
       </div>
 
       {/* Content */}
@@ -130,7 +130,7 @@ export default function HeroSection() {
           <div className="hero-bar mb-6 w-16">
             <span
               aria-hidden="true"
-              className="block h-1.5 w-full -skew-x-12 bg-[#E31B23]"
+              className="block h-1.5 w-full -skew-x-12 bg-[#FF2D2D]"
             />
           </div>
 
@@ -163,7 +163,7 @@ export default function HeroSection() {
             <div className="hero-fade" style={{ animationDelay: "1.05s" }}>
               <Link
                 href="/showroom"
-                className="hero-pulse group block -skew-x-12 rounded-md bg-[#E31B23] text-sm font-bold text-white shadow-lg shadow-[#E31B23]/20 transition-colors duration-300 hover:bg-[#FF3B43] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="hero-pulse group block -skew-x-12 rounded-md bg-[#FF2D2D] text-sm font-bold text-white shadow-lg shadow-[#FF2D2D]/20 transition-colors duration-300 hover:bg-[#FF5A5A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <span className="flex skew-x-12 items-center justify-center gap-3 px-7 py-4">
                   Browse cars
@@ -179,7 +179,7 @@ export default function HeroSection() {
             <div className="hero-fade" style={{ animationDelay: "1.17s" }}>
               <Link
                 href="/sell-trade"
-                className="block -skew-x-12 rounded-md border-2 border-white/30 bg-[#000000]/40 text-sm font-semibold text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="block -skew-x-12 rounded-md border-2 border-white/30 bg-[#060606]/40 text-sm font-semibold text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <span className="flex skew-x-12 items-center justify-center px-7 py-3.5">
                   Sell or trade your car
@@ -191,7 +191,7 @@ export default function HeroSection() {
       </div>
 
       {/* Benefits strip: full width, divided by hairlines instead of cards */}
-      <div className="hero-rise relative z-20 border-t-2 border-[#E31B23] bg-[#0A0A0A]/90 backdrop-blur-xl">
+      <div className="hero-rise relative z-20 border-t-2 border-[#FF2D2D] bg-[#111111]/90 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ul className="grid grid-cols-2 gap-px bg-white/10 lg:grid-cols-4">
             {benefits.map((benefit) => {
@@ -200,12 +200,12 @@ export default function HeroSection() {
               return (
                 <li
                   key={benefit.title}
-                  className="flex items-center gap-3 bg-[#0A0A0A] px-3 py-4 sm:gap-4 sm:px-5 sm:py-5"
+                  className="flex items-center gap-3 bg-[#111111] px-3 py-4 sm:gap-4 sm:px-5 sm:py-5"
                 >
                   <Icon
                     size={28}
                     strokeWidth={1.8}
-                    className="shrink-0 text-[#FF6B71]"
+                    className="shrink-0 text-[#FFFFFF]"
                   />
                   <div className="min-w-0">
                     <h3 className="text-sm font-bold text-white sm:text-base">

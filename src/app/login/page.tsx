@@ -113,7 +113,7 @@ export default function LoginPage() {
         {formError && (
           <div
             role="alert"
-            className="mb-5 rounded-lg border border-[#E31B23]/40 bg-[#E31B23]/10 px-4 py-3 text-sm text-[#FF6B71]"
+            className="mb-5 rounded-lg border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]"
           >
             {formError}
           </div>
@@ -164,7 +164,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1 text-zinc-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E31B23]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1 text-zinc-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FF2D2D]"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -184,7 +184,7 @@ export default function LoginPage() {
               name="remember"
               checked={form.remember}
               onChange={handleChange}
-              className="h-4 w-4 rounded border-zinc-700 bg-[#000000] accent-[#E31B23]"
+              className="h-4 w-4 rounded border-zinc-700 bg-[#060606] accent-[#FF2D2D]"
             />
             Remember me
           </label>

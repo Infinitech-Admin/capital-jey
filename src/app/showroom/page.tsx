@@ -166,21 +166,21 @@ export default function ShowroomPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#0A0A0A] text-white">
-        <section className="relative overflow-hidden border-b border-[#E31B23]/20 bg-[#000000]">
+      <main className="min-h-screen bg-[#111111] text-white">
+        <section className="relative overflow-hidden border-b border-[#FF2D2D]/20 bg-[#060606]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(191,152,13,0.18),transparent_50%)]" />
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="max-w-3xl">
               <div className="mb-5 flex items-center gap-3">
-                <span className="h-px w-10 bg-[#E31B23]" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FF6B71]">
+                <span className="h-px w-10 bg-[#FF2D2D]" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#FFFFFF]">
                   Featured Collection
                 </span>
               </div>
 
               <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Discover the
-                <span className="block text-[#FF6B71]">
+                <span className="block text-[#FFFFFF]">
                   showroom collection
                 </span>
               </h1>
@@ -195,8 +195,8 @@ export default function ShowroomPage() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-          <div className="mb-8 rounded-[28px] border border-white/10 bg-[#0A0A0A] p-4 shadow-[0_20px_60px_rgba(0,0,0,0.2)] sm:p-5">
-            <div className="mb-4 flex items-center justify-between gap-3 text-[#FF6B71]">
+          <div className="mb-8 rounded-[28px] border border-white/10 bg-[#111111] p-4 shadow-[0_20px_60px_rgba(0,0,0,0.2)] sm:p-5">
+            <div className="mb-4 flex items-center justify-between gap-3 text-[#FFFFFF]">
               <div className="flex gap-2 items-center">
                 <SlidersHorizontal size={18} />
                 <p className="text-xs font-semibold uppercase tracking-[0.25em]">
@@ -213,8 +213,8 @@ export default function ShowroomPage() {
             </div>
 
             <div className="grid gap-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_auto]">
-              <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#000000]/20 px-4 py-3 text-sm text-zinc-300">
-                <Search size={16} className="text-[#FF6B71]" />
+              <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#060606]/20 px-4 py-3 text-sm text-zinc-300">
+                <Search size={16} className="text-[#FFFFFF]" />
 
                 <input
                   value={search}
@@ -227,10 +227,10 @@ export default function ShowroomPage() {
               <select
                 value={selectedModel}
                 onChange={(event) => setSelectedModel(event.target.value)}
-                className="rounded-2xl border border-white/10 bg-[#000000]/20 px-4 py-3 text-sm text-white outline-none focus:border-[#E31B23]"
+                className="rounded-2xl border border-white/10 bg-[#060606]/20 px-4 py-3 text-sm text-white outline-none focus:border-[#FF2D2D]"
               >
                 {modelOptions.map((model) => (
-                  <option key={model} value={model} className="bg-[#0A0A0A]">
+                  <option key={model} value={model} className="bg-[#111111]">
                     {model === "all" ? "All models" : model}
                   </option>
                 ))}
@@ -239,18 +239,18 @@ export default function ShowroomPage() {
               <select
                 value={sortOrder}
                 onChange={(event) => setSortOrder(event.target.value)}
-                className="rounded-2xl border border-white/10 bg-[#000000]/20 px-4 py-3 text-sm text-white outline-none focus:border-[#E31B23]"
+                className="rounded-2xl border border-white/10 bg-[#060606]/20 px-4 py-3 text-sm text-white outline-none focus:border-[#FF2D2D]"
               >
-                <option value="newest" className="bg-[#0A0A0A]">
+                <option value="newest" className="bg-[#111111]">
                   Newest first
                 </option>
-                <option value="oldest" className="bg-[#0A0A0A]">
+                <option value="oldest" className="bg-[#111111]">
                   Oldest first
                 </option>
-                <option value="price-low" className="bg-[#0A0A0A]">
+                <option value="price-low" className="bg-[#111111]">
                   Price: low to high
                 </option>
-                <option value="price-high" className="bg-[#0A0A0A]">
+                <option value="price-high" className="bg-[#111111]">
                   Price: high to low
                 </option>
               </select>
@@ -258,18 +258,18 @@ export default function ShowroomPage() {
               <select
                 value={priceRange}
                 onChange={(event) => setPriceRange(event.target.value)}
-                className="rounded-2xl border border-white/10 bg-[#000000]/20 px-4 py-3 text-sm text-white outline-none focus:border-[#E31B23]"
+                className="rounded-2xl border border-white/10 bg-[#060606]/20 px-4 py-3 text-sm text-white outline-none focus:border-[#FF2D2D]"
               >
-                <option value="all" className="bg-[#0A0A0A]">
+                <option value="all" className="bg-[#111111]">
                   All price ranges
                 </option>
-                <option value="under-50k" className="bg-[#0A0A0A]">
+                <option value="under-50k" className="bg-[#111111]">
                   Under ₱50k
                 </option>
-                <option value="50k-70k" className="bg-[#0A0A0A]">
+                <option value="50k-70k" className="bg-[#111111]">
                   ₱50k - ₱70k
                 </option>
-                <option value="70k-plus" className="bg-[#0A0A0A]">
+                <option value="70k-plus" className="bg-[#111111]">
                   ₱70k+
                 </option>
               </select>
@@ -282,7 +282,7 @@ export default function ShowroomPage() {
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-transparent px-4 py-3 text-sm font-semibold text-zinc-200 transition-colors hover:border-[#E31B23] hover:text-[#FF6B71]"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-transparent px-4 py-3 text-sm font-semibold text-zinc-200 transition-colors hover:border-[#FF2D2D] hover:text-[#FFFFFF]"
                 >
                   <X size={15} />
                   Clear
@@ -292,9 +292,9 @@ export default function ShowroomPage() {
           </div>
 
           {isLoading ? (
-            <div className="rounded-[28px] border border-white/10 bg-[#0A0A0A] px-6 py-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#E31B23]/30 bg-[#E31B23]/10">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#E31B23]/40 border-t-[#E31B23]" />
+            <div className="rounded-[28px] border border-white/10 bg-[#111111] px-6 py-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#FF2D2D]/30 bg-[#FF2D2D]/10">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#FF2D2D]/40 border-t-[#FF2D2D]" />
               </div>
               <p className="mt-6 text-2xl font-bold text-white">
                 Loading inventory...
@@ -304,7 +304,7 @@ export default function ShowroomPage() {
               </p>
             </div>
           ) : loadError ? (
-            <div className="rounded-[28px] border border-[#E31B23]/30 bg-[#0A0A0A] px-6 py-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
+            <div className="rounded-[28px] border border-[#FF2D2D]/30 bg-[#111111] px-6 py-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
               <p className="text-2xl font-bold text-white">
                 Something went wrong
               </p>
@@ -314,14 +314,14 @@ export default function ShowroomPage() {
               <button
                 type="button"
                 onClick={handleRetry}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#E31B23] px-5 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF3B43]"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#FF5A5A]"
               >
                 <RotateCcw size={16} />
                 Retry
               </button>
             </div>
           ) : filteredCars.length === 0 ? (
-            <div className="rounded-[28px] border border-dashed border-white/15 bg-[#0A0A0A] px-6 py-16 text-center">
+            <div className="rounded-[28px] border border-dashed border-white/15 bg-[#111111] px-6 py-16 text-center">
               <p className="text-xl font-semibold text-white">
                 {vehicles.length === 0
                   ? "No vehicles in the showroom yet"
@@ -336,7 +336,7 @@ export default function ShowroomPage() {
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#E31B23]/50 bg-[#E31B23]/10 px-5 py-3 text-sm font-semibold text-[#FF6B71] transition-all duration-300 hover:border-[#E31B23] hover:bg-[#E31B23]/20"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#FF2D2D]/50 bg-[#FF2D2D]/10 px-5 py-3 text-sm font-semibold text-[#FFFFFF] transition-all duration-300 hover:border-[#FF2D2D] hover:bg-[#FF2D2D]/20"
                 >
                   <X size={15} />
                   Clear filters
@@ -368,14 +368,14 @@ export default function ShowroomPage() {
                     <Link
                       key={car.id}
                       href={`/showroom/car/${car.id}`}
-                      className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#0A0A0A] transition-all duration-300 hover:-translate-y-1 hover:border-[#E31B23]/50 hover:shadow-[0_25px_60px_rgba(191,152,13,0.12)]"
+                      className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#111111] transition-all duration-300 hover:-translate-y-1 hover:border-[#FF2D2D]/50 hover:shadow-[0_25px_60px_rgba(191,152,13,0.12)]"
                     >
-                      <div className="relative overflow-hidden bg-[#000000] p-3">
+                      <div className="relative overflow-hidden bg-[#060606] p-3">
                         {(car.badge || unavailable) && (
                           // max-w + truncate keeps long badges inside the card.
                           <div
                             title={badgeText ?? undefined}
-                            className="absolute right-4 top-4 z-10 max-w-[calc(100%-2rem)] truncate rounded-full border border-[#E31B23]/40 bg-[#E31B23]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#FF6B71]"
+                            className="absolute right-4 top-4 z-10 max-w-[calc(100%-2rem)] truncate rounded-full border border-[#FF2D2D]/40 bg-[#FF2D2D]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#FFFFFF]"
                           >
                             {badgeText}
                           </div>
@@ -408,7 +408,7 @@ export default function ShowroomPage() {
                           <h3 className="mt-1 text-2xl font-semibold text-white">
                             {car.name}
                           </h3>
-                          <span className="mt-2 block text-base font-black text-[#FF6B71]">
+                          <span className="mt-2 block text-base font-black text-[#FFFFFF]">
                             {car.price}
                           </span>
                         </div>
@@ -440,7 +440,7 @@ export default function ShowroomPage() {
                             type="button"
                             disabled={unavailable}
                             onClick={(event) => handleAddToCart(event, car)}
-                            className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-[#E31B23] px-4 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#FF3B43] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#E31B23]"
+                            className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF2D2D] px-4 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#FF5A5A] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#FF2D2D]"
                           >
                             {buttonLabel}
                           </button>
@@ -451,7 +451,7 @@ export default function ShowroomPage() {
                             <span className="flex min-w-0 items-center gap-2">
                               <MapPin
                                 size={14}
-                                className="shrink-0 text-[#FF6B71]"
+                                className="shrink-0 text-[#FFFFFF]"
                               />
                               <span
                                 title={car.location}
@@ -460,7 +460,7 @@ export default function ShowroomPage() {
                                 {car.location}
                               </span>
                             </span>
-                            <span className="inline-flex shrink-0 items-center gap-2 font-semibold text-[#FF6B71]">
+                            <span className="inline-flex shrink-0 items-center gap-2 font-semibold text-[#FFFFFF]">
                               Details
                               <ArrowRight
                                 size={16}
@@ -483,7 +483,7 @@ export default function ShowroomPage() {
                       setCurrentPage((page) => Math.max(1, page - 1))
                     }
                     disabled={currentPage === 1}
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#E31B23] hover:text-[#FF6B71] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#FF2D2D] hover:text-[#FFFFFF] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     Previous
                   </button>
@@ -499,8 +499,8 @@ export default function ShowroomPage() {
                         onClick={() => setCurrentPage(page)}
                         className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-all ${
                           currentPage === page
-                            ? "bg-[#E31B23] text-black"
-                            : "border border-white/10 bg-white/5 text-white hover:border-[#E31B23] hover:text-[#FF6B71]"
+                            ? "bg-[#FF2D2D] text-black"
+                            : "border border-white/10 bg-white/5 text-white hover:border-[#FF2D2D] hover:text-[#FFFFFF]"
                         }`}
                       >
                         {page}
@@ -514,7 +514,7 @@ export default function ShowroomPage() {
                       setCurrentPage((page) => Math.min(totalPages, page + 1))
                     }
                     disabled={currentPage === totalPages}
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#E31B23] hover:text-[#FF6B71] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#FF2D2D] hover:text-[#FFFFFF] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     Next
                   </button>
@@ -525,7 +525,7 @@ export default function ShowroomPage() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-          <div className="rounded-[28px] border border-[#E31B23]/20 bg-[#0A0A0A] p-6 sm:p-8">
+          <div className="rounded-[28px] border border-[#FF2D2D]/20 bg-[#111111] p-6 sm:p-8">
             <div className="flex items-center gap-3">
               <h3 className="text-2xl font-bold text-white">
                 Why drivers choose AutoTrade?
@@ -535,7 +535,7 @@ export default function ShowroomPage() {
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <div className="flex gap-2 items-center">
-                  <Gauge className="text-[#FF6B71]" size={22} />
+                  <Gauge className="text-[#FFFFFF]" size={22} />
                   <h4 className="text-xl font-bold text-white">
                     Inspected quality
                   </h4>
@@ -547,7 +547,7 @@ export default function ShowroomPage() {
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <div className="flex gap-2 items-center">
-                  <Sparkles className="text-[#FF6B71]" size={22} />
+                  <Sparkles className="text-[#FFFFFF]" size={22} />
                   <h4 className="text-xl font-bold text-white">
                     Transparent pricing
                   </h4>
@@ -559,7 +559,7 @@ export default function ShowroomPage() {
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <div className="flex gap-2 items-center">
-                  <MapPin className="text-[#FF6B71]" size={22} />
+                  <MapPin className="text-[#FFFFFF]" size={22} />
                   <h4 className="text-xl font-bold text-white">
                     Local experts
                   </h4>

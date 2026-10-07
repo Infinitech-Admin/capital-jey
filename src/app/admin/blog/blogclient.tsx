@@ -62,12 +62,12 @@ function Dialog({
       aria-modal="true"
     >
       <div
-        className="absolute inset-0 bg-[#000000]/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-[#060606]/70 backdrop-blur-sm"
         onClick={() => {
           if (!busy) onClose();
         }}
       />
-      <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-[#000000] p-6 shadow-2xl">
+      <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-[#060606] p-6 shadow-2xl">
         {children}
       </div>
     </div>,
@@ -87,7 +87,7 @@ function RowActions({
   onDelete: (p: BlogPost) => void;
 }) {
   const btn =
-    "flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300 transition-colors hover:border-[#E31B23]/50 hover:bg-[#E31B23]/10 hover:text-[#FF6B71]";
+    "flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300 transition-colors hover:border-[#FF2D2D]/50 hover:bg-[#FF2D2D]/10 hover:text-[#FFFFFF]";
 
   return (
     <div className="flex items-center justify-end gap-1.5">
@@ -124,7 +124,7 @@ function Thumb({
 }) {
   return (
     <span
-      className={`flex ${size} shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#E31B23]/15 text-[#FF6B71]`}
+      className={`flex ${size} shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#FF2D2D]/15 text-[#FFFFFF]`}
     >
       {post.image ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -151,7 +151,7 @@ function MediaBadges({ post }: { post: BlogPost }) {
         </span>
       )}
       {post.video && (
-        <span className="inline-flex items-center gap-1 rounded-full bg-[#E31B23]/10 px-2 py-0.5 text-[11px] text-[#FF6B71]">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#FF2D2D]/10 px-2 py-0.5 text-[11px] text-[#FFFFFF]">
           <Film size={11} /> Video
         </span>
       )}
@@ -245,7 +245,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
         </div>
         <button
           onClick={() => setDrawerPost(null)}
-          className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#E31B23] to-[#FF3B43] px-5 py-2.5 text-sm font-bold text-white transition-all hover:brightness-105"
+          className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF2D2D] to-[#FF5A5A] px-5 py-2.5 text-sm font-bold text-white transition-all hover:brightness-105"
         >
           <Plus size={16} />
           New post
@@ -262,19 +262,19 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by title or description..."
-          className="w-full rounded-xl border border-white/10 bg-[#0A0A0A]/70 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#E31B23]/60"
+          className="w-full rounded-xl border border-white/10 bg-[#111111]/70 py-2.5 pl-10 pr-4 text-sm text-white placeholder-zinc-500 outline-none focus:border-[#FF2D2D]/60"
         />
       </div>
 
       {error && (
-        <div className="rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 px-4 py-3 text-sm text-[#FF6B71]">
+        <div className="rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]">
           {error}
         </div>
       )}
 
       {loading ? (
-        <div className="flex items-center justify-center rounded-2xl border border-white/10 bg-[#0A0A0A]/70 py-16 text-sm text-zinc-400">
-          <Loader2 size={18} className="mr-2 animate-spin text-[#FF6B71]" />
+        <div className="flex items-center justify-center rounded-2xl border border-white/10 bg-[#111111]/70 py-16 text-sm text-zinc-400">
+          <Loader2 size={18} className="mr-2 animate-spin text-[#FFFFFF]" />
           Loading posts...
         </div>
       ) : (
@@ -284,7 +284,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
           </p>
 
           {/* Desktop table */}
-          <div className="hidden overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A]/70 lg:block">
+          <div className="hidden overflow-hidden rounded-2xl border border-white/10 bg-[#111111]/70 lg:block">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-white/10 text-xs uppercase tracking-wide text-zinc-500">
@@ -351,7 +351,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
             {filtered.map((p) => (
               <div
                 key={p.id}
-                className="rounded-2xl border border-white/10 bg-[#0A0A0A]/70 p-4"
+                className="rounded-2xl border border-white/10 bg-[#111111]/70 p-4"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
@@ -380,7 +380,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
               </div>
             ))}
             {filtered.length === 0 && (
-              <div className="col-span-full rounded-2xl border border-white/10 bg-[#0A0A0A]/70 py-10 text-center text-sm text-zinc-500">
+              <div className="col-span-full rounded-2xl border border-white/10 bg-[#111111]/70 py-10 text-center text-sm text-zinc-500">
                 No posts found.
               </div>
             )}
@@ -396,7 +396,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
           busy={deleting}
         >
           <div className="flex items-start gap-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E31B23]/10 text-[#FF6B71]">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#FF2D2D]/10 text-[#FFFFFF]">
               <AlertTriangle size={20} />
             </span>
             <div className="min-w-0">
@@ -413,7 +413,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
           </div>
 
           {deleteError && (
-            <div className="mt-4 rounded-xl border border-[#E31B23]/30 bg-[#E31B23]/10 px-4 py-3 text-sm text-[#FF6B71]">
+            <div className="mt-4 rounded-xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/10 px-4 py-3 text-sm text-[#FFFFFF]">
               {deleteError}
             </div>
           )}
@@ -431,7 +431,7 @@ export default function BlogClient({ imageBaseUrl }: { imageBaseUrl: string }) {
               type="button"
               onClick={confirmDelete}
               disabled={deleting}
-              className="flex items-center justify-center gap-2 rounded-full bg-[#E31B23] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#FF3B43] disabled:opacity-60"
+              className="flex items-center justify-center gap-2 rounded-full bg-[#FF2D2D] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#FF5A5A] disabled:opacity-60"
             >
               {deleting ? (
                 <>

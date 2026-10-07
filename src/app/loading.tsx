@@ -24,7 +24,7 @@ const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
 
 export default function Loading() {
     return (
-        <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#000000] text-[#DCEBFA]">
+        <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#060606] text-[#DCEBFA]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(191,152,13,0.14),transparent_58%)]" />
 
             <div className="relative z-10 flex flex-col items-center px-6 text-center">
@@ -42,7 +42,7 @@ export default function Loading() {
                                 y1={t.inner.y}
                                 x2={t.outer.x}
                                 y2={t.outer.y}
-                                stroke={t.isRedline ? "#E31B23" : t.isMajor ? "#E31B23" : "#DCEBFA"}
+                                stroke={t.isRedline ? "#FF2D2D" : t.isMajor ? "#FF2D2D" : "#DCEBFA"}
                                 strokeOpacity={t.isRedline || t.isMajor ? 0.9 : 0.25}
                                 strokeWidth={t.isMajor ? 2 : 1}
                                 strokeLinecap="round"
@@ -56,7 +56,7 @@ export default function Loading() {
                                 y1={CENTER}
                                 x2={CENTER}
                                 y2={CENTER - 74}
-                                stroke="#FF6B71"
+                                stroke="#FFFFFF"
                                 strokeWidth={2.5}
                                 strokeLinecap="round"
                                 style={{ filter: "drop-shadow(0 0 6px rgba(243,215,122,0.65))" }}
@@ -64,8 +64,8 @@ export default function Loading() {
                         </g>
 
                         {/* Hub */}
-                        <circle cx={CENTER} cy={CENTER} r={9} fill="#0A0A0A" stroke="#E31B23" strokeWidth={2} />
-                        <circle cx={CENTER - 2.5} cy={CENTER - 2.5} r={2} fill="#FF6B71" fillOpacity={0.8} />
+                        <circle cx={CENTER} cy={CENTER} r={9} fill="#111111" stroke="#FF2D2D" strokeWidth={2} />
+                        <circle cx={CENTER - 2.5} cy={CENTER - 2.5} r={2} fill="#FFFFFF" fillOpacity={0.8} />
                     </svg>
                 </div>
 
@@ -75,7 +75,7 @@ export default function Loading() {
 
                 {/* Progress line */}
                 <div className="mt-7 h-[3px] w-52 overflow-hidden rounded-full bg-[#DCEBFA]/10 sm:w-64">
-                    <div className="loading-fill h-full w-1/3 rounded-full bg-gradient-to-r from-transparent via-[#E31B23] to-transparent" />
+                    <div className="loading-fill h-full w-1/3 rounded-full bg-gradient-to-r from-transparent via-[#FF2D2D] to-transparent" />
                 </div>
             </div>
 

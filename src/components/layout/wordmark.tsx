@@ -14,14 +14,14 @@ export function WheelO() {
     >
       <svg
         viewBox="0 0 100 100"
-        className="h-full w-full drop-shadow-[0_0_8px_rgba(227,27,35,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
+        className="h-full w-full drop-shadow-[0_0_8px_rgba(255,45,45,0.95)] group-hover:animate-spin motion-reduce:animate-none [animation-duration:1.2s]"
       >
         {/* Tire */}
         <circle
           cx="50"
           cy="50"
           r="47"
-          fill="#000000"
+          fill="#060606"
           stroke="#FFFFFF"
           strokeWidth="5"
         />
@@ -30,8 +30,8 @@ export function WheelO() {
           cx="50"
           cy="50"
           r="30"
-          fill="#1A1A1A"
-          stroke="#FF6B71"
+          fill="#1F1F1F"
+          stroke="#FFFFFF"
           strokeWidth="5"
         />
         {/* Spokes */}
@@ -49,7 +49,7 @@ export function WheelO() {
         </g>
         {/* Hub */}
         <circle cx="50" cy="50" r="9" fill="#FFFFFF" />
-        <circle cx="50" cy="50" r="3.5" fill="#E31B23" />
+        <circle cx="50" cy="50" r="3.5" fill="#FF2D2D" />
       </svg>
     </span>
   );
@@ -65,13 +65,13 @@ export function Wordmark({ className = "" }: { className?: string }) {
       <span
         role="img"
         aria-label="Boss"
-        className="flex items-center justify-center font-black uppercase italic tracking-[0.04em] text-white [text-shadow:0_0_22px_rgba(227,27,35,0.95),0_0_6px_rgba(255,255,255,0.35),3px_3px_0_#E31B23] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),3px_3px_0_#FF3B43]"
+        className="flex items-center justify-center font-black uppercase italic tracking-[0.04em] text-white [text-shadow:0_0_22px_rgba(255,45,45,0.95),0_0_6px_rgba(255,255,255,0.35),3px_3px_0_#FF2D2D] transition-all duration-300 group-hover:[text-shadow:0_0_30px_rgba(255,92,104,1),0_0_8px_rgba(255,255,255,0.5),3px_3px_0_#FF5A5A]"
       >
         <span aria-hidden="true">B</span>
         <WheelO />
         <span aria-hidden="true">SS</span>
       </span>
-      <span className="mt-[0.35em] block rounded-[0.2em] bg-[#E31B23] px-[0.6em] py-[0.25em] text-center text-[0.34em] font-extrabold uppercase italic tracking-[0.16em] text-white shadow-[0_0_16px_rgba(227,27,35,0.85)] transition-colors duration-300 group-hover:bg-[#FF3B43]">
+      <span className="mt-[0.35em] block rounded-[0.2em] bg-[#FF2D2D] px-[0.6em] py-[0.25em] text-center text-[0.34em] font-extrabold uppercase italic tracking-[0.16em] text-white shadow-[0_0_16px_rgba(255,45,45,0.85)] transition-colors duration-300 group-hover:bg-[#FF5A5A]">
         Auto Exchange
       </span>
     </span>
