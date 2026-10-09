@@ -19,7 +19,9 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import {
   MEDIA_BASE_URL,
+  PRICE_FALLBACK,
   fetchSoldVehicles,
+  hasPrice,
   isAbortError,
   resolveMediaUrl,
   type ApiError,
@@ -52,7 +54,8 @@ export default function SoldCarsPage() {
 
     try {
       const { data } = await fetchSoldVehicles({ signal });
-      setVehicles(data ?? []); // API already returns sold cars only
+      // Keep only sold cars, even if the endpoint returns more than that.
+      setVehicles((data ?? []).filter((v) => v.status === "sold"));
       setIsLoading(false);
     } catch (err) {
       if (isAbortError(err)) return;
@@ -93,10 +96,17 @@ export default function SoldCarsPage() {
           return Number(b.year) - Number(a.year);
         case "oldest":
           return Number(a.year) - Number(b.year);
-        case "price-low":
-          return a.price_value - b.price_value;
-        case "price-high":
-          return b.price_value - a.price_value;
+        // Cars without a price always go to the end.
+        case "price-low": {
+          const pa = hasPrice(a) ? a.price_value : Infinity;
+          const pb = hasPrice(b) ? b.price_value : Infinity;
+          return pa === pb ? 0 : pa - pb;
+        }
+        case "price-high": {
+          const pa = hasPrice(a) ? a.price_value : -Infinity;
+          const pb = hasPrice(b) ? b.price_value : -Infinity;
+          return pa === pb ? 0 : pb - pa;
+        }
         default:
           return 0;
       }
@@ -355,20 +365,16 @@ export default function SoldCarsPage() {
                 <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                   {paginatedCars.map((car) => {
                     const imageSrc = resolveMediaUrl(car.image, MEDIA_BASE_URL);
+                    const showPrice = SHOW_PRICE && hasPrice(car);
 
                     return (
-                      <Link
+                      // Sold cars are display-only: plain article, not a link.
+                      <article
                         key={car.id}
-                        href={`/showroom/car/${car.id}`}
-                        className="group flex h-full flex-col overflow-hidden border-t-4 border-transparent bg-[#161616] transition-colors hover:border-[#E31B23] hover:bg-[#1C1C1C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="group flex h-full cursor-default flex-col overflow-hidden border-t-4 border-transparent bg-[#161616] transition-colors hover:border-[#E31B23]"
                       >
+                        {/* Photo with SOLD stamp */}
                         <div className="relative overflow-hidden bg-[#0B0B0B] p-3">
-                          {/* SOLD badge */}
-                          <div className="absolute right-0 top-0 z-10 inline-flex items-center gap-1.5 bg-[#E31B23] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
-                            <BadgeCheck size={13} />
-                            Sold
-                          </div>
-
                           {imageSrc ? (
                             <Image
                               src={imageSrc}
@@ -376,13 +382,19 @@ export default function SoldCarsPage() {
                               width={800}
                               height={500}
                               unoptimized
-                              className="h-52 w-full object-contain opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
+                              className="h-52 w-full object-contain opacity-60 grayscale-[35%] transition duration-500 group-hover:opacity-90 group-hover:grayscale-0"
                             />
                           ) : (
                             <div className="flex h-52 w-full items-center justify-center text-sm text-white/40">
                               No image available
                             </div>
                           )}
+                          <span
+                            aria-label="Sold"
+                            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 border-4 border-[#E31B23] bg-[#0B0B0B]/75 px-5 py-1 text-3xl font-black uppercase tracking-widest text-[#E31B23]"
+                          >
+                            Sold
+                          </span>
                         </div>
 
                         <div className="flex flex-1 flex-col p-5">
@@ -393,14 +405,19 @@ export default function SoldCarsPage() {
                             <h3 className="mt-1 text-2xl font-bold uppercase leading-tight">
                               {car.name}
                             </h3>
-                            {SHOW_PRICE && (
-                              <span className="mt-2 block text-base font-bold text-white/60">
-                                <span className="mr-1.5 text-xs font-semibold text-white/45">
-                                  Sold at
+                            {SHOW_PRICE &&
+                              (showPrice ? (
+                                <span className="mt-2 block text-base font-bold text-white/60">
+                                  <span className="mr-1.5 text-xs font-semibold text-white/45">
+                                    Sold at
+                                  </span>
+                                  {car.price}
                                 </span>
-                                {car.price}
-                              </span>
-                            )}
+                              ) : (
+                                <span className="mt-2 block text-sm text-white/50">
+                                  {PRICE_FALLBACK}
+                                </span>
+                              ))}
                           </div>
 
                           <div className="mt-auto pt-5">
@@ -423,30 +440,21 @@ export default function SoldCarsPage() {
                               </div>
                             </div>
 
-                            <div className="flex min-h-14 items-center justify-between gap-3 border-t border-white/10 pt-3 text-sm text-white/70">
-                              <span className="flex min-w-0 items-center gap-2">
-                                <MapPin
-                                  size={14}
-                                  className="shrink-0 text-[#E31B23]"
-                                />
-                                <span
-                                  title={car.location}
-                                  className="line-clamp-2 leading-5"
-                                >
-                                  {car.location}
-                                </span>
-                              </span>
-                              <span className="inline-flex shrink-0 items-center gap-2 font-bold uppercase text-white transition-colors group-hover:text-[#E31B23]">
-                                View
-                                <ArrowRight
-                                  size={16}
-                                  className="transition-transform duration-300 group-hover:translate-x-1"
-                                />
+                            <div className="flex min-h-14 items-center gap-2 border-t border-white/10 pt-3 text-sm text-white/70">
+                              <MapPin
+                                size={14}
+                                className="shrink-0 text-[#E31B23]"
+                              />
+                              <span
+                                title={car.location}
+                                className="line-clamp-2 leading-5"
+                              >
+                                {car.location}
                               </span>
                             </div>
                           </div>
                         </div>
-                      </Link>
+                      </article>
                     );
                   })}
                 </div>
