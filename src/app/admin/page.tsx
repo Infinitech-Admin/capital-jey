@@ -21,6 +21,8 @@ import {
 import {
   Car,
   DollarSign,
+  Eye,
+  Globe,
   RotateCcw,
   ShoppingCart,
   TrendingDown,
@@ -86,6 +88,27 @@ function formatDate(iso: string | null): string {
   });
 }
 
+function formatDuration(sec: number): string {
+  const m = Math.floor(sec / 60);
+  return `${m}m ${sec % 60}s`;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Types                                                                     */
+/* -------------------------------------------------------------------------- */
+
+type TrafficData = {
+  totals: {
+    pageViews: number;
+    users: number;
+    sessions: number;
+    avgSessionSeconds: number;
+  };
+  daily: { date: string; pageViews: number; users: number }[];
+  topPages: { path: string; views: number }[];
+  sources: { name: string; sessions: number }[];
+};
+
 /* -------------------------------------------------------------------------- */
 /*  Page                                                                      */
 /* -------------------------------------------------------------------------- */
@@ -130,7 +153,7 @@ export default function AdminDashboardPage() {
             Dashboard
           </h1>
           <p className="mt-1 text-sm text-zinc-400">
-            Overview of sales, inventory, and activity.
+            Overview of sales, inventory, traffic, and activity.
           </p>
         </div>
 
@@ -331,6 +354,9 @@ function DashboardContent({
           )}
         </ChartCard>
       </div>
+
+      {/* Website traffic (Google Analytics) */}
+      <TrafficSection months={months} />
 
       {/* Cart analytics */}
       <section aria-label="Cart analytics" className="space-y-4">
@@ -555,6 +581,216 @@ function DashboardContent({
         </div>
       </div>
     </>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Website traffic (Google Analytics)                                        */
+/* -------------------------------------------------------------------------- */
+
+function TrafficSection({ months }: { months: number }) {
+  const [data, setData] = useState<TrafficData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setError(null);
+
+    fetch(`/api/admin/analytics?days=${months * 30}`, {
+      signal: controller.signal,
+      credentials: "include",
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const body = await res.json().catch(() => null);
+          throw new Error(body?.error ?? "Couldn’t load analytics.");
+        }
+        return res.json() as Promise<TrafficData>;
+      })
+      .then(setData)
+      .catch((err: unknown) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setError(
+          err instanceof Error ? err.message : "Couldn’t load analytics.",
+        );
+      });
+
+    return () => controller.abort();
+  }, [months]);
+
+  return (
+    <section aria-label="Website traffic" className="space-y-4">
+      <div className="flex items-center gap-3">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF2D2D]/10 text-[#FFFFFF]">
+          <Globe size={16} />
+        </span>
+        <div>
+          <h2 className="text-sm font-semibold text-white">Website traffic</h2>
+          <p className="text-xs text-zinc-400">
+            Last {months} months · Google Analytics
+          </p>
+        </div>
+      </div>
+
+      {error && (
+        <div className="rounded-2xl border border-[#FF2D2D]/30 bg-[#FF2D2D]/5 p-4 text-sm text-white">
+          {error}
+        </div>
+      )}
+
+      {!data && !error && (
+        <div className="h-[104px] animate-pulse rounded-2xl border border-white/10 bg-[#111111]/50" />
+      )}
+
+      {data && (
+        <>
+          <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+            <MiniStat label="Page views" value={data.totals.pageViews} />
+            <MiniStat label="Visitors" value={data.totals.users} />
+            <MiniStat label="Sessions" value={data.totals.sessions} />
+            <MiniStat
+              label="Avg. session"
+              value={formatDuration(data.totals.avgSessionSeconds)}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
+            <ChartCard
+              title="Page views & visitors"
+              subtitle="Daily"
+              className="xl:col-span-2"
+            >
+              {data.daily.length === 0 ? (
+                <EmptyState message="No traffic data yet." />
+              ) : (
+                <ResponsiveContainer width="100%" height={240}>
+                  <AreaChart
+                    data={data.daily}
+                    margin={{ top: 4, right: 8, left: -16, bottom: 0 }}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="viewsFill"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#FF2D2D"
+                          stopOpacity={0.35}
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#FF2D2D"
+                          stopOpacity={0}
+                        />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid stroke="#ffffff14" vertical={false} />
+                    <XAxis
+                      dataKey="date"
+                      stroke="#71717a"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                      interval="preserveStartEnd"
+                    />
+                    <YAxis
+                      stroke="#71717a"
+                      fontSize={12}
+                      tickLine={false}
+                      axisLine={false}
+                      allowDecimals={false}
+                    />
+                    <Tooltip contentStyle={TOOLTIP_STYLE} />
+                    <Legend
+                      verticalAlign="bottom"
+                      height={28}
+                      iconType="circle"
+                      wrapperStyle={{ fontSize: 12, color: "#a1a1aa" }}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="pageViews"
+                      name="Page views"
+                      stroke="#FF2D2D"
+                      strokeWidth={2}
+                      fill="url(#viewsFill)"
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="users"
+                      name="Visitors"
+                      stroke="#FFFFFF"
+                      strokeWidth={2}
+                      dot={false}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              )}
+            </ChartCard>
+
+            <ChartCard title="Traffic sources" subtitle="Sessions by channel">
+              {data.sources.length === 0 ? (
+                <EmptyState message="No sources yet." />
+              ) : (
+                <ResponsiveContainer width="100%" height={240}>
+                  <PieChart>
+                    <Pie
+                      data={data.sources}
+                      dataKey="sessions"
+                      nameKey="name"
+                      innerRadius={50}
+                      outerRadius={85}
+                      paddingAngle={3}
+                    >
+                      {data.sources.map((s, i) => (
+                        <Cell
+                          key={s.name}
+                          fill={CATEGORY_COLORS[i % CATEGORY_COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip contentStyle={TOOLTIP_STYLE} />
+                    <Legend
+                      verticalAlign="bottom"
+                      height={36}
+                      iconType="circle"
+                      wrapperStyle={{ fontSize: 12, color: "#a1a1aa" }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              )}
+            </ChartCard>
+          </div>
+
+          <ChartCard title="Top pages" subtitle="By page views">
+            {data.topPages.length === 0 ? (
+              <EmptyState message="No page views yet." />
+            ) : (
+              <ul className="divide-y divide-white/5">
+                {data.topPages.map((p) => (
+                  <li
+                    key={p.path}
+                    className="flex items-center justify-between gap-3 py-2.5 text-sm"
+                  >
+                    <span className="flex min-w-0 items-center gap-2 text-white">
+                      <Eye size={14} className="shrink-0 text-zinc-500" />
+                      <span className="truncate">{p.path}</span>
+                    </span>
+                    <span className="shrink-0 text-xs font-semibold text-white">
+                      {p.views.toLocaleString()}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </ChartCard>
+        </>
+      )}
+    </section>
   );
 }
 

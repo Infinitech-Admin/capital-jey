@@ -9,6 +9,7 @@ import { CartProvider } from "@/context/cart-context";
 import ChatWidget from "@/components/chat-widget";
 import FloatingSocial from "@/components/floating-social";
 import AnimatedSplash from "@/components/animated-splash";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // Squared, techy headings that match the "CAPITAL JEY" lettering on the logo
 const rajdhani = Rajdhani({
@@ -108,6 +109,9 @@ export default function RootLayout({
             <ChatWidget />
           </CartProvider>
         </AuthProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
