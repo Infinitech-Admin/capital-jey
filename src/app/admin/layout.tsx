@@ -17,6 +17,7 @@ import {
   Menu,
   Megaphone,
   Newspaper,
+  Users,
   Search,
   X,
 } from "lucide-react";
@@ -47,6 +48,11 @@ const NAV_ITEMS: NavItem[] = [
     label: "Dashboard",
     href: "/admin",
     icon: LayoutDashboard,
+  },
+  {
+    label: "Users",
+    href: "/admin/users",
+    icon: Users,
   },
   {
     label: "Announcements",

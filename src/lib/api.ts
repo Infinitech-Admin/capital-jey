@@ -1,6 +1,8 @@
-// lib/api.ts
+// Path: lib/api.ts  (REPLACE your existing lib/api.ts; if you use src/, put it in src/lib/api.ts)
+// Changes are marked with "SEO:" comments (isServer, serverApiBase, apiRequest).
+// Changes for careers/approvals are marked with "CAREERS:" comments.
 
-// All requests go to our own Next.js origin, through the Route Handler at
+// All BROWSER requests go to our own Next.js origin, through the Route Handler at
 // app/api/proxy/[...path]/route.ts. That handler forwards them to Laravel
 // (using the server-only LARAVEL_API_URL env var), so the browser only ever
 // talks to one origin and CORS never comes into play.
@@ -8,6 +10,17 @@
 //   /api/proxy/login                -> {LARAVEL_API_URL}/api/login
 //   /api/proxy/sanctum/csrf-cookie  -> {LARAVEL_API_URL}/sanctum/csrf-cookie
 const API_BASE = "/api/proxy";
+
+// SEO: Server-side code (Server Components, generateMetadata, sitemap) has no
+// browser origin, so it calls Laravel directly instead of going through the
+// proxy. LARAVEL_API_URL is the same server-only env var the proxy route uses.
+const isServer = typeof window === "undefined";
+
+function serverApiBase(): string {
+  const url = process.env.LARAVEL_API_URL;
+  if (!url) throw new Error("LARAVEL_API_URL is not set.");
+  return `${url.replace(/\/$/, "")}/api`;
+}
 
 /**
  * Origin that vehicle media paths (e.g. "/storage/vehicles/images/x.jpg")
@@ -96,14 +109,22 @@ export async function apiRequest<T = unknown>(
   const isUnsafeMethod = ["POST", "PUT", "PATCH", "DELETE"].includes(method);
 
   if (isUnsafeMethod) {
+    // SEO: writes need the browser's cookies + CSRF, so they never run on the server.
+    if (isServer) throw new Error("Write requests must run in the browser.");
     await ensureCsrfCookie();
   }
 
   const xsrfToken = getCookie("XSRF-TOKEN");
 
-  const response = await fetch(`${API_BASE}${path}`, {
+  // SEO: server -> Laravel directly (absolute URL); browser -> /api/proxy
+  const base = isServer ? serverApiBase() : API_BASE;
+
+  const response = await fetch(`${base}${path}`, {
     method,
-    credentials: "include",
+    // SEO: browser sends the session cookie; server does a public GET cached for 60s
+    ...(isServer
+      ? { next: { revalidate: 60 } }
+      : { credentials: "include" as const }),
     signal,
     headers: {
       Accept: "application/json",
@@ -166,12 +187,14 @@ export interface ResendVerificationResponse {
   [key: string]: unknown;
 }
 
+// CAREERS: added `status` so the frontend can tell pending apart from approved.
 export interface AuthUser {
   id: number;
   name: string;
   email: string;
   phone: string | null;
-  role: string;
+  role: string; // "customer" | "reseller" | "agent" | "admin"
+  status?: "pending" | "approved" | "rejected";
 }
 
 export interface LoginResponse {
@@ -462,6 +485,7 @@ export interface Order {
   address: string;
   notes: string | null;
   payment_method: string;
+  payment_proof_url?: string | null;
   payment_reference: string | null;
   payment_proof: string | null; // path relative to the API origin
   subtotal: number;
@@ -490,9 +514,8 @@ export const updateAdminOrderStatus = (id: number, status: string) =>
     method: "PATCH",
     body: { status },
   });
-// ---------------------------------------------------------------------------
-// ADD THIS TO THE BOTTOM OF  lib/api.ts
-// ---------------------------------------------------------------------------
+
+// ---- Dashboard (admin) ----
 
 export interface DashboardStat {
   value: number;
@@ -540,10 +563,6 @@ export const fetchAdminDashboard = (
   apiRequest<{ data: DashboardData }>(`/admin/dashboard?months=${months}`, {
     signal: options?.signal,
   }).then((res) => res.data);
-
-// ---------------------------------------------------------------------------
-// ADD THIS TO THE BOTTOM OF  lib/api.ts
-// ---------------------------------------------------------------------------
 
 // ---- Test drives ----
 
@@ -648,6 +667,7 @@ export const updateAdminTestDrive = (
 
 export const deleteAdminTestDrive = (id: number) =>
   apiRequest(`/admin/test-drives/${id}`, { method: "DELETE" });
+
 // ---- Blog ----
 
 export interface BlogPost {
@@ -656,6 +676,7 @@ export interface BlogPost {
   description: string;
   image: string | null;
   video: string | null;
+  push_sent_at: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -667,6 +688,7 @@ export interface BlogPayload {
   video_path?: string | null;
   remove_image?: boolean;
   remove_video?: boolean;
+  notify?: boolean;
 }
 
 // Public
@@ -700,9 +722,6 @@ export const updateBlogPost = (id: number, payload: BlogPayload) =>
 
 export const deleteAdminBlogPost = (id: number) =>
   apiRequest(`/admin/blog/${id}`, { method: "DELETE" });
-// ---------------------------------------------------------------------------
-// ADD THIS TO THE BOTTOM OF  lib/api.ts
-// ---------------------------------------------------------------------------
 
 // ---- Announcements ----
 
@@ -749,6 +768,7 @@ export const updateAnnouncement = (id: number, payload: AnnouncementPayload) =>
 
 export const deleteAdminAnnouncement = (id: number) =>
   apiRequest(`/admin/announcements/${id}`, { method: "DELETE" });
+
 export interface PushSubscriptionInput {
   endpoint: string;
   keys: { p256dh: string; auth: string };
@@ -768,6 +788,123 @@ export const fetchPushSubscriberCount = () =>
   apiRequest<{ data: { subscribers: number } }>(
     "/admin/announcements/subscribers",
   );
+
+// ---- Careers (public: reseller / agent applications) ----
+// CAREERS: new section
+
+export type ApplicantRole = "reseller" | "agent";
+
+export interface CareerApplicationPayload {
+  name: string;
+  email: string;
+  phone: string;
+  role: ApplicantRole;
+  location: string;
+  experience: string;
+  message?: string;
+  /** Optional profile photo (jpg/png/webp, max 4MB). */
+  photo?: File | null;
+  /** Optional valid ID (jpg/png/webp, max 4MB). */
+  id_document?: File | null;
+}
+
+/**
+ * Public. Creates a pending reseller/agent user — no login until approved.
+ * Sent as multipart/form-data because of the optional photo / ID files.
+ */
+export const submitCareerApplication = (payload: CareerApplicationPayload) => {
+  const formData = new FormData();
+  formData.append("name", payload.name);
+  formData.append("email", payload.email);
+  formData.append("phone", payload.phone);
+  formData.append("role", payload.role);
+  formData.append("location", payload.location);
+  formData.append("experience", payload.experience);
+  if (payload.message) formData.append("message", payload.message);
+  if (payload.photo) formData.append("photo", payload.photo);
+  if (payload.id_document) formData.append("id_document", payload.id_document);
+
+  return apiUpload<{ message: string }>("/career-applications", formData);
+};
+
+// ---- Users (admin: customers + reseller/agent approvals) ----
+// CAREERS: new section
+
+export type UserRole = "customer" | "reseller" | "agent" | "admin";
+export type UserStatus = "pending" | "approved" | "rejected";
+
+export interface AdminUser {
+  id: number;
+  name: string;
+  email: string;
+  phone: string | null;
+  role: UserRole;
+  status: UserStatus;
+  location: string | null;
+  experience: string | null;
+  message: string | null;
+  /** Short-lived signed URLs (absolute, straight from Laravel), or null. */
+  photo_url: string | null;
+  id_url: string | null;
+  email_verified: boolean;
+  approved_at: string | null;
+  created_at: string;
+}
+
+export const fetchAdminUsers = (
+  params?: {
+    role?: string;
+    status?: string;
+    search?: string;
+    page?: number;
+  },
+  options?: { signal?: AbortSignal },
+) => {
+  const query = new URLSearchParams();
+  if (params?.role) query.set("role", params.role);
+  if (params?.status) query.set("status", params.status);
+  if (params?.search) query.set("search", params.search);
+  if (params?.page) query.set("page", String(params.page));
+  const qs = query.toString();
+  return apiRequest<{
+    data: AdminUser[];
+    current_page: number;
+    last_page: number;
+    total: number;
+  }>(`/admin/users${qs ? `?${qs}` : ""}`, { signal: options?.signal });
+};
+
+export const approveAdminUser = (id: number) =>
+  apiRequest<{ data: AdminUser }>(`/admin/users/${id}/approve`, {
+    method: "PATCH",
+  });
+
+export const rejectAdminUser = (id: number) =>
+  apiRequest<{ data: AdminUser }>(`/admin/users/${id}/reject`, {
+    method: "PATCH",
+  });
+
+// ---- Password reset (forgot password + first-time set-password) ----
+
+export interface ResetPasswordPayload {
+  token: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+}
+
+export const forgotPassword = (email: string) =>
+  apiRequest<{ message: string }>("/forgot-password", {
+    method: "POST",
+    body: { email },
+  });
+
+export const resetPassword = (payload: ResetPasswordPayload) =>
+  apiRequest<{ message: string }>("/reset-password", {
+    method: "POST",
+    body: payload,
+  });
+
 export const PRICE_FALLBACK = "Inquire for price";
 
 /** True only when the vehicle has a real, usable price. */
@@ -781,7 +918,7 @@ export const hasPrice = (car: {
     Number.isFinite(value) &&
     value > 0 &&
     label !== "" &&
-    label !== "n/a" &&
-    label !== "na"
+    label !== "na" &&
+    label !== "n/a"
   );
 };
